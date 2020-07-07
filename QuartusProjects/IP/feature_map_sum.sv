@@ -101,7 +101,6 @@ module feature_map_sum # (
         
     // handle read / write master
     always_comb begin
-        m_writedata = float_result;
         float_data_valid = 1'b0;
         case (fsm)
             S3 : begin
@@ -114,6 +113,7 @@ module feature_map_sum # (
     always_ff @ (posedge clock) begin
         if (clock_sreset) begin
             m_address <= DONTCARE[31:0];
+            m_writedata = DONTCARE[WIDTH-1:0];
             m_read <= 1'b0;
             m_write <= 1'b0;
             dataa_reg <= DONTCARE[WIDTH-1:0];
@@ -124,6 +124,7 @@ module feature_map_sum # (
             fsm <= S1;
         end
         else begin
+            m_writedata <= float_result;
             case (fsm)
                 S1 : begin  // wait for the 'go' flag (write 0x1 to address 0x0 on slave)
                     word_count <= ZERO[23:0];
