@@ -100,16 +100,6 @@ module feature_map_sum # (
     end
         
     // handle read / write master
-    always_comb begin
-        float_data_valid = 1'b0;
-        case (fsm)
-            S3 : begin
-                if (~m_read) begin
-                    float_data_valid = 1'b1;
-                end
-            end
-        endcase
-    end
     always_ff @ (posedge clock) begin
         if (clock_sreset) begin
             m_address <= DONTCARE[31:0];
@@ -155,14 +145,14 @@ module feature_map_sum # (
                     datab_reg <= m_readdata;
                     if (m_read) begin
                         if (~m_waitrequest) begin
+                            float_data_valid <= 1'b1;
                             m_read <= 1'b0;
+                            fsm <= S4;
                         end
-                    end
-                    else begin
-                        fsm <= S4;
                     end
                 end
                 S4 : begin  // writeback float sum
+                    float_data_valid <= 1'b0;
                     if (m_write) begin
                         if (~m_waitrequest) begin
                             rd_pointer <= rd_pointer + WORD_STEP;
