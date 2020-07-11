@@ -13,6 +13,16 @@ def float_to_bfloat(f):
 
     return bfloat
 
+
+def bfloat_to_float(bf):
+
+    #Function for converting back to float for testing, not used in rest of script
+    # replace lost precision
+    f = bf + '0000'
+
+    # return base 16 float
+    return struct.unpack('f', struct.pack('i', int(f, 16)))
+
 def parse_conv2d(layer, layer_num):
     '''
     Takes in a tf conv2d layer object and which number in the model it is and outputs .h
