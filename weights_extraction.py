@@ -5,7 +5,7 @@ import struct
 
 
 def float_to_bfloat(f):
-    # converts to hex form 0x12345678
+    # converts to hex  form 0x12345678
     h = hex(struct.unpack('<I', struct.pack('<f', f))[0])
 
     # removes last 4 values to put precision to float 16
