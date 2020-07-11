@@ -1,7 +1,17 @@
 import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 import os
+import struct
 
+
+def float_to_bfloat(f):
+    # converts to hex form 0x12345678
+    h = hex(struct.unpack('<I', struct.pack('<f', f))[0])
+
+    # removes last 4 values to put precision to float 16
+    bfloat = h[:-4]
+
+    return bfloat
 
 def parse_conv2d(layer, layer_num):
     '''
@@ -48,10 +58,10 @@ def parse_conv2d(layer, layer_num):
             for row in range(kernels[0]):
                 for col in range(kernels[1]):
 
-                    weight = weights[0][color][row][col][i]
-                    float_weight = float(weight)
+                    weight = float(weights[0][color][row][col][i])
+                    bfloat_weight = float_to_bfloat(weight)
                     # print(float_weight)
-                    file.write(str(float_weight) + "f")
+                    file.write(str(bfloat_weight))
 
                     # checks if it is the last value and stops placing a single comma
                     if ((row + 1) * (col + 1) < kernel_size):
@@ -93,10 +103,10 @@ def parse_dense(layer, layer_num):
 
         for inputs in range(num_inputs):
 
-            weight = weights[0][inputs][output]
+            weight = float(weights[0][inputs][output])
             # print(weight)
-            float_weight = float(weight)
-            file.write(str(float_weight) + "f")
+            bfloat_weight = float_to_bfloat(weight)
+            file.write(str(bfloat_weight))
 
             # checks if it is the last value and stops placing a single comma
             if (inputs < num_inputs - 1):
