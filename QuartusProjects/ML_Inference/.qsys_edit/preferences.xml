@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="351" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <library expandedCategories="Project,Library/CustomIP,Library" />
+ <window width="1938" height="1048" x="-9" y="-9" />
+ <generation block_symbol_file="0" />
+</preferences>

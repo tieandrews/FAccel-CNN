@@ -1,0 +1,224 @@
+module frame_reader # (
+            parameter           XRES = 640,
+            parameter           YRES = 480
+)
+(
+    input   logic               clock,
+    input   logic               clock_sreset,
+    input   logic [3:0]         s_address,
+    output  logic [31:0]        s_readdata,
+    input   logic [31:0]        s_writedata,
+    input   logic               s_read,
+    input   logic               s_write,
+    output  logic               s_waitrequest,
+    
+    output  logic [31:0]        m_address,
+    output  logic [1:0]         m_byteenable,
+    input   logic [15:0]        m_readdata,
+    output  logic               m_read,
+    input   logic               m_waitrequest,
+    input   logic               m_readdatavalid,
+    
+    input   logic               st_ready,
+    output  logic               st_valid,
+    output  logic               st_sop,
+    output  logic               st_eop,
+    output  logic [15:0]        st_data
+);
+            
+            localparam          ONE = 128'h1;
+            localparam          ZERO = 128'h0;
+            localparam          DONTCARE = {128{1'bx}};
+            localparam          FIFO_FULL = 448;
+    enum    logic [7:0]         {S1, S2, S3, S4, S5, S6, S7, S8} fsm_a, fsm_b;
+            logic               read_latency;
+            logic               go_flag;
+            logic [31:0]        read_pointer;
+            logic [15:0]        count_ax, count_ay, count_bx, count_by;
+            logic [15:0]        fifo_q;
+            logic [8:0]         fifo_usedw;
+            logic               fifo_rdreq;
+            
+    scfifo                      # (
+                                    .add_ram_output_register("OFF"),
+                                    .intended_device_family("MAX 10"),
+                                    .lpm_numwords(512),
+                                    .lpm_showahead("ON"),
+                                    .lpm_type("scfifo"),
+                                    .lpm_width(16),
+                                    .lpm_widthu(9),
+                                    .overflow_checking("OFF"),
+                                    .underflow_checking("OFF"),
+                                    .use_eab("ON")
+                                )
+                                fifo (
+                                    .clock(clock),
+                                    .data(m_readdata),
+                                    .rdreq(fifo_rdreq),
+                                    .sclr(clock_sreset),
+                                    .wrreq(m_readdatavalid),
+                                    .q(fifo_q),
+                                    .usedw(fifo_usedw),
+                                    .aclr(),
+                                    .almost_empty(),
+                                    .almost_full(),
+                                    .eccstatus(),
+                                    .empty(),
+                                    .full()
+                                );
+
+    always_comb begin
+        s_waitrequest = s_write ? 1'b0 : (s_read ? ~read_latency : 1'b0);
+    end
+    always_ff @ (posedge clock) begin
+        if (clock_sreset) begin
+            read_latency <= 1'b0;
+        end
+        else begin
+            read_latency <= read_latency ? 1'b0 : s_read;
+            if (s_address == 4'h0) begin
+                go_flag <= s_write & s_writedata[0];
+            end
+            else begin
+                go_flag <= 1'b0;
+            end
+            if (s_address == 4'h1) begin
+                s_readdata <= read_pointer;
+                if (s_write) begin
+                    read_pointer <= s_writedata;
+                end
+            end
+        end
+    end
+    
+    always_comb begin
+    end
+    always_ff @ (posedge clock) begin
+        if (clock_sreset) begin
+            count_ax <= DONTCARE[15:0];
+            count_ay <= DONTCARE[15:0];
+            m_address <= DONTCARE[31:0];
+            m_byteenable <= 2'bxx;
+            m_read <= 1'b0;
+            fsm_a <= S1;
+        end
+        else begin
+            m_byteenable <= 2'b11;
+            case (fsm_a)
+                S1 : begin
+                    count_ax <= ZERO[15:0];
+                    count_ay <= ZERO[15:0];
+                    m_address <= read_pointer;
+                    if (go_flag) begin
+                        fsm_a <= S2;
+                    end
+                end
+                S2 : begin
+                    if (m_read) begin
+                        if (~m_waitrequest) begin
+                            m_address <= m_address + 32'h2;
+                            if (fifo_usedw > FIFO_FULL[8:0]) begin
+                                m_read <= 1'b0;
+                            end
+                            if (count_ax >= (XRES - ONE[15:0])) begin
+                                count_ax <= ZERO[15:0];
+                                if (count_ay >= (YRES - ONE[15:0])) begin
+                                    m_read <= 1'b0;
+                                    fsm_a <= S1;
+                                end
+                                else begin
+                                    count_ay <= count_ay + ONE[15:0];
+                                end
+                            end
+                            else begin
+                                count_ax <= count_ax + ONE[15:0];
+                            end
+                        end
+                    end
+                    else begin
+                        m_read <= (fifo_usedw < FIFO_FULL[8:0]);
+                    end
+                end
+            endcase
+        end
+    end
+
+    always_comb begin
+        fifo_rdreq = 1'b0;
+        case (fsm_b)
+            S2 : begin
+                if ((fifo_usedw > ZERO[8:0]) && st_ready) begin
+                    fifo_rdreq = 1'b1;
+                end
+            end
+            default;
+        endcase
+    end
+    always_ff @ (posedge clock) begin
+        if (clock_sreset) begin
+            st_valid <= 1'b0;
+            st_sop <= 1'bx;
+            st_eop <= 1'bx;
+            st_data <= DONTCARE[15:0];
+            count_bx <= DONTCARE[15:0];
+            count_bx <= DONTCARE[15:0];
+            fsm_b <= S1;
+        end
+        else begin
+            case (fsm_b)
+                S1 : begin
+                    count_bx <= ZERO[15:0];
+                    count_by <= ZERO[15:0];
+                    st_eop <= 1'b0;
+                    st_data <= XRES[15:0];
+                    if (fifo_usedw > ZERO[8:0]) begin
+                        if (st_ready) begin
+                            st_valid <= 1'b1;
+                            st_sop <= 1'b1;
+                            fsm_b <= S2;
+                        end
+                        else begin
+                            st_valid <= 1'b0;
+                            st_sop <= 1'b0;
+                        end
+                    end
+                    else begin
+                        st_valid <= 1'b0;
+                        st_sop <= 1'b0;
+                    end
+                end
+                S2 : begin
+                    st_sop <= 1'b0;
+                    st_data <= fifo_q;
+                    if (fifo_usedw > ZERO[8:0]) begin
+                        if (st_ready) begin
+                            st_valid <= 1'b1;
+                            if (count_bx >= (XRES - ONE[15:0])) begin
+                                count_bx <= ZERO[15:0];
+                                if (count_by >= (YRES - ONE[15:0])) begin
+                                    st_eop <= 1'b1;
+                                    fsm_b <= S1;
+                                end
+                                else begin
+                                    count_by <= count_by + ONE[15:0];
+                                end
+                            end
+                            else begin
+                                count_bx <= count_bx + ONE[15:0];
+                            end
+                        end
+                        else begin
+                            st_valid <= 1'b0;
+                            st_eop <= 1'b0;
+                        end
+                    end
+                    else begin
+                        st_valid <= 1'b0;
+                        st_eop <= 1'b0;
+                    end
+                end
+            endcase
+        end
+    end
+    
+endmodule

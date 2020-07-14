@@ -1,0 +1,18 @@
+19:52:10 **** Incremental Build of configuration Nios II for project jtag_uart ****
+make all 
+Info: Building ../jtag_uart_bsp/
+C:/intelFPGA/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../jtag_uart_bsp/
+[BSP build complete]
+Info: Compiling jtag_uart.c to obj/default/jtag_uart.o
+nios2-elf-gcc -xc -MP -MMD -c -I../jtag_uart_bsp//HAL/inc -I../jtag_uart_bsp/ -I../jtag_uart_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/jtag_uart.o jtag_uart.c
+Info: Linking jtag_uart.elf
+nios2-elf-g++  -T'../jtag_uart_bsp//linker.x' -msys-crt0='../jtag_uart_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../jtag_uart_bsp/  -msmallc  -Wl,-Map=jtag_uart.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o jtag_uart.elf obj/default/jtag_uart.o -lm -msys-lib=m
+nios2-elf-insert jtag_uart.elf --thread_model hal --cpu_name nios2e --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name pd_block --quartus_project_dir "D:/QuartusProjects/Development_Kits/DE10_LITE/ML_Inference" --jdi D:/QuartusProjects/Development_Kits/DE10_LITE/ML_Inference/software/jtag_uart_bsp/../../de10_lite.jdi --sopcinfo D:/QuartusProjects/Development_Kits/DE10_LITE/ML_Inference/software/jtag_uart_bsp/../../pd_block.sopcinfo
+Info: (jtag_uart.elf) 436 Bytes program size (code + initialized data).
+Info:                 65535 KBytes free for stack + heap.
+Info: Creating jtag_uart.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source jtag_uart.elf >jtag_uart.objdump
+[jtag_uart build complete]
+
+19:52:12 Build Finished (took 1s.898ms)
+

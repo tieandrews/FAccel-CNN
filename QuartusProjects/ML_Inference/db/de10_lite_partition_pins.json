@@ -1,0 +1,269 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "led[0]",
+					"strict" : false
+				},
+				{
+					"name" : "led[1]",
+					"strict" : false
+				},
+				{
+					"name" : "led[2]",
+					"strict" : false
+				},
+				{
+					"name" : "led[3]",
+					"strict" : false
+				},
+				{
+					"name" : "led[4]",
+					"strict" : false
+				},
+				{
+					"name" : "led[5]",
+					"strict" : false
+				},
+				{
+					"name" : "led[6]",
+					"strict" : false
+				},
+				{
+					"name" : "led[7]",
+					"strict" : false
+				},
+				{
+					"name" : "led[8]",
+					"strict" : false
+				},
+				{
+					"name" : "led[9]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_red[0]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_red[1]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_red[2]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_red[3]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_green[0]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_green[1]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_green[2]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_green[3]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_blue[0]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_blue[1]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_blue[2]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_blue[3]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_hsync",
+					"strict" : false
+				},
+				{
+					"name" : "vga_vsync",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[5]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[7]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[8]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[9]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[10]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[11]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_addr[12]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_ba[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_ba[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dqm[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dqm[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_ras_n",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_cas_n",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_cs_n",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_we_n",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[4]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[5]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[7]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[8]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[9]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[10]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[11]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[12]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[13]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[14]",
+					"strict" : false
+				},
+				{
+					"name" : "sdram_dq[15]",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tms",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tck",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdi",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdo",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

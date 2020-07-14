@@ -1,0 +1,41 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst pd_block.dma -pg 1 -lvl 6 -y 610
+preplace inst pd_block.vga_out -pg 1 -lvl 6 -y 40
+preplace inst pd_block.nios2e.clock_bridge -pg 1
+preplace inst pd_block.frame_reader -pg 1 -lvl 3 -y 60
+preplace inst pd_block.vga_clock -pg 1 -lvl 1 -y 400
+preplace inst pd_block.rgb_tensor -pg 1 -lvl 7 -y 460
+preplace inst pd_block.onchip_ram -pg 1 -lvl 3 -y 140
+preplace inst pd_block -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst pd_block.led -pg 1 -lvl 3 -y 320
+preplace inst pd_block.nios2e -pg 1 -lvl 2 -y 110
+preplace inst pd_block.conv1 -pg 1 -lvl 7 -y 730
+preplace inst pd_block.stream1 -pg 1 -lvl 6 -y 750
+preplace inst pd_block.nios2e.cpu -pg 1
+preplace inst pd_block.sdram -pg 1 -lvl 3 -y 540
+preplace inst pd_block.nios2e.reset_bridge -pg 1
+preplace inst pd_block.jtag_uart -pg 1 -lvl 3 -y 220
+preplace inst pd_block.clock -pg 1 -lvl 1 -y 230
+preplace inst pd_block.bridge1 -pg 1 -lvl 5 -y 600
+preplace inst pd_block.bridge2 -pg 1 -lvl 5 -y 520
+preplace netloc POINT_TO_POINT<net_container>pd_block</net_container>(MASTER)vga_clock.clk_reset,(SLAVE)vga_out.vga_clock_sreset) 1 1 5 NJ 430 NJ 510 NJ 510 NJ 510 1670
+preplace netloc FAN_OUT<net_container>pd_block</net_container>(SLAVE)jtag_uart.clk,(SLAVE)bridge1.clk,(SLAVE)vga_out.clock,(SLAVE)stream1.clock,(SLAVE)frame_reader.clock,(SLAVE)dma.clock,(SLAVE)sdram.clk,(SLAVE)rgb_tensor.clock_sink,(SLAVE)led.clk,(SLAVE)bridge2.clk,(SLAVE)onchip_ram.clk1,(SLAVE)conv1.clock,(SLAVE)nios2e.clk,(MASTER)clock.clk) 1 1 6 340 270 900 530 NJ 530 1280 50 1650 720 1950
+preplace netloc EXPORT<net_container>pd_block</net_container>(MASTER)conv1.source,(MASTER)pd_block.result) 1 7 1 N
+preplace netloc FAN_OUT<net_container>pd_block</net_container>(SLAVE)dma.irq,(MASTER)nios2e.irq,(SLAVE)jtag_uart.irq) 1 2 4 840 450 NJ 450 NJ 450 1610
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)pd_block.vga,(SLAVE)vga_out.vga) 1 0 6 NJ 390 NJ 390 NJ 430 NJ 430 NJ 430 NJ
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)pd_block.clock,(SLAVE)clock.clk_in) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>pd_block</net_container>(SLAVE)vga_out.sink,(MASTER)frame_reader.source) 1 3 3 N 90 NJ 90 NJ
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)vga_clock.clk_in_reset,(SLAVE)pd_block.vga_clock_sreset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>pd_block</net_container>(SLAVE)dma.slave,(MASTER)bridge1.m0,(SLAVE)rgb_tensor.slave,(SLAVE)stream1.slave,(SLAVE)conv1.slave) 1 5 2 1550 840 1970
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)pd_block.clock_sreset,(SLAVE)clock.clk_in_reset) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>pd_block</net_container>(SLAVE)dma.clock_sreset,(SLAVE)sdram.reset,(SLAVE)vga_out.clock_sreset,(SLAVE)nios2e.reset,(SLAVE)conv1.clock_sreset,(SLAVE)rgb_tensor.reset_sink,(SLAVE)frame_reader.clock_sreset,(SLAVE)onchip_ram.reset1,(SLAVE)jtag_uart.reset,(SLAVE)bridge1.reset,(SLAVE)bridge2.reset,(SLAVE)stream1.clock_sreset,(MASTER)clock.clk_reset,(MASTER)nios2e.debug_reset_request,(SLAVE)led.reset) 1 1 6 320 290 880 670 NJ 670 1260 70 1590 740 1930
+preplace netloc POINT_TO_POINT<net_container>pd_block</net_container>(MASTER)stream1.source,(SLAVE)conv1.sink) 1 6 1 N
+preplace netloc FAN_IN<net_container>pd_block</net_container>(MASTER)frame_reader.read_master,(SLAVE)sdram.s1,(MASTER)bridge2.m0) 1 2 4 900 650 1090 30 NJ 30 1550
+preplace netloc POINT_TO_POINT<net_container>pd_block</net_container>(SLAVE)vga_out.vga_clock,(MASTER)vga_clock.clk) 1 1 5 NJ 410 NJ 490 NJ 490 NJ 490 1630
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)pd_block.vga_clock,(SLAVE)vga_clock.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)sdram.wire,(SLAVE)pd_block.sdram) 1 0 3 NJ 610 NJ 610 NJ
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)pd_block.led,(SLAVE)led.external_connection) 1 0 3 NJ 350 NJ 350 NJ
+preplace netloc INTERCONNECT<net_container>pd_block</net_container>(MASTER)nios2e.data_master,(MASTER)nios2e.instruction_master,(SLAVE)onchip_ram.s1,(SLAVE)frame_reader.slave,(SLAVE)bridge2.s0,(MASTER)dma.read_master,(MASTER)stream1.read_master,(MASTER)dma.write_master,(SLAVE)bridge1.s0,(SLAVE)nios2e.debug_mem_slave,(SLAVE)vga_out.slave,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)led.s1,(MASTER)rgb_tensor.avalon_master) 1 1 7 360 250 860 470 NJ 470 1300 410 1690 440 1910 450 2190
+levelinfo -pg 1 0 110 2280
+levelinfo -hier pd_block 120 150 540 930 1240 1460 1720 2000 2210

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;vga_bringup/hello_world_small.c&apos; to &apos;vga_bringup.c&apos;" description="Rename resource &apos;hello_world_small.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="hello_world_small.c" name="vga_bringup.c" stamp="1589330604936" updateReferences="true"/>
+</session>

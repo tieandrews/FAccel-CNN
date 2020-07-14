@@ -1,0 +1,18 @@
+11:35:54 **** Incremental Build of configuration Nios II for project vga_bringup ****
+make all 
+Info: Building ../vga_bringup_bsp/
+C:/intelFPGA/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../vga_bringup_bsp/
+[BSP build complete]
+Info: Compiling vga_bringup.c to obj/default/vga_bringup.o
+nios2-elf-gcc -xc -MP -MMD -c -I../vga_bringup_bsp//HAL/inc -I../vga_bringup_bsp/ -I../vga_bringup_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/vga_bringup.o vga_bringup.c
+Info: Linking vga_bringup.elf
+nios2-elf-g++  -T'../vga_bringup_bsp//linker.x' -msys-crt0='../vga_bringup_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../vga_bringup_bsp/   -Wl,-Map=vga_bringup.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o vga_bringup.elf obj/default/vga_bringup.o -lm -msys-lib=m
+nios2-elf-insert vga_bringup.elf --thread_model hal --cpu_name nios2e --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name pd_block --quartus_project_dir "D:/QuartusProjects/Development_Kits/DE10_LITE/ML_Inference" --jdi D:/QuartusProjects/Development_Kits/DE10_LITE/ML_Inference/software/vga_bringup_bsp/../../de10_lite.jdi --sopcinfo D:/QuartusProjects/Development_Kits/DE10_LITE/ML_Inference/software/vga_bringup_bsp/../../pd_block.sopcinfo
+Info: (vga_bringup.elf) 45 KBytes program size (code + initialized data).
+Info:                   15 KBytes free for stack + heap.
+Info: Creating vga_bringup.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source vga_bringup.elf >vga_bringup.objdump
+[vga_bringup build complete]
+
+11:35:56 Build Finished (took 1s.943ms)
+

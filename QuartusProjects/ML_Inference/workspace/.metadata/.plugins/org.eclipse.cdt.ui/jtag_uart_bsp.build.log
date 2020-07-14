@@ -1,0 +1,6 @@
+19:45:15 **** Clean-only build of configuration Nios II for project jtag_uart_bsp ****
+make clean 
+[BSP clean complete]
+
+19:45:16 Build Finished (took 988ms)
+

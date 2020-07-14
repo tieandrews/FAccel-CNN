@@ -1,0 +1,22 @@
+// #include "sys/alt_stdio.h"
+#include "system.h"
+/*
+: jtag_key? ( -- t/f ) JTAG_BASE @ dup $ff and __jtag_char ! $100 and 0<> swap ;
+: jtag_send_check ( -- ) begin [ JTAG_BASE 1 + ] @ 32/ $ff and 4 > until ;
+: jtag_wait_char ( -- char ) begin jtag_key? until __jtag_char @ swap ;
+: jtag_send ( char -- ) swap jtag_send_check JTAG_BASE ! ;
+macro emit ( char -- ) jtag_send endmacro
+macro key ( -- char ) jtag_wait_char endmacro
+macro key? ( -- t/f ) jtag_key? endmacro
+*/
+
+int jtag_char(void) {
+	int x;
+	x = IORD(JTAG_UART_BASE, 0);
+}
+
+int main()
+{
+
+	return 0;
+}

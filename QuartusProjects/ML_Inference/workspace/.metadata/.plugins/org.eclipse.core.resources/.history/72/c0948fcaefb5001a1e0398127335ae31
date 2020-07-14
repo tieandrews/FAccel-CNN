@@ -1,0 +1,8 @@
+// #include "sys/alt_stdio.h"
+#include "system.h"
+
+int main()
+{
+
+	return 0;
+}

@@ -1,0 +1,12 @@
+// #include "sys/alt_stdio.h"
+#include "system.h"
+
+int jtag_char(base_address) {
+
+}
+
+int main()
+{
+
+	return 0;
+}

@@ -1,0 +1,209 @@
+module dma_engine # (
+            parameter               WIDTHA = 24,
+            parameter               WIDTHD = 32,
+            parameter               WIDTHB = 4,
+            parameter               FIFO_WORDS = 256
+)
+(
+    input   logic                   clock,
+    input   logic                   clock_sreset,
+    input   logic [3:0]             s_address,
+    input   logic [31:0]            s_writedata,
+    output  logic [31:0]            s_readdata,
+    input   logic                   s_read,
+    input   logic                   s_write,
+    output  logic                   s_waitrequest,
+    output  logic                   s_irq,
+    
+    output  logic [31:0]            m_address,
+    output  logic [WIDTHB-1:0]      m_byteenable,
+    output  logic [WIDTHD-1:0]      m_writedata,
+    input   logic [WIDTHD-1:0]      m_readdata,
+    output  logic                   m_read,
+    output  logic                   m_write,
+    input   logic                   m_waitrequest,
+    input   logic                   m_readdatavalid
+);
+            localparam              ONE = 128'h1;
+            localparam              ZERO = 128'h0;
+            localparam              DONTCARE = {128{1'bx}};
+            localparam              WIDTHF = $clog2(FIFO_WORDS);
+            localparam              FIFO_FULL = ((ONE[WIDTHF-1:0] << (WIDTHF - 1)) - 16);
+    enum    logic [7:0]             {S1, S2, S3, S4, S5, S6, S7, S8} fsm;
+            logic                   read_latency;
+            logic                   go_flag, busy_flag;
+            logic [WIDTHA-1:0]      read_pointer_reg, write_pointer_reg, pointer_step_reg;
+            logic [WIDTHA-1:0]      read_pointer, write_pointer, pointer_step;
+            logic [WIDTHA-1:0]      word_count_reg, word_count, counter;
+            logic                   fifo_rdreq;
+            logic [WIDTHF-1:0]      fifo_usedw;
+            wire                    last_count = (counter >= (word_count - ONE[WIDTHA-1:0]));
+            wire                    fifo_full = (fifo_usedw > FIFO_FULL[WIDTHF-1:0]);
+            
+    scfifo  # (
+                .add_ram_output_register("OFF"),
+                //.intended_device_family("Cyclone III"),
+                .lpm_numwords(FIFO_WORDS),
+                .lpm_showahead("ON"),
+                .lpm_type("scfifo"),
+                .lpm_width(WIDTHD),
+                .lpm_widthu(WIDTHF),
+                .overflow_checking("OFF"),
+                .underflow_checking("OFF"),
+                .use_eab("ON")
+            )
+            rw_fifo (
+                .clock(clock),
+                .data(m_readdata),
+                .rdreq(fifo_rdreq),
+                .sclr(clock_sreset),
+                .wrreq(m_readdatavalid),
+                .usedw(fifo_usedw),
+                .q(m_writedata),
+                .aclr(),
+                .almost_empty(),
+                .almost_full(),
+                .empty(),
+                .full()
+            );
+            
+    always_comb begin
+        s_waitrequest = s_write ? 1'b0 : (s_read ? ~read_latency : 1'b0);
+    end
+    always_ff @ (posedge clock) begin
+        if (clock_sreset) begin
+            read_latency <= 1'b0;
+            s_readdata <= DONTCARE[31:0];
+            read_pointer_reg <= DONTCARE[WIDTHA-1:0];
+            write_pointer_reg <= DONTCARE[WIDTHA-1:0];
+            pointer_step_reg <= DONTCARE[WIDTHA-1:0];
+            go_flag <= 1'b0;
+        end
+        else begin
+            read_latency <= read_latency ? 1'b0 : s_read;
+            if (s_address == 4'h0) begin
+                s_readdata <= {busy_flag};
+                if (s_write) begin
+                    go_flag <= s_writedata[0];
+                end
+                else begin
+                    go_flag <= 1'b0;
+                end
+            end
+            else begin
+                go_flag <= 1'b0;
+            end
+            case (s_address)
+                4'h1 : begin
+                    s_readdata <= read_pointer_reg;
+                    if (s_write) begin
+                        read_pointer_reg <= s_writedata[WIDTHA-1:0];
+                    end
+                end
+                4'h2 : begin
+                    s_readdata <= write_pointer_reg;
+                    if (s_write) begin
+                        write_pointer_reg <= s_writedata[WIDTHA-1:0];
+                    end
+                end
+                4'h3 : begin
+                    s_readdata <= pointer_step_reg;
+                    if (s_write) begin
+                        pointer_step_reg <= s_writedata[WIDTHA-1:0];
+                    end
+                end
+                4'h4 : begin
+                    s_readdata <= word_count_reg;
+                    if (s_write) begin
+                        word_count_reg <= s_writedata[WIDTHA-1:0];
+                    end
+                end
+            endcase
+        end
+    end
+    
+    always_comb begin
+        fifo_rdreq = 1'b0;
+        case (fsm)
+            S3 : begin
+                fifo_rdreq = m_write & ~m_waitrequest;
+            end
+        endcase
+    end
+    always_ff @ (posedge clock) begin
+        if (clock_sreset) begin
+            m_address <= DONTCARE[WIDTHA-1:0];
+            m_read <= 1'b0;
+            m_write <= 1'b0;
+            read_pointer <= DONTCARE[WIDTHA-1:0];
+            write_pointer <= DONTCARE[WIDTHA-1:0];
+            pointer_step <= DONTCARE[WIDTHA-1:0];
+            word_count <= DONTCARE[WIDTHA-1:0];
+            fsm <= S1;
+        end
+        else begin
+            case (fsm)
+                S1 : begin
+                    m_read <= 1'b0;
+                    m_write <= 1'b0;
+                    m_byteenable <= ~ZERO[WIDTHB-1:0];
+                    counter <= ZERO[WIDTHA-1:0];
+                    read_pointer <= read_pointer_reg;
+                    write_pointer <= write_pointer_reg;
+                    pointer_step <= pointer_step_reg;
+                    word_count <= word_count_reg;
+                    if (go_flag) begin
+                        busy_flag <= 1'b1;
+                        fsm <= S2;
+                    end
+                end
+                S2 : begin  // read into fifo
+                    if (m_read) begin
+                        if (~m_waitrequest) begin
+                            m_address <= m_address + pointer_step;
+                            if (last_count || fifo_full) begin
+                                m_read <= 1'b0;
+                                fsm <= S3;
+                            end
+                            else begin
+                                read_pointer <= read_pointer + pointer_step;
+                            end
+                            if (~last_count) begin
+                                counter <= counter + ONE[WIDTHA-1:0];
+                            end
+                        end
+                    end
+                    else begin
+                        m_read <= ~fifo_full;
+                        m_address <= read_pointer;
+                    end
+                end
+                S3 : begin // empty fifo to memory
+                    if (m_write) begin
+                        if (~m_waitrequest) begin
+                            m_address <= m_address + pointer_step;
+                            if (fifo_usedw == 1) begin
+                                m_write <= 1'b0;
+                                if (last_count) begin
+                                    busy_flag <= 1'b0;
+                                    fsm <= S1;
+                                end
+                                else begin
+                                    fsm <= S2;
+                                end
+                            end
+                            else begin
+                                write_pointer <= write_pointer + pointer_step;
+                            end
+                        end
+                    end
+                    else begin
+                        m_write <= fifo_usedw >= 1;
+                        m_address <= write_pointer;
+                    end
+                end
+            endcase
+        end
+    end
+
+endmodule
