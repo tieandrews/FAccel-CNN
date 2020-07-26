@@ -1,6 +1,0 @@
-// #include "sys/alt_stdio.h"
-
-int main()
-{
-	return 0;
-}

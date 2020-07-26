@@ -1,6 +1,0 @@
-12:52:31 **** Clean-only build of configuration Nios II for project vga_bringup_small_bsp ****
-make clean 
-[BSP clean complete]
-
-12:52:32 Build Finished (took 290ms)
-
