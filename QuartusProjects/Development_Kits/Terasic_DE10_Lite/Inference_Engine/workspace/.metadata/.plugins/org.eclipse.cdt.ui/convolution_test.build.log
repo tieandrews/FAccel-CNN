@@ -1,0 +1,9 @@
+13:08:02 **** Incremental Build of configuration Nios II for project convolution_test ****
+make all 
+Info: Building ../convolution_test_bsp/
+C:/intelFPGA/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../convolution_test_bsp/
+[BSP build complete]
+[convolution_test build complete]
+
+13:08:03 Build Finished (took 934ms)
+

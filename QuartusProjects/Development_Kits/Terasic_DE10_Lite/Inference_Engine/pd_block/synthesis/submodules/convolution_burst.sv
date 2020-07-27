@@ -339,7 +339,7 @@ module convolution_burst # (
                             end
                         end
                         S2 : begin
-                            if (word_count >= ((KX[WIDTH-1:0] * KY[WIDTH-1:0]) - ONE[WIDTH-1:0])) begin
+                            if (word_count >= (KX[WIDTH-1:0] * KY[WIDTH-1:0])) begin
                                 fsm[1] <= S1;
                                 fsm[0] <= S3;
                             end
@@ -367,14 +367,12 @@ module convolution_burst # (
                             end
                         end
                         S2 : begin
-                            if (word_count >= (xres - ONE[WIDTHR-1:0])) begin
+                            if (word_count >= xr) begin
                                 source_reg <= source_reg + (xres << WIDTHB);
                                 fsm[1] <= S1;
                                 fsm[0] <= S4;
                             end
-                            else begin
-                                word_count <= word_count + m_readdatavalid;
-                            end
+                            word_count <= word_count + m_readdatavalid;
                         end
                     endcase
                 end
@@ -396,14 +394,12 @@ module convolution_burst # (
                             end
                         end
                         S2 : begin
-                            if (word_count >= (xres - ONE[WIDTHR-1:0])) begin
+                            if (word_count >= xr) begin
                                 source_reg <= source_reg + (xres << WIDTHB);
                                 fsm[1] <= S1;
                                 fsm[0] <= S5;
                             end
-                            else begin
-                                word_count <= word_count + m_readdatavalid;
-                            end
+                            word_count <= word_count + m_readdatavalid;
                         end
                     endcase
                 end
@@ -420,6 +416,7 @@ module convolution_burst # (
                         xc <= xc + ONE[WIDTHR-1:0];
                     end
                 end
+                
                 S6 : begin   // pad left hand side
                     if (xc >= (pad_reg - 3'h1)) begin
                         xc <= ZERO[WIDTHR-1:0];
@@ -429,47 +426,45 @@ module convolution_burst # (
                         xc <= xc + ONE[WIDTHR-1:0];
                     end
                 end
+                
                 S7 : begin  // read source pixels
                     if (~|src_fifo_usedw) begin
                         fsm[0] <= S8;
                     end
                 end
+                
                 S8 : begin   // pad right hand side
                     if (xc >= (xres - pad_reg - 3'h1)) begin
                         xc <= ZERO[WIDTHR-1:0];
-                        yc <= yc + ONE[WIDTHR-1:0];
+                        // yc <= yc + ONE[WIDTHR-1:0];
                         fsm[0] <= S9;
                     end
                     else begin
                         xc <= xc + ONE[WIDTHR-1:0];
                     end
                 end
+                
                 S9 : begin  // write destination pixel
                     m_burstcount <= xr;
                     m_address <= source_reg;
                     if (m_write) begin
                         if (~m_waitrequest) begin
-                            if (word_count >= (xres - ONE[WIDTHR-1:0])) begin
+                            if (word_count >= xr) begin
                                 m_write <= 1'b0;
-                                fsm[0] <= S10;
+                                yc <= yc + ONE[WIDTHR-1:0];
+                                if (yc >= yr) begin
+                                    fsm[0] <= S3;
+                                end
+                                else begin
+                                    fsm[0] <= S1;
+                                end
                             end
-                            else begin
-                                word_count <= word_count + ONE[WIDTHR-1:0];
-                            end
+                            word_count <= word_count + ONE[WIDTHR-1:0];
                         end
                     end
                     else begin
                         word_count <= ZERO[WIDTH-1:0];
                         m_write <= 1'b1;
-                    end
-                end
-                S10 : begin   // pad right hand side
-                    if (xc >= (pad_reg - 3'h1)) begin
-                        xc <= ZERO[WIDTHR-1:0];
-                        fsm[0] <= S4;
-                    end
-                    else begin
-                        xc <= xc + ONE[WIDTHR-1:0];
                     end
                 end
             endcase

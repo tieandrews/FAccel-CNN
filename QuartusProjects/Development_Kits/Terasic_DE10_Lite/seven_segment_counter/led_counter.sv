@@ -1,7 +1,7 @@
 module led_counter # (
             parameter               NUM = 6,
             parameter               CLOCK_HZ = 50000000,
-            parameter               COUNT_RATE_HZ = 10
+            parameter               COUNT_RATE_HZ = 1000
 )
 (
     input   logic                   clock,

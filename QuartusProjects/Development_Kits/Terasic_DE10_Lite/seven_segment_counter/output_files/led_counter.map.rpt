@@ -1,5 +1,5 @@
 Analysis & Synthesis report for led_counter
-Mon Jul 20 09:56:36 2020
+Mon Jul 27 09:27:51 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -45,15 +45,15 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Jul 20 09:56:36 2020           ;
+; Analysis & Synthesis Status        ; Successful - Mon Jul 27 09:27:51 2020           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; led_counter                                     ;
 ; Top-level Entity Name              ; led_counter                                     ;
 ; Family                             ; MAX 10                                          ;
-; Total logic elements               ; 113                                             ;
-;     Total combinational functions  ; 113                                             ;
-;     Dedicated logic registers      ; 47                                              ;
-; Total registers                    ; 47                                              ;
+; Total logic elements               ; 103                                             ;
+;     Total combinational functions  ; 103                                             ;
+;     Dedicated logic registers      ; 40                                              ;
+; Total registers                    ; 40                                              ;
 ; Total pins                         ; 49                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -167,15 +167,15 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                         ;
-+----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                               ; Library ;
-+----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
-; led_counter.sv                   ; yes             ; User SystemVerilog HDL File        ; /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv          ;         ;
-; next_digit.sv                    ; yes             ; Auto-Found SystemVerilog HDL File  ; /home/ubuntu/QuartusProjects/seven_segment_counter/next_digit.sv           ;         ;
-; decode_seven_segment.sv          ; yes             ; Auto-Found SystemVerilog HDL File  ; /home/ubuntu/QuartusProjects/seven_segment_counter/decode_seven_segment.sv ;         ;
-+----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                    ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                                                          ; Library ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------+---------+
+; led_counter.sv                   ; yes             ; User SystemVerilog HDL File        ; D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv          ;         ;
+; next_digit.sv                    ; yes             ; Auto-Found SystemVerilog HDL File  ; D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/next_digit.sv           ;         ;
+; decode_seven_segment.sv          ; yes             ; Auto-Found SystemVerilog HDL File  ; D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/decode_seven_segment.sv ;         ;
++----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -183,20 +183,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 113         ;
+; Estimated Total logic elements              ; 103         ;
 ;                                             ;             ;
-; Total combinational functions               ; 113         ;
+; Total combinational functions               ; 103         ;
 ; Logic element usage by number of LUT inputs ;             ;
 ;     -- 4 input functions                    ; 76          ;
-;     -- 3 input functions                    ; 7           ;
-;     -- <=2 input functions                  ; 30          ;
+;     -- 3 input functions                    ; 8           ;
+;     -- <=2 input functions                  ; 19          ;
 ;                                             ;             ;
 ; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 91          ;
-;     -- arithmetic mode                      ; 22          ;
+;     -- normal mode                          ; 88          ;
+;     -- arithmetic mode                      ; 15          ;
 ;                                             ;             ;
-; Total registers                             ; 47          ;
-;     -- Dedicated logic registers            ; 47          ;
+; Total registers                             ; 40          ;
+;     -- Dedicated logic registers            ; 40          ;
 ;     -- I/O registers                        ; 0           ;
 ;                                             ;             ;
 ; I/O pins                                    ; 49          ;
@@ -204,8 +204,8 @@ refer to the applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; clock~input ;
-; Maximum fan-out                             ; 47          ;
-; Total fan-out                               ; 616         ;
+; Maximum fan-out                             ; 40          ;
+; Total fan-out                               ; 576         ;
 ; Average fan-out                             ; 2.39        ;
 +---------------------------------------------+-------------+
 
@@ -215,13 +215,13 @@ refer to the applicable agreement for further details.
 +------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------+----------------------+--------------+
 ; Compilation Hierarchy Node         ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                        ; Entity Name          ; Library Name ;
 +------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------+----------------------+--------------+
-; |led_counter                       ; 113 (42)            ; 47 (47)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 49   ; 0            ; 0          ; |led_counter                               ; led_counter          ; work         ;
-;    |decode_seven_segment:comb_147| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_147 ; decode_seven_segment ; work         ;
-;    |decode_seven_segment:comb_148| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_148 ; decode_seven_segment ; work         ;
-;    |decode_seven_segment:comb_149| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_149 ; decode_seven_segment ; work         ;
-;    |decode_seven_segment:comb_150| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_150 ; decode_seven_segment ; work         ;
-;    |decode_seven_segment:comb_151| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_151 ; decode_seven_segment ; work         ;
-;    |decode_seven_segment:comb_152| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_152 ; decode_seven_segment ; work         ;
+; |led_counter                       ; 103 (32)            ; 40 (40)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 49   ; 0            ; 0          ; |led_counter                               ; led_counter          ; work         ;
+;    |decode_seven_segment:comb_126| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_126 ; decode_seven_segment ; work         ;
+;    |decode_seven_segment:comb_127| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_127 ; decode_seven_segment ; work         ;
+;    |decode_seven_segment:comb_128| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_128 ; decode_seven_segment ; work         ;
+;    |decode_seven_segment:comb_129| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_129 ; decode_seven_segment ; work         ;
+;    |decode_seven_segment:comb_130| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_130 ; decode_seven_segment ; work         ;
+;    |decode_seven_segment:comb_131| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|decode_seven_segment:comb_131 ; decode_seven_segment ; work         ;
 ;    |next_digit:calc_next|          ; 29 (29)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |led_counter|next_digit:calc_next          ; next_digit           ; work         ;
 +------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+--------------------------------------------+----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -232,8 +232,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 47    ;
-; Number of registers using Synchronous Clear  ; 23    ;
+; Total registers                              ; 40    ;
+; Number of registers using Synchronous Clear  ; 16    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -247,9 +247,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |led_counter|digit[5][0]   ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |led_counter|digit[5][3]   ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |led_counter|digit[0][3]   ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |led_counter|digit[1][3]   ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |led_counter|digit[1][0]   ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |led_counter|digit[2][0]   ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |led_counter|digit[3][0]   ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |led_counter|digit[4][3]   ;
@@ -263,7 +263,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+----------+-------------------------------------------------+
 ; NUM            ; 6        ; Signed Integer                                  ;
 ; CLOCK_HZ       ; 50000000 ; Signed Integer                                  ;
-; COUNT_RATE_HZ  ; 10       ; Signed Integer                                  ;
+; COUNT_RATE_HZ  ; 1000     ; Signed Integer                                  ;
 +----------------+----------+-------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -284,21 +284,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 49                          ;
-; cycloneiii_ff         ; 47                          ;
+; cycloneiii_ff         ; 40                          ;
 ;     ENA               ; 24                          ;
-;     SCLR              ; 23                          ;
-; cycloneiii_lcell_comb ; 120                         ;
-;     arith             ; 22                          ;
-;         2 data inputs ; 22                          ;
-;     normal            ; 98                          ;
+;     SCLR              ; 16                          ;
+; cycloneiii_lcell_comb ; 110                         ;
+;     arith             ; 15                          ;
+;         2 data inputs ; 15                          ;
+;     normal            ; 95                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 7                           ;
-;         2 data inputs ; 7                           ;
-;         3 data inputs ; 7                           ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 8                           ;
 ;         4 data inputs ; 76                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.47                        ;
+; Average LUT depth     ; 2.26                        ;
 +-----------------------+-----------------------------+
 
 
@@ -317,38 +317,38 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Mon Jul 20 09:56:26 2020
+    Info: Processing started: Mon Jul 27 09:27:37 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off led_counter -c led_counter
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file led_counter.sv
-    Info (12023): Found entity 1: led_counter File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 1
-Critical Warning (10846): Verilog HDL Instantiation warning at led_counter.sv(46): instance has no name File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 46
+    Info (12023): Found entity 1: led_counter File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 1
+Critical Warning (10846): Verilog HDL Instantiation warning at led_counter.sv(46): instance has no name File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 46
 Info (12127): Elaborating entity "led_counter" for the top level hierarchy
 Warning (12125): Using design file next_digit.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: next_digit File: /home/ubuntu/QuartusProjects/seven_segment_counter/next_digit.sv Line: 1
-Info (12128): Elaborating entity "next_digit" for hierarchy "next_digit:calc_next" File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 26
+    Info (12023): Found entity 1: next_digit File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/next_digit.sv Line: 1
+Info (12128): Elaborating entity "next_digit" for hierarchy "next_digit:calc_next" File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 26
 Warning (12125): Using design file decode_seven_segment.sv, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: decode_seven_segment File: /home/ubuntu/QuartusProjects/seven_segment_counter/decode_seven_segment.sv Line: 1
-Info (12128): Elaborating entity "decode_seven_segment" for hierarchy "decode_seven_segment:comb_147" File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 46
+    Info (12023): Found entity 1: decode_seven_segment File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/decode_seven_segment.sv Line: 1
+Info (12128): Elaborating entity "decode_seven_segment" for hierarchy "decode_seven_segment:comb_126" File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 46
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "seven_segment[0][7]" is stuck at VCC File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 10
-    Warning (13410): Pin "seven_segment[1][7]" is stuck at VCC File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 10
-    Warning (13410): Pin "seven_segment[2][7]" is stuck at VCC File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 10
-    Warning (13410): Pin "seven_segment[3][7]" is stuck at VCC File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 10
-    Warning (13410): Pin "seven_segment[4][7]" is stuck at VCC File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 10
-    Warning (13410): Pin "seven_segment[5][7]" is stuck at VCC File: /home/ubuntu/QuartusProjects/seven_segment_counter/led_counter.sv Line: 10
+    Warning (13410): Pin "seven_segment[0][7]" is stuck at VCC File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 10
+    Warning (13410): Pin "seven_segment[1][7]" is stuck at VCC File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 10
+    Warning (13410): Pin "seven_segment[2][7]" is stuck at VCC File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 10
+    Warning (13410): Pin "seven_segment[3][7]" is stuck at VCC File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 10
+    Warning (13410): Pin "seven_segment[4][7]" is stuck at VCC File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 10
+    Warning (13410): Pin "seven_segment[5][7]" is stuck at VCC File: D:/GitHub/FAccel-CNN/QuartusProjects/Development_Kits/Terasic_DE10_Lite/seven_segment_counter/led_counter.sv Line: 10
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 162 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 152 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 1 input pins
     Info (21059): Implemented 48 output pins
-    Info (21061): Implemented 113 logic cells
+    Info (21061): Implemented 103 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 965 megabytes
-    Info: Processing ended: Mon Jul 20 09:56:36 2020
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Peak virtual memory: 4773 megabytes
+    Info: Processing ended: Mon Jul 27 09:27:51 2020
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:29
 
 

@@ -15,13 +15,6 @@ clock => timer[12].CLK
 clock => timer[13].CLK
 clock => timer[14].CLK
 clock => timer[15].CLK
-clock => timer[16].CLK
-clock => timer[17].CLK
-clock => timer[18].CLK
-clock => timer[19].CLK
-clock => timer[20].CLK
-clock => timer[21].CLK
-clock => timer[22].CLK
 clock => digit[0][0].CLK
 clock => digit[0][1].CLK
 clock => digit[0][2].CLK
@@ -46,54 +39,54 @@ clock => digit[5][0].CLK
 clock => digit[5][1].CLK
 clock => digit[5][2].CLK
 clock => digit[5][3].CLK
-seven_segment[0][0] << decode_seven_segment:comb_147.segments
-seven_segment[0][1] << decode_seven_segment:comb_147.segments
-seven_segment[0][2] << decode_seven_segment:comb_147.segments
-seven_segment[0][3] << decode_seven_segment:comb_147.segments
-seven_segment[0][4] << decode_seven_segment:comb_147.segments
-seven_segment[0][5] << decode_seven_segment:comb_147.segments
-seven_segment[0][6] << decode_seven_segment:comb_147.segments
-seven_segment[0][7] << decode_seven_segment:comb_147.segments
-seven_segment[1][0] << decode_seven_segment:comb_148.segments
-seven_segment[1][1] << decode_seven_segment:comb_148.segments
-seven_segment[1][2] << decode_seven_segment:comb_148.segments
-seven_segment[1][3] << decode_seven_segment:comb_148.segments
-seven_segment[1][4] << decode_seven_segment:comb_148.segments
-seven_segment[1][5] << decode_seven_segment:comb_148.segments
-seven_segment[1][6] << decode_seven_segment:comb_148.segments
-seven_segment[1][7] << decode_seven_segment:comb_148.segments
-seven_segment[2][0] << decode_seven_segment:comb_149.segments
-seven_segment[2][1] << decode_seven_segment:comb_149.segments
-seven_segment[2][2] << decode_seven_segment:comb_149.segments
-seven_segment[2][3] << decode_seven_segment:comb_149.segments
-seven_segment[2][4] << decode_seven_segment:comb_149.segments
-seven_segment[2][5] << decode_seven_segment:comb_149.segments
-seven_segment[2][6] << decode_seven_segment:comb_149.segments
-seven_segment[2][7] << decode_seven_segment:comb_149.segments
-seven_segment[3][0] << decode_seven_segment:comb_150.segments
-seven_segment[3][1] << decode_seven_segment:comb_150.segments
-seven_segment[3][2] << decode_seven_segment:comb_150.segments
-seven_segment[3][3] << decode_seven_segment:comb_150.segments
-seven_segment[3][4] << decode_seven_segment:comb_150.segments
-seven_segment[3][5] << decode_seven_segment:comb_150.segments
-seven_segment[3][6] << decode_seven_segment:comb_150.segments
-seven_segment[3][7] << decode_seven_segment:comb_150.segments
-seven_segment[4][0] << decode_seven_segment:comb_151.segments
-seven_segment[4][1] << decode_seven_segment:comb_151.segments
-seven_segment[4][2] << decode_seven_segment:comb_151.segments
-seven_segment[4][3] << decode_seven_segment:comb_151.segments
-seven_segment[4][4] << decode_seven_segment:comb_151.segments
-seven_segment[4][5] << decode_seven_segment:comb_151.segments
-seven_segment[4][6] << decode_seven_segment:comb_151.segments
-seven_segment[4][7] << decode_seven_segment:comb_151.segments
-seven_segment[5][0] << decode_seven_segment:comb_152.segments
-seven_segment[5][1] << decode_seven_segment:comb_152.segments
-seven_segment[5][2] << decode_seven_segment:comb_152.segments
-seven_segment[5][3] << decode_seven_segment:comb_152.segments
-seven_segment[5][4] << decode_seven_segment:comb_152.segments
-seven_segment[5][5] << decode_seven_segment:comb_152.segments
-seven_segment[5][6] << decode_seven_segment:comb_152.segments
-seven_segment[5][7] << decode_seven_segment:comb_152.segments
+seven_segment[0][0] <= decode_seven_segment:comb_126.segments
+seven_segment[0][1] <= decode_seven_segment:comb_126.segments
+seven_segment[0][2] <= decode_seven_segment:comb_126.segments
+seven_segment[0][3] <= decode_seven_segment:comb_126.segments
+seven_segment[0][4] <= decode_seven_segment:comb_126.segments
+seven_segment[0][5] <= decode_seven_segment:comb_126.segments
+seven_segment[0][6] <= decode_seven_segment:comb_126.segments
+seven_segment[0][7] <= decode_seven_segment:comb_126.segments
+seven_segment[1][0] <= decode_seven_segment:comb_127.segments
+seven_segment[1][1] <= decode_seven_segment:comb_127.segments
+seven_segment[1][2] <= decode_seven_segment:comb_127.segments
+seven_segment[1][3] <= decode_seven_segment:comb_127.segments
+seven_segment[1][4] <= decode_seven_segment:comb_127.segments
+seven_segment[1][5] <= decode_seven_segment:comb_127.segments
+seven_segment[1][6] <= decode_seven_segment:comb_127.segments
+seven_segment[1][7] <= decode_seven_segment:comb_127.segments
+seven_segment[2][0] <= decode_seven_segment:comb_128.segments
+seven_segment[2][1] <= decode_seven_segment:comb_128.segments
+seven_segment[2][2] <= decode_seven_segment:comb_128.segments
+seven_segment[2][3] <= decode_seven_segment:comb_128.segments
+seven_segment[2][4] <= decode_seven_segment:comb_128.segments
+seven_segment[2][5] <= decode_seven_segment:comb_128.segments
+seven_segment[2][6] <= decode_seven_segment:comb_128.segments
+seven_segment[2][7] <= decode_seven_segment:comb_128.segments
+seven_segment[3][0] <= decode_seven_segment:comb_129.segments
+seven_segment[3][1] <= decode_seven_segment:comb_129.segments
+seven_segment[3][2] <= decode_seven_segment:comb_129.segments
+seven_segment[3][3] <= decode_seven_segment:comb_129.segments
+seven_segment[3][4] <= decode_seven_segment:comb_129.segments
+seven_segment[3][5] <= decode_seven_segment:comb_129.segments
+seven_segment[3][6] <= decode_seven_segment:comb_129.segments
+seven_segment[3][7] <= decode_seven_segment:comb_129.segments
+seven_segment[4][0] <= decode_seven_segment:comb_130.segments
+seven_segment[4][1] <= decode_seven_segment:comb_130.segments
+seven_segment[4][2] <= decode_seven_segment:comb_130.segments
+seven_segment[4][3] <= decode_seven_segment:comb_130.segments
+seven_segment[4][4] <= decode_seven_segment:comb_130.segments
+seven_segment[4][5] <= decode_seven_segment:comb_130.segments
+seven_segment[4][6] <= decode_seven_segment:comb_130.segments
+seven_segment[4][7] <= decode_seven_segment:comb_130.segments
+seven_segment[5][0] <= decode_seven_segment:comb_131.segments
+seven_segment[5][1] <= decode_seven_segment:comb_131.segments
+seven_segment[5][2] <= decode_seven_segment:comb_131.segments
+seven_segment[5][3] <= decode_seven_segment:comb_131.segments
+seven_segment[5][4] <= decode_seven_segment:comb_131.segments
+seven_segment[5][5] <= decode_seven_segment:comb_131.segments
+seven_segment[5][6] <= decode_seven_segment:comb_131.segments
+seven_segment[5][7] <= decode_seven_segment:comb_131.segments
 
 
 |led_counter|next_digit:calc_next
@@ -215,7 +208,7 @@ bcd_out[5][2] <= bcd_out.DB_MAX_OUTPUT_PORT_TYPE
 bcd_out[5][3] <= bcd_out.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|led_counter|decode_seven_segment:comb_147
+|led_counter|decode_seven_segment:comb_126
 bcd_in[0] => Decoder0.IN3
 bcd_in[1] => Decoder0.IN2
 bcd_in[2] => Decoder0.IN1
@@ -230,7 +223,7 @@ segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 segments[7] <= <VCC>
 
 
-|led_counter|decode_seven_segment:comb_148
+|led_counter|decode_seven_segment:comb_127
 bcd_in[0] => Decoder0.IN3
 bcd_in[1] => Decoder0.IN2
 bcd_in[2] => Decoder0.IN1
@@ -245,7 +238,7 @@ segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 segments[7] <= <VCC>
 
 
-|led_counter|decode_seven_segment:comb_149
+|led_counter|decode_seven_segment:comb_128
 bcd_in[0] => Decoder0.IN3
 bcd_in[1] => Decoder0.IN2
 bcd_in[2] => Decoder0.IN1
@@ -260,7 +253,7 @@ segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 segments[7] <= <VCC>
 
 
-|led_counter|decode_seven_segment:comb_150
+|led_counter|decode_seven_segment:comb_129
 bcd_in[0] => Decoder0.IN3
 bcd_in[1] => Decoder0.IN2
 bcd_in[2] => Decoder0.IN1
@@ -275,7 +268,7 @@ segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 segments[7] <= <VCC>
 
 
-|led_counter|decode_seven_segment:comb_151
+|led_counter|decode_seven_segment:comb_130
 bcd_in[0] => Decoder0.IN3
 bcd_in[1] => Decoder0.IN2
 bcd_in[2] => Decoder0.IN1
@@ -290,7 +283,7 @@ segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
 segments[7] <= <VCC>
 
 
-|led_counter|decode_seven_segment:comb_152
+|led_counter|decode_seven_segment:comb_131
 bcd_in[0] => Decoder0.IN3
 bcd_in[1] => Decoder0.IN2
 bcd_in[2] => Decoder0.IN1

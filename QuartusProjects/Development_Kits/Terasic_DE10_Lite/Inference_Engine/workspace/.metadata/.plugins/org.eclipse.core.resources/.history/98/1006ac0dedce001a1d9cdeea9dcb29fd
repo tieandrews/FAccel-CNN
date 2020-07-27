@@ -1,0 +1,25 @@
+#include "sys/alt_stdio.h"
+#include "system.h"
+#include <io.h>
+#include <unistd.h>
+
+alt_u16 kernel[9] = {0x30f8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3f80};
+
+void convolution(alt_u32 src, alt_u32 dst, alt_u32 kernel) {
+
+}
+
+int main()
+{ 
+  alt_putstr("Hello from Nios II!\n");
+
+  /* Event loop never exits. */
+  while (1) {
+	  IOWR_32DIRECT(LED_BASE, 0, 0);
+	  usleep(250000);
+	  IOWR_32DIRECT(LED_BASE, 0, 1);
+	  usleep(250000);
+  }
+
+  return 0;
+}
