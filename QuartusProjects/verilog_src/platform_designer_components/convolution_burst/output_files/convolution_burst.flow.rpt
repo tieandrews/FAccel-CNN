@@ -1,5 +1,5 @@
 Flow report for convolution_burst
-Mon Jul 27 13:10:58 2020
+Tue Jul 28 09:45:06 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Mon Jul 27 13:10:58 2020           ;
+; Flow Status                        ; Successful - Tue Jul 28 09:45:06 2020           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; convolution_burst                               ;
 ; Top-level Entity Name              ; convolution_burst                               ;
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/27/2020 13:10:32 ;
+; Start date & time ; 07/28/2020 09:44:43 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; convolution_burst   ;
 +-------------------+---------------------+
@@ -77,7 +77,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 66325075406877.159581223211368         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 66325075406877.159588628303352         ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
@@ -94,8 +94,8 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:26     ; 1.0                     ; 4841 MB             ; 00:00:42                           ;
-; Total                ; 00:00:26     ; --                      ; --                  ; 00:00:42                           ;
+; Analysis & Synthesis ; 00:00:24     ; 1.0                     ; 4828 MB             ; 00:00:40                           ;
+; Total                ; 00:00:24     ; --                      ; --                  ; 00:00:40                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

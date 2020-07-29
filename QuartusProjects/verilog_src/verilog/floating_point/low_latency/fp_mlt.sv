@@ -62,7 +62,7 @@ lpm_mult    # (
     
     always_ff @ (posedge clock) begin
         result_valid <= data_valid & ~clock_sreset;
-        result[WIDTH-1] <= (sa ^ sb) & (~azero | ~bzero);
+        result[WIDTH-1] <= (sa ^ sb) & ~(azero | bzero);
         result[WIDTH-2:MANT] <= er[EXP-1:0] & ~{EXP{azero | bzero}};
         result[MANT-1:0] <= shift[WIDTH2M-2:WIDTH2M-MANT-1] & ~{MANT{azero | bzero}};
     end

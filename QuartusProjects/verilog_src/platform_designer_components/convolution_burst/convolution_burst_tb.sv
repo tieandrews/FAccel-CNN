@@ -22,7 +22,7 @@ module convolution_burst_tb();
     logic [15:0]    m_readdata, m_writedata;
     logic [1:0]     m_byteenable;
     logic [7:0]     m_burstcount;
-    logic           m_write, m_read, m_waitrequest, m_readdatavalid, m_beginbursttransfer;
+    logic           m_write, m_read, m_waitrequest, m_readdatavalid;
 	 
     ram             # (
                         .WIDTHA(16),
@@ -35,10 +35,11 @@ module convolution_burst_tb();
                         .address(m_address[15:0]),
                         .writedata(m_writedata),
                         .readdata(m_readdata),
+                        .burstcount(m_burstcount),
                         .read(m_read),
                         .write(m_write),
                         .waitrequest(m_waitrequest),
-                        .readdatavalid()
+                        .readdatavalid(m_readdatavalid)
                         );
     
     convolution_burst # (
@@ -70,10 +71,10 @@ module convolution_burst_tb();
                         .m_writedata(m_writedata),
                         .m_byteenable(m_byteenable),
                         .m_burstcount(m_burstcount),
-                        .m_beginbursttransfer(m_beginbursttransfer),
                         .m_read(m_read),
                         .m_write(m_write),
-                        .m_waitrequest(m_waitrequest)
+                        .m_waitrequest(m_waitrequest),
+                        .m_readdatavalid(m_readdatavalid)
                     );
 							
 	logic [7:0]     state;
@@ -108,7 +109,7 @@ module convolution_burst_tb();
                 end
                 8'h2 : begin
 					s_address <= 4'h3;
-					s_writedata <= 32'd257;   // number words (256x256 padded) - 1
+					s_writedata <= 32'd257;   // number words 64x64
 					s_write <= ~write_complete;
 					if (write_complete) begin
 						state++;
@@ -116,15 +117,15 @@ module convolution_burst_tb();
                 end
                 8'h3 : begin
 					s_address <= 4'h4;
-					s_writedata <= 32'h100;   // destination
+					s_writedata <= 32'h1000;   // destination
 					s_write <= ~write_complete;
 					if (write_complete) begin
 						state++;
 					end
                 end
                 8'h4 : begin
-					s_address <= 4'h4;
-					s_writedata <= 32'h100;   // destination
+					s_address <= 4'h5;
+					s_writedata <= 32'h2000;   // kernel
 					s_write <= ~write_complete;
 					if (write_complete) begin
 						state++;

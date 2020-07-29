@@ -18,45 +18,51 @@ module ram # (
 );
             integer             i;
 
-    enum    logic [7:0]         {S1, S2, S3, S4, S5, S6, S7,S8} fsm;
+    enum    logic [7:0]         {S1, S2, S3, S4, S5, S6, S7, S8} fsm;
             logic [WIDTHD-1:0]  ram[0:2**WIDTHA-1];
-            logic [WIDTHB-1:0]  count;
+            logic [WIDTHB-1:0]  count, offset;
+            logic               read_latency;
             
     always_comb begin
-        waitrequest = 1'b0;
-        case (fsm)
-            S1 : begin
-                waitrequest = 1'b0;
-            end
-            S2 : begin
-                waitrequest = 1'b1; // no more burst requests
-            end
-        endcase
+        waitrequest = write ? 1'b0 : (read ? ~read_latency : 1'b0);
     end
     always_ff @ (posedge clock) begin
         if (clock_sreset) begin
-            fsm <= S1;
             for (i=0; i<(2**WIDTHA); i++) begin
-                ram[i] <= {WIDTHD{1'b0}};
+                ram[i] <= $random(); //{WIDTHD{1'bx}};
             end
+            readdatavalid <= 1'b0;
+            fsm <= S1;
         end
         else begin
-            readdata <= ram[address];
-            readdatavalid <= read;
+            read_latency <= read_latency ? 1'b0 : read;
+            readdata <= ram[address + offset];
             case (fsm)
                 S1 : begin
+                    offset <= 0;
                     count <= burstcount;
-                    if (|burstcount) begin
-                        if (read) begin
-                            
-                            fsm <= S2;
-                        end
-                        if (write) begin
-                            fsm <= S3;
-                        end
+                    if (read & ~waitrequest & (|burstcount)) begin
+                        fsm <= S2;
+                    end
+                    if (write) begin
+                        fsm <= S3;
+                    end
+                end
+                S2 : begin
+                    offset <= offset + 1;
+                    if (offset >= count) begin
+                        readdatavalid <= 1'b0;
+                        fsm <= S1;
                     end
                     else begin
-                        
+                        readdatavalid <= 1'b1;
+                    end
+                end
+                S3 : begin
+                    offset <= offset + write;
+                    ram[address + offset] <= writedata;
+                    if (offset >= count) begin
+                        fsm <= S1;
                     end
                 end
             endcase

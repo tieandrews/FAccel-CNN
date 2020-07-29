@@ -1,4 +1,4 @@
-// [s]  [eeeeee] [mmmmmmm] mantissa has implied leading 1 unless mantissa and exponent is zero.
+// [s] [eeeeee] [mmmmmmm] mantissa has implied leading 1 unless mantissa and exponent is zero.
 module fp_add # (
             parameter           EXP = 8,
             parameter           MANT = 7,
@@ -32,19 +32,19 @@ module fp_add # (
             always_ff @ (posedge clock) begin
                 dataa_reg <= dataa;
                 datab_reg <= datab;
-                data_valid_pipe_reg <= data_valid;
+                data_valid_pipe_reg <= data_valid & ~clock_sreset;
             end
         end
         else begin
             assign dataa_reg = dataa;
             assign datab_reg = datab;
-            assign data_valid_pipe_reg = data_valid;
+            assign data_valid_pipe_reg = data_valid & ~clock_sreset;
         end
     endgenerate
             
     always_comb begin
         // check for one input zero
-        azero = ~|dataa_reg[WIDTH-2:0]; // sign of zero ignored
+        azero = ~|dataa_reg[WIDTH-2:0]; // sign of float ignored
         bzero = ~|datab_reg[WIDTH-2:0];
         
         sa = dataa_reg[WIDTH-1];
