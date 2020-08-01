@@ -2,26 +2,43 @@ import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 import os
 import struct
+import numpy as np
+import math
 
 
+#function to take 32 bit float accuracy and return bfloat16 equivalent float
 def float_to_bfloat(f):
+
+    sign = np.sign(f)
     # converts to hex  form 0x12345678
     h = hex(struct.unpack('<I', struct.pack('<f', f))[0])
 
     # removes last 4 values to put precision to float 16
     bfloat = h[:-4]
 
-    return bfloat
+    ft = bfloat + '0000'
 
+    dec = int(ft, 16)
+    bn = bin(dec)
+    b = str(bn[2:]).zfill(32)
 
-def bfloat_to_float(bf):
+    if (b[0] == 1):
+        sign = -1
+    else:
+        sign = 1
 
-    #Function for converting back to float for testing, not used in rest of script
-    # replace lost precision
-    f = bf + '0000'
+    exponent = int(b[1:9], 2) - 127
+
+    mant = int(b[10:], 2)
+
+    mant = 1 + mant / (2 ** (23))
+
+    flt = sign * mant * 2 ** exponent
 
     # return base 16 float
-    return struct.unpack('f', struct.pack('i', int(f, 16)))
+    return flt
+
+
 
 def parse_conv2d(layer, layer_num):
     '''
@@ -52,7 +69,7 @@ def parse_conv2d(layer, layer_num):
     # Create output file with .h file type and put commented first line with details
     file_name = "conv2D_" + str(layer_num)
     file = open('models\\extractedWeights\\' + file_name + ".h", 'w')
-    file.write("\* " + str(filters) + " filters, kernel size: " + str(kernels[0]) + "x" + str(kernels[1]) + "*\\\n")
+    file.write("/* " + str(filters) + " filters, kernel size: " + str(kernels[0]) + "x" + str(kernels[1]) + "*/\n")
 
     # Iterates over the 3 color channels
     for color in range(len(image_colors)):
@@ -68,16 +85,16 @@ def parse_conv2d(layer, layer_num):
             for row in range(kernels[0]):
                 for col in range(kernels[1]):
 
+                    print("Starting float conversionconda update te")
                     weight = float(weights[0][color][row][col][i])
                     bfloat_weight = float_to_bfloat(weight)
-                    # print(float_weight)
                     file.write(str(bfloat_weight))
 
                     # checks if it is the last value and stops placing a single comma
                     if ((row + 1) * (col + 1) < kernel_size):
                         file.write(",")
 
-            file.write("}\n")
+            file.write("};\n")
 
     file.close()
 
@@ -105,7 +122,7 @@ def parse_dense(layer, layer_num):
     # set up output .h file and put in first line comment with details
     file_name = "dense_" + str(layer_num)
     file = open('models\\extractedWeights\\'+ file_name + ".h", 'w')
-    file.write("\* " + str(num_inputs) + " inputs to each node, " + str(num_outputs) + " output nodes" + "*\\\n")
+    file.write("/* " + str(num_inputs) + " inputs to each node, " + str(num_outputs) + " output nodes" + "*/\n")
 
     for output in range(num_outputs):
 
@@ -122,7 +139,7 @@ def parse_dense(layer, layer_num):
             if (inputs < num_inputs - 1):
                 file.write(",")
 
-        file.write("}\n")
+        file.write("};\n")
 
     file.close()
 
