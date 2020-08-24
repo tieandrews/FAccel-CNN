@@ -79,7 +79,7 @@ def parse_conv2d(layer, layer_num):
 
             # print(f"filter: {i}") #Use to validate weights above manually
             file.write(
-                'const static float kernel_' + str(i) + "_" + image_colors[color] + "[" + str(kernel_size) + "] = {")
+                'const static float kernel_' + str(layer_num) + "_" + str(i) + "_" + image_colors[color] + "[" + str(kernel_size) + "] = {")
 
             # Checks dimensions of each kernel, handles non 3x3 kernels
             for row in range(kernels[0]):
