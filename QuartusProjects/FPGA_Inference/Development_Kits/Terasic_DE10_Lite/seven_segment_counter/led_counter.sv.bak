@@ -1,9 +1,0 @@
-module led_counter (
-    input   logic                   clock,
-    
-    output  logic [5:0][7:0]        seven_segment
-);
-
-    
-
-endmodule

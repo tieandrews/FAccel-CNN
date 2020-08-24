@@ -1,6 +1,0 @@
-14:59:00 **** Clean-only build of configuration Nios II for project convolution_test_bsp ****
-make clean 
-[BSP clean complete]
-
-14:59:01 Build Finished (took 1s.5ms)
-
