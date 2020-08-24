@@ -1,0 +1,154 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference
+vconvolution_calc
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1596168532
+!i10b 1
+!s100 GPk5mzoMbLF:L3;JQJOE[1
+Il^^W3XgjDB`2?_Ff3:3oa2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 convolution_calc_sv_unit
+S1
+R0
+w1596168434
+8C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference/convolution_calc.sv
+FC:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference/convolution_calc.sv
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1596168532.000000
+!s107 C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference/convolution_calc.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference/convolution_calc.sv|
+!i113 1
+Z4 o-work work -sv
+Z5 tCvgOpt 0
+vconvolution_calc_tb
+R1
+!s110 1596169606
+!i10b 1
+!s100 A:Va34HMjZ9eMhFRb8M4X3
+IeB?Tz`JRnCZ0W0PPKW<4Z0
+R2
+!s105 convolution_calc_tb_sv_unit
+S1
+R0
+w1596169603
+8C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference/convolution_calc_tb.sv
+FC:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference/convolution_calc_tb.sv
+L0 3
+R3
+r1
+!s85 0
+31
+!s108 1596169606.000000
+!s107 C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference/convolution_calc_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/ml_inference/convolution_calc_tb.sv|
+!i113 1
+R4
+R5
+vfp_add
+R1
+Z6 !s110 1596165689
+!i10b 1
+!s100 5T_^AEcBoL44BIb]jlKUa3
+IELaj8fXL:]Pi9lVfJ4UUl2
+R2
+!s105 fp_add_sv_unit
+S1
+R0
+w1596149517
+8C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_add.sv
+FC:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_add.sv
+Z7 L0 39
+R3
+r1
+!s85 0
+31
+Z8 !s108 1596165689.000000
+!s107 C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_add.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_add.sv|
+!i113 1
+R4
+R5
+vfp_add_tree
+R1
+R6
+!i10b 1
+!s100 deRLPJDfKU7?Y<QlidQ9i0
+InD[4B0kBYN9OV:QT<F2];0
+R2
+!s105 fp_add_tree_sv_unit
+S1
+R0
+w1596150523
+8C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_add_tree.sv
+FC:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_add_tree.sv
+R7
+R3
+r1
+!s85 0
+31
+R8
+!s107 C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_add_tree.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_add_tree.sv|
+!i113 1
+R4
+R5
+vfp_mlt
+R1
+R6
+!i10b 1
+!s100 f<;_4eaM@RoQ2MmCL1aHG2
+IWfX@`M?ZoLcb_[UEdAhLj2
+R2
+!s105 fp_mlt_sv_unit
+S1
+R0
+w1596149570
+8C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_mlt.sv
+FC:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_mlt.sv
+R7
+R3
+r1
+!s85 0
+31
+R8
+!s107 C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_mlt.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/low_latency/fp_mlt.sv|
+!i113 1
+R4
+R5
+vzero_count
+R1
+R6
+!i10b 1
+!s100 ?ddhJb6?kTG>R>A?[hVMQ2
+I2U20AjNnc8g9f2@f@`?M10
+R2
+!s105 zero_count_sv_unit
+S1
+R0
+w1595838686
+8C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/fp_common/zero_count.sv
+FC:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/fp_common/zero_count.sv
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/fp_common/zero_count.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/GitHub/FAccel-CNN/QuartusProjects/verilog_src/verilog/floating_point/fp_common/zero_count.sv|
+!i113 1
+R4
+R5

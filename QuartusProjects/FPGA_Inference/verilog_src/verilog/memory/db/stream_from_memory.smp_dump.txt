@@ -1,0 +1,10 @@
+
+State Machine - |stream_from_memory|fsm
+Name fsm.S7 fsm.S6 fsm.S5 fsm.S4 fsm.S3 fsm.S2 fsm.S1 
+fsm.S1 0 0 0 0 0 0 0 
+fsm.S2 0 0 0 0 0 1 1 
+fsm.S3 0 0 0 0 1 0 1 
+fsm.S4 0 0 0 1 0 0 1 
+fsm.S5 0 0 1 0 0 0 1 
+fsm.S6 0 1 0 0 0 0 1 
+fsm.S7 1 0 0 0 0 0 1 

@@ -1,0 +1,202 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst
+vconvolution_burst
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+!s110 1596496046
+!i10b 1
+!s100 b0BJc?i0D7k16Na2AkLR90
+IXWCWXE<_mJNbLUdUAzzc21
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+!s105 convolution_burst_sv_unit
+S1
+R0
+w1596496036
+8C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst.sv
+FC:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst.sv
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1596496046.000000
+!s107 C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst.sv|
+!i113 1
+Z4 o-work work -sv
+Z5 tCvgOpt 0
+vconvolution_burst_tb
+R1
+Z6 !s110 1596494252
+!i10b 1
+!s100 mGBC49]9WKB^>TdX]PN9R0
+I5:A0nb6Sla3D><WJI_cmz3
+R2
+!s105 convolution_burst_tb_sv_unit
+S1
+R0
+Z7 w1596055583
+8C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst_tb.sv
+FC:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst_tb.sv
+L0 2
+R3
+r1
+!s85 0
+31
+Z8 !s108 1596494252.000000
+!s107 C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst_tb.sv|
+!s90 -reportprogress|300|-work|work|-sv|C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst_tb.sv|
+!i113 1
+R4
+R5
+vconvolution_calc
+R1
+R6
+!i10b 1
+!s100 GPk5mzoMbLF:L3;JQJOE[1
+IfXm3=YnOaV?URURf7IcYA3
+R2
+!s105 convolution_calc_sv_unit
+S1
+R0
+w1596168434
+8C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/ml_inference/convolution_calc.sv
+FC:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/ml_inference/convolution_calc.sv
+L0 1
+R3
+r1
+!s85 0
+31
+R8
+!s107 C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/ml_inference/convolution_calc.sv|
+!s90 -reportprogress|300|-work|work|-sv|C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/ml_inference/convolution_calc.sv|
+!i113 1
+R4
+R5
+vfp_add
+R1
+Z9 !s110 1596509974
+!i10b 1
+!s100 HMWR]nNQNKYMIJbdbf64=3
+I=6jO@:m`O8X?D;jV1ee^=0
+R2
+!s105 fp_add_sv_unit
+S1
+R0
+w1596497108
+8C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_add.sv
+FC:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_add.sv
+Z10 L0 39
+R3
+r1
+!s85 0
+31
+Z11 !s108 1596509974.000000
+!s107 C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_add.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_add.sv|
+!i113 1
+R4
+R5
+vfp_add_tree
+R1
+R6
+!i10b 1
+!s100 deRLPJDfKU7?Y<QlidQ9i0
+IBEHVBSYPTkf7Kd6]9G3VH3
+R2
+!s105 fp_add_tree_sv_unit
+S1
+R0
+w1596150523
+8C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_add_tree.sv
+FC:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_add_tree.sv
+R10
+R3
+r1
+!s85 0
+31
+R8
+!s107 C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_add_tree.sv|
+!s90 -reportprogress|300|-work|work|-sv|C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_add_tree.sv|
+!i113 1
+R4
+R5
+vfp_mlt
+R1
+R6
+!i10b 1
+!s100 f<;_4eaM@RoQ2MmCL1aHG2
+IRAW=mU`aHeNL:V`W3IATi0
+R2
+!s105 fp_mlt_sv_unit
+S1
+R0
+w1596149570
+8C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_mlt.sv
+FC:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_mlt.sv
+R10
+R3
+r1
+!s85 0
+31
+R8
+!s107 C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_mlt.sv|
+!s90 -reportprogress|300|-work|work|-sv|C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/low_latency/fp_mlt.sv|
+!i113 1
+R4
+R5
+vram
+R1
+R6
+!i10b 1
+!s100 XBHVJN3_@UG4:]W6O4<`F1
+I]b9iZbkK7_CLAefe1hld]0
+R2
+!s105 ram_sv_unit
+S1
+R0
+R7
+8C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/ram.sv
+FC:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/ram.sv
+L0 1
+R3
+r1
+!s85 0
+31
+!s108 1596494251.000000
+!s107 C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/ram.sv|
+!s90 -reportprogress|300|-work|work|-sv|C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/ram.sv|
+!i113 1
+R4
+R5
+vzero_count
+R1
+R9
+!i10b 1
+!s100 X9YgJHFVAReU1NfTP6`EM0
+I;@oE[YImmB0O3<3DfL3RC1
+R2
+!s105 zero_count_sv_unit
+S1
+R0
+w1596509925
+8C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/fp_common/zero_count.sv
+FC:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/fp_common/zero_count.sv
+L0 1
+R3
+r1
+!s85 0
+31
+R11
+!s107 C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/fp_common/zero_count.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/Quartus_Projects/FPGA_Inference/verilog_src/verilog/floating_point/fp_common/zero_count.sv|
+!i113 1
+R4
+R5

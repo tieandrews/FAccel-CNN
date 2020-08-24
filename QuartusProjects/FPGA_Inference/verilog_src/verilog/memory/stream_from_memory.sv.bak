@@ -1,0 +1,5 @@
+module stream_from_memory # (
+)
+(
+);
+endmodule

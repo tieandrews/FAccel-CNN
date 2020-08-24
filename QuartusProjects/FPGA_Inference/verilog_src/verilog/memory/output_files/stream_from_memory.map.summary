@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Aug 24 19:23:55 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : stream_from_memory
+Top-level Entity Name : stream_from_memory
+Family : Cyclone IV E
+Total logic elements : 506
+    Total combinational functions : 397
+    Dedicated logic registers : 309
+Total registers : 309
+Total pins : 151
+Total virtual pins : 0
+Total memory bits : 64
+Embedded Multiplier 9-bit elements : 2
+Total PLLs : 0

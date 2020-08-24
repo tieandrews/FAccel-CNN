@@ -1,0 +1,60 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE10_Lite\Inference_Engine\pd_block.qsys --block-symbol-file --output-directory=C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE10_Lite\Inference_Engine\pd_block --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading Inference_Engine/pd_block.qsys
+Progress: Reading input file
+Progress: Adding clock [clock_source 18.1]
+Progress: Parameterizing module clock
+Progress: Adding convolution_0 [convolution_burst 1.0]
+Progress: Parameterizing module convolution_0
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 18.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding led [altera_avalon_pio 18.1]
+Progress: Parameterizing module led
+Progress: Adding nios2e [altera_nios2_gen2 18.1]
+Progress: Parameterizing module nios2e
+Progress: Adding onchip_ram [altera_avalon_onchip_memory2 18.1]
+Progress: Parameterizing module onchip_ram
+Progress: Adding sdram [altera_avalon_new_sdram_controller 18.1]
+Progress: Parameterizing module sdram
+Progress: Adding vga_clock [clock_source 18.1]
+Progress: Parameterizing module vga_clock
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: pd_block.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: pd_block.sdram: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE10_Lite\Inference_Engine\pd_block.qsys --synthesis=VERILOG --output-directory=C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE10_Lite\Inference_Engine\pd_block\synthesis --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading Inference_Engine/pd_block.qsys
+Progress: Reading input file
+Progress: Adding clock [clock_source 18.1]
+Progress: Parameterizing module clock
+Progress: Adding convolution_0 [convolution_burst 1.0]
+Progress: Parameterizing module convolution_0
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 18.1]
+Progress: Parameterizing module jtag_uart
+Progress: Adding led [altera_avalon_pio 18.1]
+Progress: Parameterizing module led
+Progress: Adding nios2e [altera_nios2_gen2 18.1]
+Progress: Parameterizing module nios2e
+Progress: Adding onchip_ram [altera_avalon_onchip_memory2 18.1]
+Progress: Parameterizing module onchip_ram
+Progress: Adding sdram [altera_avalon_new_sdram_controller 18.1]
+Progress: Parameterizing module sdram
+Progress: Adding vga_clock [clock_source 18.1]
+Progress: Parameterizing module vga_clock
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: pd_block.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+Info: pd_block.sdram: SDRAM Controller will only be supported in Quartus Prime Standard Edition in the future release.
+Info: pd_block: Generating pd_block "pd_block" for QUARTUS_SYNTH
+Error: Generation stopped, 9 or more modules remaining
+Info: pd_block: Done "pd_block" with 10 modules, 1 files
+Error: qsys-generate failed with exit code 1: 1 Error, 0 Warnings
+Info: Stopping: Create HDL design files for synthesis

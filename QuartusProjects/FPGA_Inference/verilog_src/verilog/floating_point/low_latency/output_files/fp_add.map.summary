@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Aug 19 09:49:23 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : fp_add
+Top-level Entity Name : fp_add
+Family : Cyclone IV E
+Total logic elements : 215
+    Total combinational functions : 183
+    Dedicated logic registers : 80
+Total registers : 80
+Total pins : 52
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

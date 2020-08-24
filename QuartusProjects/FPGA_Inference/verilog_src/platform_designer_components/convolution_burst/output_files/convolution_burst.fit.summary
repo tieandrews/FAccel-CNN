@@ -1,0 +1,16 @@
+Fitter Status : Failed - Tue Aug 04 15:05:04 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : convolution_burst
+Top-level Entity Name : convolution_burst
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 3,127 / 22,320 ( 14 % )
+    Total combinational functions : 2,576 / 22,320 ( 12 % )
+    Dedicated logic registers : 1,400 / 22,320 ( 6 % )
+Total registers : 1400
+Total pins : 152 / 154 ( 99 % )
+Total virtual pins : 0
+Total memory bits : 24,160 / 608,256 ( 4 % )
+Embedded Multiplier 9-bit elements : 9 / 132 ( 7 % )
+Total PLLs : 0 / 4 ( 0 % )

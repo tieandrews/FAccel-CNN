@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Aug 19 09:52:33 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : fp_mlt
+Top-level Entity Name : fp_mlt
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 33 / 22,320 ( < 1 % )
+    Total combinational functions : 33 / 22,320 ( < 1 % )
+    Dedicated logic registers : 17 / 22,320 ( < 1 % )
+Total registers : 17
+Total pins : 52 / 154 ( 34 % )
+Total virtual pins : 0
+Total memory bits : 0 / 608,256 ( 0 % )
+Embedded Multiplier 9-bit elements : 2 / 132 ( 2 % )
+Total PLLs : 0 / 4 ( 0 % )

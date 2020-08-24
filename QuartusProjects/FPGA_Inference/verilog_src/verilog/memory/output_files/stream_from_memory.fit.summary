@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sun Aug 23 16:24:19 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : stream_from_memory
+Top-level Entity Name : stream_from_memory
+Family : Cyclone IV E
+Device : EP4CE30F23C6
+Timing Models : Final
+Total logic elements : 333 / 28,848 ( 1 % )
+    Total combinational functions : 258 / 28,848 ( < 1 % )
+    Dedicated logic registers : 223 / 28,848 ( < 1 % )
+Total registers : 223
+Total pins : 177 / 329 ( 54 % )
+Total virtual pins : 0
+Total memory bits : 8,192 / 608,256 ( 1 % )
+Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
