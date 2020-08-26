@@ -1,0 +1,7 @@
+module next_digit # (
+)
+(
+    input   logic [DIGITS-1:0][3:0]     bcd_in,
+    output  logic [DIGITS-1:0][3:0]     bcd_out
+);
+endmodule

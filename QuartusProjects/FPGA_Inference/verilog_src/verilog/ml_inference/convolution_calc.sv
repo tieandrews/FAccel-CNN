@@ -16,7 +16,7 @@ module convolution_calc # (
     
     input   logic [2:0]         xres_select,
     
-    input   logic               kernel_valid,
+    input   logic               kernel_data_shift,
     input   logic [WIDTH-1:0]   kernel_data,
     
     input   logic               enable_calc,
@@ -41,7 +41,7 @@ module convolution_calc # (
             
     // handle kernel stream
     always_ff @ (posedge clock) begin
-        if (kernel_valid) begin
+        if (kernel_data_shift) begin
             for (y=0; y<KY; y++) begin
                 for (x=0; x<KX; x++) begin
                     if (x == 0) begin
