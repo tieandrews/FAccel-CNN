@@ -24,7 +24,7 @@ module convolution_burst # (
     input   logic               clock,
     input   logic               clock_sreset,
     
-    input   logic [4:0]         s_address,
+    input   logic [3:0]         s_address,
     input   logic [31:0]        s_writedata,
     output  logic [31:0]        s_readdata,
     input   logic               s_read,
@@ -72,90 +72,59 @@ module convolution_burst # (
 
     enum    logic [9:0]         {S1, S2, S3, S4, S5, S6, S7, S8, S9, S10} fsm;
     
-            logic               busy_flag, go_flag;
-            logic               read_latency;
-            logic [WIDTHFD-1:0] fifo1_usedw, fifo2_usedw;
-            logic [WIDTH-1:0]   fifo1_q, fifo2_q;
-            logic               fifo1_rdreq, fifo2_rdreq;
-            logic [31:0]        ss_readdata[5:0];
-            logic [5:0]         ss_waitrequest;
+            integer             i;
+    
+            logic [4:0]         go_flag, busy_flag;
+            logic               flush_flag;
+            logic [WIDTHFD-1:0] pad_fifo_usedw;
+            logic [WIDTH-1:0]   pad_fifo_q, adder_dataa, adder_datab;
+            logic               pad_fifo_rdreq, adder_data_valid;
             logic [WIDTH-1:0]   conv_result, adder_result, conv_kernel_data, conv_data;
             logic               conv_result_valid,adder_result_valid;
             logic               conv_kernel_data_shift,conv_enable_calc, conv_data_shift;
-            logic [2:0]         conv_xres_select;
+            logic [2:0]         xres_select, pad;
+            logic [31:0]        source_pointer, destination_pointer, kernel_pointer;
+            logic [11:0]        xres, yres;
+            logic [WIDTHB-1:0]  burst_count;
+            logic [23:0]        word_size;
 
-            wire  [5:0]         ss_select = 6'h1 << s_address[4:2];
-            
-    stream_from_memory          # (
-                                    .WIDTH(WIDTH),
-                                    .WIDTHB(WIDTHB),
-                                    .WIDTHBE(WIDTH / 8),
-                                    .FIFO_DEPTH(FIFO_DEPTH),
-                                    .WIDTHF(WIDTHFD)
+    convolution_csr             # (
+                                    .WIDTHB(WIDTHB)
                                 )
-                                from_memory1 (
+                                csr (
                                     .clock(clock),
                                     .clock_sreset(clock_sreset),
-                                    .s_address(s_address[1:0]),
+                                    .s_address(s_address),
+                                    .s_readdata(s_readdata),
                                     .s_writedata(s_writedata),
-                                    .s_readdata(ss_readdata[1]),
-                                    .s_read(s_read & ss_select[1]),
-                                    .s_write(s_write & ss_select[1]),
-                                    .s_waitrequest(ss_waitrequest[1]),
-                                    .m_address(rm1_address),
-                                    .m_byteenable(rm1_byteenable),
-                                    .m_readdata(rm1_readdata),
-                                    .m_burstcount(rm1_burstcount),
-                                    .m_read(rm1_read),
-                                    .m_waitrequest(rm1_waitrequest),
-                                    .m_readdatavalid(rm1_readdatavalid),
-                                    .fifo_rdreq(fifo1_rdreq),
-                                    .fifo_usedw(fifo1_usedw),
-                                    .fifo_q(fifo1_q)
+                                    .s_read(s_read),
+                                    .s_write(s_write),
+                                    .s_waitrequest(s_waitrequest),
+                                    .go_flag(go_flag),
+                                    .busy_flag(busy_flag),
+                                    .word_size(word_size),
+                                    .burst_count(burst_count),
+                                    .kernel_pointer(kernel_pointer),
+                                    .source_pointer(source_pointer),
+                                    .destination_pointer(destination_pointer),
+                                    .xres(xres),
+                                    .yres(yres),
+                                    .xres_select(xres_select),
+                                    .pad(pad)
                                 );
-
-    stream_from_memory          # (
-                                    .WIDTH(WIDTH),
-                                    .WIDTHB(WIDTHB),
-                                    .WIDTHBE(WIDTH / 8),
-                                    .FIFO_DEPTH(FIFO_DEPTH),
-                                    .WIDTHF(WIDTHFD)
-                                )
-                                from_memory2 (
-                                    .clock(clock),
-                                    .clock_sreset(clock_sreset),
-                                    .s_address(s_address[1:0]),
-                                    .s_writedata(s_writedata),
-                                    .s_readdata(ss_readdata[2]),
-                                    .s_read(s_read & ss_select[2]),
-                                    .s_write(s_write & ss_select[2]),
-                                    .s_waitrequest(ss_waitrequest[2]),
-                                    .m_address(rm2_address),
-                                    .m_byteenable(rm2_byteenable),
-                                    .m_readdata(rm2_readdata),
-                                    .m_burstcount(rm2_burstcount),
-                                    .m_read(rm2_read),
-                                    .m_waitrequest(rm2_waitrequest),
-                                    .m_readdatavalid(rm2_readdatavalid),
-                                    .fifo_rdreq(conv_result_valid),
-                                    .fifo_usedw(),
-                                    .fifo_q(fifo2_q)
-                                );
-
+    
     burst_from_memory           # (
                                     .WIDTH(WIDTH),
                                     .WIDTHB(WIDTHB),
                                     .WIDTHBE(WIDTH / 8)
                                 )
-                                from_memory3 (
+                                kernel_weights (
                                     .clock(clock),
                                     .clock_sreset(clock_sreset),
-                                    .s_address(s_address[1:0]),
-                                    .s_writedata(s_writedata),
-                                    .s_readdata(ss_readdata[3]),
-                                    .s_read(s_read & ss_select[3]),
-                                    .s_write(s_write & ss_select[3]),
-                                    .s_waitrequest(ss_waitrequest[3]),
+                                    .go(go_flag[0]),
+                                    .busy(busy_flag[0]),
+                                    .pointer(kernel_pointer),
+                                    .burst_count(KX * KY),
                                     .m_address(rm3_address),
                                     .m_byteenable(rm3_byteenable),
                                     .m_readdata(rm3_readdata),
@@ -166,7 +135,34 @@ module convolution_burst # (
                                     .data_valid(conv_kernel_data_shift),
                                     .data(conv_kernel_data)
                                 );
-                                
+
+
+    stream_from_memory          # (
+                                    .WIDTH(WIDTH),
+                                    .WIDTHB(WIDTHB),
+                                    .WIDTHBE(WIDTH / 8),
+                                    .FIFO_DEPTH(FIFO_DEPTH),
+                                    .WIDTHF(WIDTHFD)
+                                )
+                                from_memory1 (
+                                    .clock(clock),
+                                    .clock_sreset(clock_sreset),
+                                    .go(go_flag[1]),
+                                    .busy(busy_flag[1]),
+                                    .pointer(source_pointer),
+                                    .word_size(word_size),
+                                    .burst_count(burst_count),
+                                    .m_address(rm1_address),
+                                    .m_byteenable(rm1_byteenable),
+                                    .m_readdata(rm1_readdata),
+                                    .m_burstcount(rm1_burstcount),
+                                    .m_read(rm1_read),
+                                    .m_waitrequest(rm1_waitrequest),
+                                    .m_readdatavalid(rm1_readdatavalid),
+                                    .fifo_rdreq(pad_fifo_rdreq),
+                                    .fifo_usedw(pad_fifo_usedw),
+                                    .fifo_q(pad_fifo_q)
+                                );
                                 
     pad_video                   # (
                                     .WIDTH(WIDTH),
@@ -176,28 +172,19 @@ module convolution_burst # (
                                 pad_video (
                                     .clock(clock),
                                     .clock_sreset(clock_sreset),
-                                    .s_address(s_address),
-                                    .s_writedata(s_writedata),
-                                    .s_readdata(ss_readdata[4]),
-                                    .s_read(s_read & ss_select[4]),
-                                    .s_write(s_write & ss_select[4]),
-                                    .s_waitrequest(ss_waitrequest[4]),
-                                    .fifo_rdreq(fifo1_rdreq),
-                                    .fifo_usedw(fifo1_usedw),
-                                    .fifo_q(fifo1_q),
+                                    .go(go_flag[2]),
+                                    .busy(busy_flag[2]),
+                                    .xres(xres),
+                                    .yres(yres),
+                                    .pad(pad),
+                                    .fifo_rdreq(pad_fifo_rdreq),
+                                    .fifo_usedw(pad_fifo_usedw),
+                                    .fifo_q(pad_fifo_q),
                                     .conv_enable_calc(conv_enable_calc),
                                     .conv_data_shift(conv_data_shift),
-                                    .conv_data(conv_data),
-                                    .conv_xres_select(conv_xres_select)                                    
+                                    .conv_data(conv_data)
                                 );
                                 
-    always_comb begin
-        s_readdata = ss_readdata[s_address[4:2]];
-        s_waitrequest = ss_waitrequest[s_address[4:2]];
-    end
-
-                                
-    // handle convolution and sum
     convolution_calc            # (
                                     .MAX_XRES(XRES5 + (PAD << 1)),
                                     .XRES1(XRES1 + (PAD << 1)), 
@@ -216,14 +203,41 @@ module convolution_burst # (
                                 convolution (
                                     .clock(clock),
                                     .clock_sreset(clock_sreset),
-                                    .xres_select(conv_xres_select),
+                                    .xres_select(xres_select),
                                     .kernel_data_shift(conv_kernel_data_shift),
                                     .kernel_data(conv_kernel_data),
                                     .enable_calc(conv_enable_calc),
                                     .data_shift(conv_data_shift),
                                     .data(conv_data),
-                                    .result_valid(conv_result_valid),
-                                    .result(conv_result)
+                                    .result_valid(adder_data_valid),
+                                    .result(adder_dataa)
+                                );
+                                
+    stream_from_memory          # (
+                                    .WIDTH(WIDTH),
+                                    .WIDTHB(WIDTHB),
+                                    .WIDTHBE(WIDTH / 8),
+                                    .FIFO_DEPTH(FIFO_DEPTH),
+                                    .WIDTHF(WIDTHFD)
+                                )
+                                from_memory2 (
+                                    .clock(clock),
+                                    .clock_sreset(clock_sreset),
+                                    .go(go_flag[3]),
+                                    .busy(busy_flag[3]),
+                                    .pointer(destination_pointer),
+                                    .word_size(word_size),
+                                    .burst_count(burst_count),
+                                    .m_address(rm2_address),
+                                    .m_byteenable(rm2_byteenable),
+                                    .m_readdata(rm2_readdata),
+                                    .m_burstcount(rm2_burstcount),
+                                    .m_read(rm2_read),
+                                    .m_waitrequest(rm2_waitrequest),
+                                    .m_readdatavalid(rm2_readdatavalid),
+                                    .fifo_rdreq(adder_data_valid),
+                                    .fifo_usedw(),
+                                    .fifo_q(adder_datab)
                                 );
                         
     // accumulate the featuremap sum
@@ -236,9 +250,9 @@ module convolution_burst # (
                                 adder (
                                     .clock(clock),
                                     .clock_sreset(clock_sreset),
-                                    .data_valid(conv_result_valid),    // when conv_result and add_datab are valid
-                                    .dataa(conv_result),
-                                    .datab(fifo2_q),
+                                    .data_valid(adder_data_valid),    // when conv_result and add_datab are valid
+                                    .dataa(adder_dataa),
+                                    .datab(adder_datab),
                                     .result_valid(adder_result_valid),
                                     .result(adder_result)
                                 );
@@ -253,12 +267,12 @@ module convolution_burst # (
                                 to_memory (
                                     .clock(clock),
                                     .clock_sreset(clock_sreset),
-                                    .s_address(s_address[1:0]),
-                                    .s_writedata(s_writedata),
-                                    .s_readdata(ss_readdata[5]),
-                                    .s_read(s_read & ss_select[5]),
-                                    .s_write(s_write & ss_select[5]),
-                                    .s_waitrequest(ss_waitrequest[5]),
+                                    .go(go_flag[4]),
+                                    .busy(busy_flag[4]),
+                                    .flush(flush_flag),
+                                    .pointer(destination_pointer),
+                                    .word_size(word_size),
+                                    .burst_count(burst_count),
                                     .m_address(wm1_address),
                                     .m_byteenable(wm1_byteenable),
                                     .m_writedata(wm1_writedata),
@@ -269,35 +283,5 @@ module convolution_burst # (
                                     .fifo_usedw(),
                                     .fifo_data(adder_result)
                                 );
-                        
-    // handle control and status registers - slave interface
-    always_comb begin
-        ss_waitrequest[0] = s_write ? 1'b0 : (s_read ? ~read_latency : 1'b0);
-    end
-    always_ff @ (posedge clock) begin
-        if (clock_sreset) begin
-            read_latency <= 1'b0;
-        end
-        else begin
-            read_latency <= read_latency ? 1'b0 : s_read;
-            if (s_address == 4'h0) begin
-                ss_readdata[0] <= {busy_flag, go_flag};
-                go_flag <= s_write & s_writedata[0];
-            end
-            else begin
-                go_flag <= 1'b0;
-            end
-        end
-    end
-
-    // controlling FSM for bursting from memory and padding data to convolution and write back to memory
-    always_comb begin
-    end
-    always_ff @ (posedge clock) begin
-        if (clock_sreset) begin
-        end
-        else begin
-        end
-    end
                         
 endmodule
