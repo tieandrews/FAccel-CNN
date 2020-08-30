@@ -1,0 +1,27 @@
+
+State Machine - |convolution_burst|stream_to_memory:to_memory|fsm
+Name fsm.S1 fsm.S3 fsm.S2 
+fsm.S1 0 0 0 
+fsm.S2 1 0 1 
+fsm.S3 1 1 0 
+
+State Machine - |convolution_burst|stream_from_memory:from_memory2|fsm
+Name fsm.S2 
+fsm.S1 0 
+fsm.S2 1 
+
+State Machine - |convolution_burst|pad_video:pad_video|fsm
+Name fsm.S1 fsm.S3 fsm.S2 
+fsm.S1 0 0 0 
+fsm.S2 1 0 1 
+fsm.S3 1 1 0 
+
+State Machine - |convolution_burst|stream_from_memory:from_memory1|fsm
+Name fsm.S2 
+fsm.S1 0 
+fsm.S2 1 
+
+State Machine - |convolution_burst|burst_from_memory:kernel_weights|fsm
+Name fsm.S2 
+fsm.S1 0 
+fsm.S2 1 

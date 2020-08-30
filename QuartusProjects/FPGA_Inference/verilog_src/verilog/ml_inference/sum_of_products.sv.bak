@@ -1,0 +1,17 @@
+module sum_of_products # (
+            parameter                   EXP = 8,
+            parameter                   MANT = 7,
+            parameter                   WIDTH = 1 + EXP + MANT
+            parameter                   NUM = 9
+)
+(
+    input   logic                       clock,
+    input   logic                       clock_sreset,
+    input   logic [WIDTH-1:0][NUM-1:0]  dataa,
+    input   logic [WIDTH-1:0][NUM-1:0]  datab,
+    output  logic [WIDTH-1:0]           result
+);
+
+    
+
+endmodule

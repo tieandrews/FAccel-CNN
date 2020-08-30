@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage.defaultLocation=C\:\\Quartus_Projects\\FPGA_Inference\\Development_Kits\\Terasic_DE0_Nano\\Base_Project\\18.1\\software\\convolution_bringup
+newSoftwareExampleWizardPage.sopcinfoFile=C\:\\Quartus_Projects\\FPGA_Inference\\Development_Kits\\Terasic_DE0_Nano\\Base_Project\\18.1\\qsys_block.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=C\:\\Quartus_Projects\\FPGA_Inference\\Development_Kits\\Terasic_DE0_Nano\\Base_Project\\18.1\\software\\convolution_bringup_bsp

@@ -1,0 +1,23 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst qsys_block.onchip_ram -pg 1 -lvl 3 -y 270
+preplace inst qsys_block.led -pg 1 -lvl 3 -y 460
+preplace inst qsys_block -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst qsys_block.convolution -pg 1 -lvl 3 -y 40
+preplace inst qsys_block.nios2e.cpu -pg 1
+preplace inst qsys_block.nios2e -pg 1 -lvl 2 -y 290
+preplace inst qsys_block.clock -pg 1 -lvl 1 -y 500
+preplace inst qsys_block.nios2e.clock_bridge -pg 1
+preplace inst qsys_block.sdram -pg 1 -lvl 3 -y 560
+preplace inst qsys_block.jtag_uart -pg 1 -lvl 3 -y 350
+preplace inst qsys_block.nios2e.reset_bridge -pg 1
+preplace netloc INTERCONNECT<net_container>qsys_block</net_container>(MASTER)nios2e.data_master,(SLAVE)sdram.s1,(SLAVE)convolution.slave,(MASTER)convolution.read_master_2,(SLAVE)nios2e.debug_mem_slave,(MASTER)nios2e.instruction_master,(MASTER)convolution.read_master_1,(MASTER)convolution.read_master_3,(MASTER)convolution.write_master_1,(SLAVE)onchip_ram.s1,(SLAVE)led.s1,(SLAVE)jtag_uart.avalon_jtag_slave) 1 1 3 320 250 760 30 990
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)qsys_block.sdram,(SLAVE)sdram.wire) 1 0 3 NJ 630 NJ 630 NJ
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)qsys_block.clock,(SLAVE)clock.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)led.external_connection,(SLAVE)qsys_block.led) 1 0 3 NJ 490 NJ 490 NJ
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)qsys_block.clock_sreset,(SLAVE)clock.clk_in_reset) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>qsys_block</net_container>(SLAVE)jtag_uart.clk,(SLAVE)convolution.clock,(SLAVE)nios2e.clk,(SLAVE)onchip_ram.clk1,(SLAVE)sdram.clk,(MASTER)clock.clk,(SLAVE)led.clk) 1 1 2 300 510 720
+preplace netloc POINT_TO_POINT<net_container>qsys_block</net_container>(SLAVE)jtag_uart.irq,(MASTER)nios2e.irq) 1 2 1 700
+preplace netloc FAN_OUT<net_container>qsys_block</net_container>(SLAVE)led.reset,(SLAVE)sdram.reset,(SLAVE)convolution.clock_sreset,(SLAVE)jtag_uart.reset,(SLAVE)onchip_ram.reset1,(MASTER)clock.clk_reset,(SLAVE)nios2e.reset) 1 1 2 320 530 740
+levelinfo -pg 1 0 90 1030
+levelinfo -hier qsys_block 100 130 460 790 1010

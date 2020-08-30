@@ -1,0 +1,18 @@
+Fitter Status : Successful - Sun Aug 30 17:42:37 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : convolution_calc
+Top-level Entity Name : convolution_calc
+Family : MAX 10
+Device : 10M50DAF484C7G
+Timing Models : Final
+Total logic elements : 15,774 / 49,760 ( 32 % )
+    Total combinational functions : 15,149 / 49,760 ( 30 % )
+    Dedicated logic registers : 5,923 / 49,760 ( 12 % )
+Total registers : 5923
+Total pins : 57 / 360 ( 16 % )
+Total virtual pins : 0
+Total memory bits : 7,616 / 1,677,312 ( < 1 % )
+Embedded Multiplier 9-bit elements : 72 / 288 ( 25 % )
+Total PLLs : 0 / 4 ( 0 % )
+UFM blocks : 0 / 1 ( 0 % )
+ADC blocks : 0 / 2 ( 0 % )

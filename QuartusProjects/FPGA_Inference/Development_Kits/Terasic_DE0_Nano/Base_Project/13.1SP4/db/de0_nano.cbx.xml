@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="de0_nano">
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_nano|PLL0:pll0|altpll:altpll_component" CBX_FILE_NAME="PLL0_altpll.v"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_nano|qsys_block:qsys|qsys_block_jtag_uart:jtag_uart|qsys_block_jtag_uart_scfifo_w:the_qsys_block_jtag_uart_scfifo_w|scfifo:wfifo" CBX_FILE_NAME="scfifo_jr21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_nano|qsys_block:qsys|qsys_block_nios2e:nios2e|qsys_block_nios2e_nios2_oci:the_qsys_block_nios2e_nios2_oci|qsys_block_nios2e_nios2_ocimem:the_qsys_block_nios2e_nios2_ocimem|qsys_block_nios2e_ociram_sp_ram_module:qsys_block_nios2e_ociram_sp_ram|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_mu81.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_nano|qsys_block:qsys|qsys_block_nios2e:nios2e|qsys_block_nios2e_register_bank_a_module:qsys_block_nios2e_register_bank_a|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_3og1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_nano|qsys_block:qsys|qsys_block_nios2e:nios2e|qsys_block_nios2e_register_bank_b_module:qsys_block_nios2e_register_bank_b|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_4og1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_nano|qsys_block:qsys|qsys_block_jtag_uart:jtag_uart|qsys_block_jtag_uart_scfifo_r:the_qsys_block_jtag_uart_scfifo_r|scfifo:rfifo" CBX_FILE_NAME="scfifo_jr21.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|de0_nano|qsys_block:qsys|qsys_block_onchip_ram:onchip_ram|altsyncram:the_altsyncram" CBX_FILE_NAME="altsyncram_fsc1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

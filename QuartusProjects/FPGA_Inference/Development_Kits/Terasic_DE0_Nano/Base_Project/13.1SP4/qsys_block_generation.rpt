@@ -1,0 +1,113 @@
+Info: Starting: Create HDL design files for synthesis
+Info: ip-generate --project-directory=D:/QuartusProjects/DE0_NANO/ --output-directory=D:/QuartusProjects/DE0_NANO/qsys_block/synthesis/ --file-set=QUARTUS_SYNTH --report-file=sopcinfo:D:/QuartusProjects/DE0_NANO/qsys_block.sopcinfo --report-file=html:D:/QuartusProjects/DE0_NANO/qsys_block.html --report-file=qip:D:/QuartusProjects/DE0_NANO/qsys_block/synthesis/qsys_block.qip --report-file=cmp:D:/QuartusProjects/DE0_NANO/qsys_block.cmp --report-file=svd --system-info=DEVICE_FAMILY="Cyclone IV E" --system-info=DEVICE=EP4CE22F17C6 --system-info=DEVICE_SPEEDGRADE=6 --component-file=D:/QuartusProjects/DE0_NANO/qsys_block.qsys --language=VERILOG
+Progress: Loading DE0_NANO/qsys_block.qsys
+Progress: Reading input file
+Progress: Adding clock [clock_source 13.0]
+Progress: Parameterizing module clock
+Progress: Adding nios2e [altera_nios2_qsys 13.0]
+Progress: Parameterizing module nios2e
+Progress: Adding onchip_ram [altera_avalon_onchip_memory2 13.0.1.99.2]
+Progress: Parameterizing module onchip_ram
+Progress: Adding jtag_uart [altera_avalon_jtag_uart 13.0.1.99.2]
+Progress: Parameterizing module jtag_uart
+Progress: Adding led [altera_avalon_pio 13.0.1.99.2]
+Progress: Parameterizing module led
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys_block: Generating qsys_block "qsys_block" for QUARTUS_SYNTH
+Info: pipeline_bridge_swap_transform: After transform: 5 modules, 15 connections
+Info: No custom instruction connections, skipping transform 
+Info: merlin_translator_transform: After transform: 11 modules, 33 connections
+Info: merlin_domain_transform: After transform: 22 modules, 89 connections
+Info: merlin_router_transform: After transform: 28 modules, 107 connections
+Info: reset_adaptation_transform: After transform: 29 modules, 109 connections
+Info: merlin_network_to_switch_transform: After transform: 40 modules, 133 connections
+Info: merlin_mm_transform: After transform: 40 modules, 133 connections
+Info: merlin_interrupt_mapper_transform: After transform: 41 modules, 136 connections
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Warning: qsys_block: "No matching role found for rst_controller:reset_out:reset_req (reset_req)"
+Info: nios2e: Starting RTL generation for module 'qsys_block_nios2e'
+Info: nios2e:   Generation command is [exec C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/eperl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -I C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2 -- C:/altera/13.0sp1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=qsys_block_nios2e --dir=C:/Users/SteveG/AppData/Local/Temp/alt8370_4704664890541887790.dir/0001_nios2e_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/SteveG/AppData/Local/Temp/alt8370_4704664890541887790.dir/0001_nios2e_gen//qsys_block_nios2e_processor_configuration.pl  --do_build_sim=0    --bogus  ]
+Info: nios2e: # 2020.04.19 10:18:48 (*) Starting Nios II generation
+Info: nios2e: # 2020.04.19 10:18:48 (*)   Checking for plaintext license.
+Info: nios2e: # 2020.04.19 10:18:49 (*)   Plaintext license not found.
+Info: nios2e: # 2020.04.19 10:18:49 (*)   No license required to generate encrypted Nios II/e.
+Info: nios2e: # 2020.04.19 10:18:49 (*)   Elaborating CPU configuration settings
+Info: nios2e: # 2020.04.19 10:18:49 (*)   Creating all objects for CPU
+Info: nios2e: # 2020.04.19 10:18:50 (*)   Generating RTL from CPU objects
+Info: nios2e: # 2020.04.19 10:18:50 (*)   Creating plain-text RTL
+Info: nios2e: # 2020.04.19 10:18:52 (*) Done Nios II generation
+Info: nios2e: Done RTL generation for module 'qsys_block_nios2e'
+Info: nios2e: "qsys_block" instantiated altera_nios2_qsys "nios2e"
+Info: onchip_ram: Starting RTL generation for module 'qsys_block_onchip_ram'
+Info: onchip_ram:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=qsys_block_onchip_ram --dir=C:/Users/SteveG/AppData/Local/Temp/alt8370_4704664890541887790.dir/0002_onchip_ram_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/SteveG/AppData/Local/Temp/alt8370_4704664890541887790.dir/0002_onchip_ram_gen//qsys_block_onchip_ram_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_ram: Done RTL generation for module 'qsys_block_onchip_ram'
+Info: onchip_ram: "qsys_block" instantiated altera_avalon_onchip_memory2 "onchip_ram"
+Info: jtag_uart: Starting RTL generation for module 'qsys_block_jtag_uart'
+Info: jtag_uart:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=qsys_block_jtag_uart --dir=C:/Users/SteveG/AppData/Local/Temp/alt8370_4704664890541887790.dir/0003_jtag_uart_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/SteveG/AppData/Local/Temp/alt8370_4704664890541887790.dir/0003_jtag_uart_gen//qsys_block_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart: Done RTL generation for module 'qsys_block_jtag_uart'
+Info: jtag_uart: "qsys_block" instantiated altera_avalon_jtag_uart "jtag_uart"
+Info: led: Starting RTL generation for module 'qsys_block_led'
+Info: led:   Generation command is [exec C:/altera/13.0sp1/quartus/bin/perl/bin/perl.exe -I C:/altera/13.0sp1/quartus/common/ip/altera/common/perl/5.8.3 -I C:/altera/13.0sp1/quartus/sopc_builder/bin/europa -I C:/altera/13.0sp1/quartus/sopc_builder/bin/perl_lib -I C:/altera/13.0sp1/quartus/sopc_builder/bin -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/common -I C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- C:/altera/13.0sp1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=qsys_block_led --dir=C:/Users/SteveG/AppData/Local/Temp/alt8370_4704664890541887790.dir/0004_led_gen/ --quartus_dir=C:/altera/13.0sp1/quartus --verilog --config=C:/Users/SteveG/AppData/Local/Temp/alt8370_4704664890541887790.dir/0004_led_gen//qsys_block_led_component_configuration.pl  --do_build_sim=0  ]
+Info: led: Done RTL generation for module 'qsys_block_led'
+Info: led: "qsys_block" instantiated altera_avalon_pio "led"
+Info: nios2e_instruction_master_translator: "qsys_block" instantiated altera_merlin_master_translator "nios2e_instruction_master_translator"
+Info: nios2e_jtag_debug_module_translator: "qsys_block" instantiated altera_merlin_slave_translator "nios2e_jtag_debug_module_translator"
+Info: nios2e_instruction_master_translator_avalon_universal_master_0_agent: "qsys_block" instantiated altera_merlin_master_agent "nios2e_instruction_master_translator_avalon_universal_master_0_agent"
+Info: nios2e_jtag_debug_module_translator_avalon_universal_slave_0_agent: "qsys_block" instantiated altera_merlin_slave_agent "nios2e_jtag_debug_module_translator_avalon_universal_slave_0_agent"
+Info: nios2e_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo: "qsys_block" instantiated altera_avalon_sc_fifo "nios2e_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo"
+Info: addr_router: "qsys_block" instantiated altera_merlin_router "addr_router"
+Info: addr_router_001: "qsys_block" instantiated altera_merlin_router "addr_router_001"
+Info: id_router: "qsys_block" instantiated altera_merlin_router "id_router"
+Info: id_router_002: "qsys_block" instantiated altera_merlin_router "id_router_002"
+Info: rst_controller: "qsys_block" instantiated altera_reset_controller "rst_controller"
+Info: cmd_xbar_demux: "qsys_block" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info: cmd_xbar_demux_001: "qsys_block" instantiated altera_merlin_demultiplexer "cmd_xbar_demux_001"
+Info: cmd_xbar_mux: "qsys_block" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info: rsp_xbar_demux_002: "qsys_block" instantiated altera_merlin_demultiplexer "rsp_xbar_demux_002"
+Info: rsp_xbar_mux: "qsys_block" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info: Reusing file D:/QuartusProjects/DE0_NANO/qsys_block/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: rsp_xbar_mux_001: "qsys_block" instantiated altera_merlin_multiplexer "rsp_xbar_mux_001"
+Info: Reusing file D:/QuartusProjects/DE0_NANO/qsys_block/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: irq_mapper: "qsys_block" instantiated altera_irq_mapper "irq_mapper"
+Info: qsys_block: Done qsys_block" with 22 modules, 57 files, 1103942 bytes
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

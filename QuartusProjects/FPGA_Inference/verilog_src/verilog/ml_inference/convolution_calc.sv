@@ -5,8 +5,9 @@ module convolution_calc # (
             parameter           RESOLUTIONS = 5,
             parameter           KX = 3,
             parameter           KY = 3,
-            parameter           EXP = 5,
-            parameter           MANT = 10,
+            parameter           NUM_KERNELS = 24,
+            parameter           EXP = 8,
+            parameter           MANT = 7,
             parameter           WIDTH = 1 + EXP + MANT,
             parameter           ADDER_PIPELINE = 1
 )
@@ -33,29 +34,43 @@ module convolution_calc # (
             
             integer             x, y, t, yy;
             
-            logic [WIDTH-1:0]   kernel[KX-1:0][KY-1:0];
-            logic [WIDTH-1:0]   buffer[MAX_XRES-1:0][KY-1:0];
-            logic [WIDTHI-1:0][WIDTH-1:0] add_items;
-            logic [WIDTH-1:0]   buffer_taps[RESOLUTIONS-1:0][KY-2:0];
-            logic               mlt_valid;
+            logic [KX*KY-1:0][WIDTH-1:0]   kernel[NUM_KERNELS-1:0];
+            logic [WIDTH-1:0]             buffer[MAX_XRES-1:0][KY-1:0];
+            logic [RESOLUTIONS-1:0][KY-2:0][WIDTH-1:0]   buffer_taps;
+            logic [KX*KY-1:0][WIDTH-1:0]    buffer_node;
             
     // handle kernel stream
     always_ff @ (posedge clock) begin
         if (kernel_data_shift) begin
-            for (y=0; y<KY; y++) begin
-                for (x=0; x<KX; x++) begin
-                    if (x == 0) begin
-                        if (y == 0) begin
-                            kernel[x][y] <= kernel_data;
+            for (t=0; t<NUM_KERNELS; t++) begin
+                for (y=0; y<KY; y++) begin
+                    for (x=0; x<KX; x++) begin
+                        if (x == 0) begin
+                            if (y == 0) begin
+                                if (t == 0) begin
+                                    kernel[t][x+(y*KX)] <= kernel_data;
+                                end
+                                else begin
+                                    kernel[t][x+(y*KX)] <= kernel[t-1][KX*KY-1];
+                                end
+                            end
+                            else begin
+                                kernel[t][x+(y*KX)] <= kernel[t][KX*(y-1)];
+                            end
                         end
                         else begin
-                            kernel[x][y] <= kernel[KX-1][y-1];
+                            kernel[t][x+(y*KX)] <= kernel[t][(x-1)+(y*KX)];
                         end
                     end
-                    else begin
-                        kernel[x][y] <= kernel[x-1][y];
-                    end
                 end
+            end
+        end
+    end
+    
+    always_comb begin
+        for (y=0; y<KY; y++) begin
+            for (x=0; x<KX; x++) begin
+                buffer_node[x+(y*KX)] = buffer[x][y];
             end
         end
     end
@@ -93,65 +108,66 @@ module convolution_calc # (
     end
     
     // handle computation
-    genvar i,j;
+    genvar i,j,k;
     generate
         begin
-            if (WIDTHI > (KX * KY)) begin
-                always_comb begin
-                    add_items[WIDTHI-1:(KX*KY)] = ZERO[WIDTH-1:0];
-                end
+            if (NUM_KERNELS == 1) begin
+                sum_of_products # (
+                                    .EXP(EXP),
+                                    .MANT(MANT),
+                                    .WIDTH(WIDTH),
+                                    .NUM(KX*KY),
+                                    .ADDER_PIPELINE(ADDER_PIPELINE)
+                                )
+                                sop1 (
+                                    .clock(clock),
+                                    .clock_sreset(clock_sreset),
+                                    .data_valid(enable_calc),
+                                    .dataa(kernel[0]),
+                                    .datab(buffer_node),
+                                    .result_valid(result_valid),
+                                    .result(result)
+                                );
             end
-            for (j=0; j<KY; j++) begin : my
-                for (i=0; i<KX; i++) begin : mx
-                    if ((i == 0) && (j == 0))
-                        fp_mlt  # (
+            else begin
+                logic [NUM_KERNELS-1:0] sop_result_valid;
+                logic [NUM_KERNELS-1:0][WIDTH-1:0] sop_result;
+                for (i=0; i<NUM_KERNELS; i++) begin : index
+                sum_of_products # (
                                     .EXP(EXP),
                                     .MANT(MANT),
-                                    .WIDTH(WIDTH)
+                                    .WIDTH(WIDTH),
+                                    .NUM(KX*KY),
+                                    .ADDER_PIPELINE(ADDER_PIPELINE)
                                 )
-                                mlt (
+                                sop1 (
                                     .clock(clock),
                                     .clock_sreset(clock_sreset),
                                     .data_valid(enable_calc),
-                                    .dataa(kernel[KX-i-1][KY-j-1]),
-                                    .datab(buffer[i][j]),
-                                    .result_valid(mlt_valid),
-                                    .result(add_items[i+(j*KX)])
-                                );
-                    else
-                        fp_mlt  # (
-                                    .EXP(EXP),
-                                    .MANT(MANT),
-                                    .WIDTH(WIDTH)
-                                )
-                                mlt (
-                                    .clock(clock),
-                                    .clock_sreset(clock_sreset),
-                                    .data_valid(enable_calc),
-                                    .dataa(kernel[KX-i-1][KY-j-1]),
-                                    .datab(buffer[i][j]),
-                                    .result_valid(),
-                                    .result(add_items[i+(j*KX)])
+                                    .dataa(kernel[i]),
+                                    .datab(buffer_node),
+                                    .result_valid(sop_result_valid[i]),
+                                    .result(sop_result[i])
                                 );
                 end
+                fp_add_tree     # (
+                                    .EXP(EXP),
+                                    .MANT(MANT),
+                                    .ITEMS(2**$clog2(NUM_KERNELS)),
+                                    .WIDTH(WIDTH),
+                                    .EXTRA_PIPELINE(ADDER_PIPELINE)
+                                )
+                                (
+                                    .clock(clock),
+                                    .clock_sreset(clock_sreset),
+                                    .data_valid(sop_result_valid[0]),
+                                    .data(sop_result),
+                                    .result_valid(result_valid),
+                                    .result(result)
+                                );
             end
         end
     endgenerate
     
-    fp_add_tree                 # (
-                                    .EXP(EXP),
-                                    .MANT(MANT),
-                                    .WIDTH(WIDTH),
-                                    .ITEMS(WIDTHI), 
-                                    .EXTRA_PIPELINE(ADDER_PIPELINE)
-                                )
-                                adder_tree (
-                                    .clock(clock),
-                                    .clock_sreset(clock_sreset),
-                                    .data_valid(mlt_valid),
-                                    .data(add_items),
-                                    .result_valid(result_valid),
-                                    .result(result)
-                                );
     
 endmodule

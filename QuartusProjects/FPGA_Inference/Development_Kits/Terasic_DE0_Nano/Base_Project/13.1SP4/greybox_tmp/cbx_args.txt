@@ -1,0 +1,3 @@
+DEVICE_FAMILY="Cyclone IV E"
+oscena
+clkout

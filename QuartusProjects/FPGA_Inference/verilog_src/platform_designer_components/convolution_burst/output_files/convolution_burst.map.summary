@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Aug 27 15:42:20 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : convolution_burst
+Top-level Entity Name : convolution_burst
+Family : Cyclone IV E
+Total logic elements : 3,657
+    Total combinational functions : 2,938
+    Dedicated logic registers : 1,737
+Total registers : 1737
+Total pins : 316
+Total virtual pins : 0
+Total memory bits : 32,320
+Embedded Multiplier 9-bit elements : 9
+Total PLLs : 0

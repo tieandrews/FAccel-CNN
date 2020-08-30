@@ -1,0 +1,1 @@
+Info (10281): Verilog HDL Declaration information at convolution_burst.sv(6): object "PAD" differs only in case from object "pad" in the same scope File: C:/Quartus_Projects/FPGA_Inference/verilog_src/platform_designer_components/convolution_burst/convolution_burst.sv Line: 6

@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7  "> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8  "> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+    <!--<![endif]-->
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=9,edge" />
+        <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script>
+// akam-sw.js install script version 1.3.3
+"serviceWorker"in navigator&&"find"in[]&&function(){var e=new Promise(function(e){"complete"===document.readyState||!1?e():(window.addEventListener("load",function(){e()}),setTimeout(function(){"complete"!==document.readyState&&e()},1e4))}),n=window.akamServiceWorkerInvoked,r="1.3.3";if(n)aka3pmLog("akam-setup already invoked");else{window.akamServiceWorkerInvoked=!0,window.aka3pmLog=function(){window.akamServiceWorkerDebug&&console.log.apply(console,arguments)};function o(e){(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"sm.sw.s":e,"sm.sw.v":r}])}var i="/akam-sw.js",a=new Map;navigator.serviceWorker.addEventListener("message",function(e){var n,r,o=e.data;if(o.isAka3pm)if(o.command){var i=(n=o.command,(r=a.get(n))&&r.length>0?r.shift():null);i&&i(e.data.response)}else if(o.commandToClient)switch(o.commandToClient){case"enableDebug":window.akamServiceWorkerDebug||(window.akamServiceWorkerDebug=!0,aka3pmLog("Setup script debug enabled via service worker message"),p());break;case"boomerangMQ":o.payload&&(window.BOOMR_mq=window.BOOMR_mq||[]).push(o.payload)}aka3pmLog("akam-sw message: "+JSON.stringify(e.data))});var t=function(e){return new Promise(function(n){var r,o;r=e.command,o=n,a.has(r)||a.set(r,[]),a.get(r).push(o),navigator.serviceWorker.controller&&(e.isAka3pm=!0,navigator.serviceWorker.controller.postMessage(e))})},c=function(e){return t({command:"navTiming",navTiming:e})},s=null,m={},d=function(){var e=i;return s&&(e+="?othersw="+encodeURIComponent(s)),function(e,n){return new Promise(function(r,i){aka3pmLog("Registering service worker with URL: "+e),navigator.serviceWorker.register(e,n).then(function(e){aka3pmLog("ServiceWorker registration successful with scope: ",e.scope),r(e),o(1)}).catch(function(e){aka3pmLog("ServiceWorker registration failed: ",e),o(0),i(e)})})}(e,m)},g=ServiceWorkerContainer.prototype.register;if(ServiceWorkerContainer.prototype.register=function(n,r){return n.includes(i)?g.call(this,n,r):(aka3pmLog("Overriding registration of service worker for: "+n),s=new URL(n,window.location.href),m=r,navigator.serviceWorker.controller?new Promise(function(n,r){var o=navigator.serviceWorker.controller.scriptURL;if(o.includes(i)){var a=encodeURIComponent(s);o.includes(a)?(aka3pmLog("Cancelling registration as we already integrate other SW: "+s),navigator.serviceWorker.getRegistration().then(function(e){n(e)})):e.then(function(){aka3pmLog("Unregistering existing 3pm service worker"),navigator.serviceWorker.getRegistration().then(function(e){e.unregister().then(function(){return d()}).then(function(e){n(e)}).catch(function(e){r(e)})})})}else aka3pmLog("Cancelling registration as we already have akam-sw.js installed"),navigator.serviceWorker.getRegistration().then(function(e){n(e)})}):g.call(this,n,r))},navigator.serviceWorker.controller){var u=navigator.serviceWorker.controller.scriptURL;u.includes("/akam-sw.js")||u.includes("/akam-sw-preprod.js")||u.includes("/threepm-sw.js")||(aka3pmLog("Detected existing service worker. Removing and re-adding inside akam-sw.js"),s=new URL(u,window.location.href),e.then(function(){navigator.serviceWorker.getRegistration().then(function(e){m={scope:e.scope},e.unregister(),d()})}))}else e.then(function(){window.akamServiceWorkerPreprod&&(i="/akam-sw-preprod.js"),d()});if(window.performance){var w=window.performance.timing,l=w.responseEnd-w.responseStart;c(l)}e.then(function(){t({command:"pageLoad"})});var k=!1;function p(){window.akamServiceWorkerDebug&&!k&&(k=!0,aka3pmLog("Initializing debug functions at window scope"),window.aka3pmInjectSwPolicy=function(e){return t({command:"updatePolicy",policy:e})},window.aka3pmDisableInjectedPolicy=function(){return t({command:"disableInjectedPolicy"})},window.aka3pmDeleteInjectedPolicy=function(){return t({command:"deleteInjectedPolicy"})},window.aka3pmGetStateAsync=function(){return t({command:"getState"})},window.aka3pmDumpState=function(){aka3pmGetStateAsync().then(function(e){aka3pmLog(JSON.stringify(e,null,"\t"))})},window.aka3pmInjectTiming=function(e){return c(e)},window.aka3pmUpdatePolicyFromNetwork=function(){return t({command:"pullPolicyFromNetwork"})})}p()}}();</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XA8CUFJXGwICUVdbAggH",licenseKey:"241cd578b8",applicationID:"12569590"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{c.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(22),c={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(c.console=!0,i.indexOf("dev")!==-1&&(c.dev=!0),i.indexOf("nr_dev")!==-1&&(c.nrDev=!0))}catch(s){}c.nrDev&&o.on("internal-error",function(t){r(t.stack)}),c.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),c.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(c,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,c){try{p?p-=1:i(c||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,s.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:s.now();o("err",[t,n])}var o=t("handle"),a=t(23),c=t("ee"),s=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;s.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(9),t(8),"addEventListener"in window&&t(5),s.xhrWrappable&&t(10),d=!0)}c.on("fn-start",function(t,e,n){d&&(p+=1)}),c.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),c.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),c.on("internal-error",function(t){o("ierr",[t,s.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var i=t("ee"),o=t("handle"),a=t(9),c=t(8),s="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(7),"addEventListener"in window&&t(5);var x=NREUM.o.EV;i.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),i.on(w,function(t,e){var n=t[0];n instanceof x&&o("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),this.bstType])}),c.on(m,function(){this.bstStart=y.now()}),c.on(w,function(t,e){o(v,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),i.on(g+p,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),i.on(g+h,function(t){o("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+s]?window.performance[f](u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["c"+s]()},!1):window.performance[f]("webkit"+u,function(t){o(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+s]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){c.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),c=t("wrap-function")(a,!0),s=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=s(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?c(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var c=r.apply(this,t);return i.emit(n+"start",[t,a],c),c.then(function(t){return i.emit(n+"end",[null,t],c),t},function(t){throw i.emit(n+"end",[t],c),t})})}var i=t("ee").get("fetch"),o=t(23),a=t(22);e.exports=i;var c=window,s="fetch-",f=s+"body-",u=["arrayBuffer","blob","json","text","formData"],d=c.Request,l=c.Response,p=c.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(c,"fetch",s),i.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(s+"done",[null,e],n)}else i.emit(s+"done",[t],n)}))},{}],7:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],8:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],9:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),c="setTimeout",s="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[c,"setImmediate"],c+d),a.inPlace(window,[s],s+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(s+u,r),o.on(c+u,i)},{}],10:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",c)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",c)}function o(t){y.push(t),h&&(b?b.then(a):w?w(a):(E=-E,R.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function c(t,e){return e}function s(t,e){for(var n in t)e[n]=t[n];return e}t(5);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new p(t);try{u.emit("new-xhr",[e],e),e.addEventListener(v,i,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(s(p,x),x.prototype=p.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",c),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!w&&!m){var E=1,R=document.createTextNode(E);new h(a).observe(R,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],11:[function(t,e,n){function r(t){if(!c(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),w=Date.now(),v={spanId:h,traceId:m,timestamp:w};return(t.sameOrigin||s(t)&&l())&&(v.traceContextParentHeader=i(h,m),v.traceContextStateHeader=o(h,w,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&s(t)&&d())&&(v.newrelicHeader=a(h,m,w,n,r,f)),v}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",c=1,s="",f="";return i+"@nr="+o+"-"+c+"-"+n+"-"+r+"-"+t+"-"+a+"-"+s+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var c={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(c.d.tk=o),btoa(JSON.stringify(c))}function c(t){return f()&&s(t)}function s(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(19),h=t(13);e.exports={generateTracePayload:r,shouldGenerateTrace:c}},{}],12:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),c("xhr",[e,n,this.startTime]))}}function i(t,e){var n=s(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=s(e),t.sameOrigin=t.parsedOrigin.sameOrigin}function o(t,e){t.params.status=e.status;var n=w(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable){var c=t("handle"),s=t(13),f=t(11).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(17),m=t(16),w=t(14),v=window.XMLHttpRequest;a.features.xhr=!0,t(10),t(6),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,t.addEventListener("load",function(n){o(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var c=0;c<l;c++)e.addEventListener(d[c],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof v&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof v&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof v&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url&&(n=t[0].url),n&&(this.parsedOrigin=s(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)})}},{}],13:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,c=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||c),"/"===i.pathname&&(r[t]=i),i}},{}],14:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(16);e.exports=r},{}],15:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[f.now()].concat(c(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(22),c=t(23),s=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,e){u[e]=i(l+e,!0,"api")}),u.addPageAction=i(l+"addPageAction",!0),u.setCurrentRouteName=i(l+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(p+"tracer",[f.now(),t,n],r),function(){if(s.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw s.emit("fn-err",[arguments,this,t],n),t}finally{s.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=i(p+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,f.now(),!1,e])}},{}],16:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],17:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],18:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof h&&!w){var e=Math.round(t.timeStamp),n={type:t.type};e<=l.now()?n.fid=l.now()-e:e>l.offset&&e<=Date.now()?(e-=l.offset,n.fid=l.now()-e):e=l.now(),w=!0,d("timing",["fi",e,n])}}function c(t){d("pageHide",[l.now(),t])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var s,f,u,d=t("handle"),l=t("loader"),p=t(21),h=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(m){}f=new PerformanceObserver(i);try{f.observe({entryTypes:["largest-contentful-paint"]})}catch(m){}u=new PerformanceObserver(o);try{u.observe({type:"layout-shift",buffered:!0})}catch(m){}}if("addEventListener"in document){var w=!1,v=["click","keydown","mousedown","pointerdown","touchstart"];v.forEach(function(t){document.addEventListener(t,a,!1)})}p(c)}},{}],19:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",c=0;c<o.length;c++)i=o[c],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(31)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],20:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,s=c.match(a);s&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=s[1])}e.exports={agent:i,version:o,match:r}},{}],21:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],22:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],23:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],24:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?s(t,c,o):o()}function n(n,r,i,o){if(!l.aborted||o){t&&t(n,r,i);for(var a=e(i),c=m(n),s=c.length,f=0;f<s;f++)c[f].apply(a,r);var d=u[y[n]];return d&&d.push([x,n,r,a]),a}}function p(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function w(t){return d[t]=d[t]||i(n)}function v(t,e){f(t,function(t,n){e=e||"feature",y[n]=e,e in u||(u[e]=[])})}var g={},y={},x={on:p,addEventListener:p,removeEventListener:h,emit:n,get:w,listeners:m,context:e,buffer:v,abort:a,aborted:!1};return x}function o(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var c="nr@context",s=t("gos"),f=t(22),u={},d={},l=e.exports=i();l.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=b.info=NREUM.info,e=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(y,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+b.offset],null,"api"),s("timing",["load",n]);var r=p.createElement("script");r.src="https://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===p.readyState&&o()}function o(){s("mark",["domContent",a()+b.offset],null,"api")}function a(){return R.exists&&performance.now?Math.round(performance.now()):(c=Math.max((new Date).getTime(),c))-b.offset}var c=(new Date).getTime(),s=t("handle"),f=t(22),u=t("ee"),d=t(20),l=window,p=l.document,h="addEventListener",m="attachEvent",w=l.XMLHttpRequest,v=w&&w.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:w,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1177.min.js"},x=w&&v&&v[h]&&!/CriOS/.test(navigator.userAgent),b=e.exports={offset:c,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(15),t(18),p[h]?(p[h]("DOMContentLoaded",o,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",i),l[m]("onload",r)),s("mark",["firstbyte",c],null,"api");var E=0,R=t(24)},{}],"wrap-function":[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var i=t("ee"),o=t(23),a="nr@original",c=Object.prototype.hasOwnProperty,s=!1;e.exports=function(t,e){function n(t,e,n,i){function nrWrapper(){var r,a,c,s;try{a=this,r=o(arguments),c="function"==typeof n?n(r,a):n||{}}catch(f){l([f,"",[r,a,i],c])}u(e+"start",[r,a,i],c);try{return s=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],c),d}finally{u(e+"end",[r,a,s],c)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,i,o){i||(i="");var a,c,s,f="-"===i.charAt(0);for(s=0;s<e.length;s++)c=e[s],a=t[c],r(a)||(t[c]=n(a,f?c+i:i,o,c))}function u(n,r,i){if(!s||e){var o=s;s=!0;try{t.emit(n,r,i,e)}catch(a){l([a,n,r,i])}s=o}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){l([r])}for(var i in t)c.call(t,i)&&(e[i]=t[i]);return e}function l(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=i),n.inPlace=f,n.flag=a,n}},{}]},{},["loader",2,12,4,3]);</script>
+<link rel="alternate" type="application/rss+xml" title="Comments for &quot;&quot;" href="https://www.cypress.com/crss/node/315681" />
+<!--[if lte IE 8]><script src="/sites/all/modules/contrib/personalize/js/personalize.ie8.js" />
+</script><![endif]--><link rel="shortcut icon" href="https://www.cypress.com/sites/all/themes/cypress_3/favicon-32.png" type="image/png" />
+<link href="https://www.cypress.com/documentation/datasheets/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb" rel="alternate" hreflang="en-us" />
+<script type="text/javascript">var _sj = _sj || [];
+    _sj.push(['company', '1512596478779573395']);
+    _sj.push(['collection', 'www-cypress-com']);
+    (function () {
+      var sj = document.createElement('script');
+      sj.type = 'text/javascript';
+      sj.async = true;
+      sj.src = '//cdn.sajari.com/js/sj.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(sj, s);
+    })();</script>
+<meta name="description" content="S27KL0641/S27KS0641/S70KL1281/S70KS1281, 3.0 V/1.8 V, 64 Mb (8 MB)/128 Mb (16 MB), HyperRAM Self-Refresh DRAM" />
+<meta name="keywords" content="S27KL0641, S27KS0641, S70KL1281, S70KS1281, 3.0 V, 1.8 V, 64 Mb, 8 MB, HyperRAM, 128 Mb, 16 MB, Self-Refresh, DRAM" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="canonical" href="https://www.cypress.com/documentation/datasheets/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb" />
+<link rel="shortlink" href="https://www.cypress.com/node/315681" />
+        <title>S27KL0641/S27KS0641/S70KL1281/S70KS1281, 3.0 V/1.8 V, 64 Mb (8 MB)/128 Mb (16 MB), HyperRAM™ Self-Refresh DRAM </title>
+        <link rel="apple-touch-icon" sizes="57x57" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/manifest.json">
+        <link rel="mask-icon" href="https://www.cypress.com/sites/all/themes/cypress_3/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="https://www.cypress.com/sites/all/themes/cypress_3/favicons/mstile-144x144.png">
+        <meta name="msapplication-config" content="https://www.cypress.com/sites/all/themes/cypress_3/favicons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        <link href="/sites/all/themes/cypress_3/stylesheets/open_sans.css" rel="stylesheet" type="text/css">
+        <meta name="application-name" content="Cypress Semiconductor">
+        
+<!--[if gt IE 8]><!-->
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__stU9YLLqfoH7RiXZ2eJoytj5UhjVSf8rYnyIc8kkrQ4__fauYyyvF0euGZRVJ38ntTlKbadjD9m9UHOD4qJw-AQM__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+<!--<![endif]-->
+
+<!--[if gt IE 8]><!-->
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__Q3-AoNH8ZqlULXLKGt-oZTsa9K4zitsIXMMl_K2BSww__Viet1ZXiWKrG8jha3oKqoT-fzAz_7Z6EqB1_H1cFJ_0__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+<!--<![endif]-->
+
+<!--[if gt IE 8]><!-->
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__TLAcmK8neJRTsMvyKe9XKh2dGGz8XkqUqlp5t4kwW4w__O3Z7Q8Wrfj1jqDAnC4OReD1faSl2MmPCUzvnjPRhXzE__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+<!--<![endif]-->
+
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__UOH-4GMseLRREK3QkaBMaqmq9N5C5yPw-TMbbvKilg8__xsTm7BClmXUA0eDq4ktRz-tswsGc3ABZBogycikrg9Y__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+<![endif]-->
+
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__M7V0C6BPCQ_krL-w6BZTIuzbEhbXE98LtgmzGcvn42Y__EbK8OzFcteB5AYDf5yoGXtGGBu2bHRL5KXg_CprowUE__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+<![endif]-->
+
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__mmxQLQYaf1dYv4gX5vvB1_S3eVIAydLAEIN_7bPrcb0__RKyEJxWXRoZEu2Zxq7NYXdS0SboVeLezN7zCHt58AQ4__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__uLUQAN-al3ih9vFVpIpaRRkCYShNeCaaLnsGTf0MaAQ__Gdg2KcS38EdTH0nwRQXEr7gqkCPXBTW1ruqVLB7rrOE__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__Bqg1SDmp9CAe6XEIkqmrkRsGk0iHTZHCcB95hCAlYnY__pvxzJdEyVw_5TVP2BBc6RFQHZTlmfsgpKtyMTJgxw8o__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__F8W27KOrsDsqVGRZLcePqVnDYk5-fvmYg3-yJEUMSZU__8jO5k-R8atvxni_W57jLMGhFzaXpYbU1EtggurjPVC4__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+<style type="text/css" media="all">
+/* <![CDATA[ */
+#sliding-popup.sliding-popup-bottom,#sliding-popup.sliding-popup-bottom .eu-cookie-withdraw-banner,.eu-cookie-withdraw-tab{background:#002431;}#sliding-popup.sliding-popup-bottom.eu-cookie-withdraw-wrapper{background:transparent}#sliding-popup .popup-content #popup-text h1,#sliding-popup .popup-content #popup-text h2,#sliding-popup .popup-content #popup-text h3,#sliding-popup .popup-content #popup-text p,.eu-cookie-compliance-secondary-button,.eu-cookie-withdraw-tab{color:#ffffff !important;}.eu-cookie-withdraw-tab{border-color:#ffffff;}
+#sliding-popup.sliding-popup-bottom,#sliding-popup.sliding-popup-bottom .eu-cookie-withdraw-banner,.eu-cookie-withdraw-tab{background:#002431;}#sliding-popup.sliding-popup-bottom.eu-cookie-withdraw-wrapper{background:transparent}#sliding-popup .popup-content #popup-text h1,#sliding-popup .popup-content #popup-text h2,#sliding-popup .popup-content #popup-text h3,#sliding-popup .popup-content #popup-text p,.eu-cookie-compliance-secondary-button,.eu-cookie-withdraw-tab{color:#ffffff !important;}.eu-cookie-withdraw-tab{border-color:#ffffff;}
+
+/* ]]> */
+</style>
+<link type="text/css" rel="stylesheet" href="/sites/default/files/advagg_css/css__aQqMI6L1sENL3NXeOYD7vnNVUMPkeyGZebx9ceBRawk__ZFCECX9XS8OqU8pIEaRsgtsgju0Ceapd86QZwR5Ah7Q__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.css" media="all" />
+                <style>
+          html {-webkit-font-smoothing: antialiased;}
+        </style>
+    
+  <script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"","rua.cook":"false","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false"}]);</script>
+  <script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="T2KQE-3VVPC-85M3U-NBBDE-WU38P",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"T2KQE-3VVPC-85M3U-NBBDE-WU38P",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write("<bo"+'dy onload="document._l();">'),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="cookiepresent",n="3nmxg3lil6mr4x2jyyca-f-39633fd95-clientnsv4-s.akamaihd.net",i={"ak.v":"28","ak.cp":"706871","ak.ai":parseInt("234074",10),"ak.ol":"0","ak.cr":20,"ak.ipv":4,"ak.proto":"h2","ak.rid":"32e8c6cf","ak.r":25001,"ak.a2":e,"ak.m":"dsca","ak.n":"essl","ak.bpcip":"219.89.115.0","ak.cport":64658,"ak.gh":"219.88.207.69","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.csrc":"-","ak.acc":"","ak.t":"1598670340","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==2WzZCw9EKVliOeQmwnKEx6l5/nXs/8oxHddR6GL+vu7MFTZPn/GwNp1I8XMji4ZlDxTwIf/acCSz24QCt2ycsZeamJFgNa1kHpP2ip++pcNx1ZXipg6W1TZoNW5vNvPkhbN/jTU3InUvCViS94hPzfEOD7P9Q9J0my+TYlWQ94ptIcdCfQgYrfR8g8NuJvWUszlOMpdud6ybeOtj3pDX/FfbFLZ2gDYC3YUcksfaJvtZ+TJTQ27oMUx7YV5nSTcpKRp7GI2Q+XC3j24OARR+7x9w7Hecioqi1ZqCfaEtxo0A8gMcuhZbHorFG0O2q9OsOi+ZFAoqoxlMXvBSV14mjCa5jYOPQNhaTK+wJkkZIIY1/YtTF1efknaSWgyGnzNCtJr9nSestJe0XIm1YmGgnt5uZrdC6RAHmX2SPofuFwM=","ak.pv":"116","ak.dpoabenc":""};if(""!==t)i["ak.ruds"]=t;var _={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))i["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(i)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.r","ak.acc","ak.t"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:i,akDNSPreFetchDomain:n,init:function(){if(!_.i){var a=BOOMR.subscribe;a("before_beacon",_.av,null,null),a("onbeacon",_.rv,null,null),_.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script><script>bazadebezolkohpepadr="906530155"</script><script type="text/javascript" src="https://www.cypress.com/akam/11/36088cec" defer></script></head>
+    <body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-315681 node-type-document  " >
+        <header class="center mw8 cf relative ph3">
+  <div class="logoHeader">
+          <a class = "link" href="/" title="Home" rel="home">
+      <img class = "cyp-logo" alt="Cypress Semiconductor" src="/sites/all/themes/cypress_3/images/cypress.png">
+</a>
+      </div>
+  <div class="searchMenuHeader">
+    <div class="c3-light-type top-0 right-1 f6 positiionSearchMenuHeader" style="top:1.5rem">
+      <div class="searchHeader">
+        <div class="w7 ba dib pa2 br2 b--light-silver">
+          <div class="panel-pane pane-block pane-cy-google-cypress-search-block"  >
+  
+      
+  
+  <div class="pane-content">
+    <div id='nav-search-sajari' class='nav-search-sajari'>
+                      <div data-reactroot='' class='sj-search-holder-outer'>
+                        <div class='sj-search-holder-inner'>
+                          <span class='sj-search-input-wrapper'>
+                            <input type='text' class='sj-search-bar-input-common' placeholder='Enter Your Keywords' value=''>
+                           </span>
+                        </div>
+                      </div>
+                    </div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="menuNearSearch">
+        <div class="positionMenuNearSearch">
+                      <div class="panel-pane pane-menu-tree pane-header-menu"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="menu-block-wrapper menu-block-ctools-header-menu-1 menu-name-header-menu parent-mlid-0 menu-level-1">
+  <ul class="menu"><li class="first leaf menu-mlid-838886"><a href="https://community.cypress.com" class="community-icon">Community</a></li>
+<li class="expanded menu-mlid-838891"><a href="/" class="language-icon">English</a><ul class="menu"><li class="first leaf menu-mlid-838901"><a href="https://www.cypress.com/documentation/datasheets/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb">English</a></li>
+<li class="leaf menu-mlid-838916"><a href="https://korea.cypress.com/documentation/datasheets/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb">Korean</a></li>
+<li class="leaf menu-mlid-838906"><a href="https://china.cypress.com/documentation/datasheets/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb">Chinese</a></li>
+<li class="last leaf menu-mlid-838911"><a href="https://japan.cypress.com/documentation/datasheets/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb">Japanese</a></li>
+</ul></li>
+<li class="last leaf menu-mlid-838896"><a href="https://secure.cypress.com/?app=cart&amp;source=header">Cart</a></li>
+</ul></div>
+  </div>
+
+  
+  </div>
+<div class="dib relative"><span class='login-with-dropdown login-menu-btn link dim c3-grey-type'><a href="/user/login?destination=node/315681">Log in</a></span></div>                  </div>
+      </div>
+    </div>
+    <nav class="pt5 dib f5 fr nav-menu cypress-main-menu" style="padding-top: 5.5rem;">
+              <ul class = "list pl0 pt1 mv0">
+  <li class = "dib  solutions-menu-btn ">
+  <a class = "c3-tracked link pb2 ttu c3-dark-type dib mr3 b ba--c3-red border-hover bw2"  href="/solutions">
+    Solutions  </a>
+</li>
+<div id="solutions-menu-content" class="top-0 left-0 w-100 c3-bg-navy dropdown-menu dn z-999" style="top: 8rem;">
+    <div class="mw8 center pv1 ph5 bg-white o-100 cf f"><div class="solutions-overview-megamenu"><a class="mega-group-title link dim c3-dark-type" href="/solution">
+    Solutions Overview  </a></div>    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="4" data-hidewcol="0" id="tb-megamenu-column-2" class="tb-megamenu-column span4  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-4">
+     <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/iot-advantedge">
+    IoT-AdvantEdge  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/internet-things-iot">
+    Internet of Things (IoT)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/5g-solutions">
+    5G Solutions  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/solutions/automotive-solutions">
+    Automotive  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-1" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-4">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/instrument-cluster">
+    Instrument Cluster  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/body-and-comfort-electronics">
+    Body and Comfort Electronics  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/infotainment">
+    Infotainment  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/adassafety-systems">
+    ADAS/Safety Systems  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+
+<div  data-class="" data-width="4" data-hidewcol="" id="tb-megamenu-column-4" class="tb-megamenu-column span4  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-1">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/solutions/industrial-solutions">
+    Industrial  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-3" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-6">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/industry-automation">
+    Industry 4.0  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/smart-healthcare">
+    Smart Healthcare  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/smart-appliances">
+    Smart Appliances  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/smart-grid">
+    Smart Grid  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/vision-systems">
+    Vision Systems  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/test-and-measurement">
+    Test and Measurement  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+
+<div  data-class="" data-width="4" data-hidewcol="" id="tb-megamenu-column-6" class="tb-megamenu-column span4  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-1">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/solutions/consumer-solutions">
+    Consumer  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-5" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-4">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/wearables-solutions">
+    Wearables  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/smart-home">
+    Smart Home  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/personal-electronics">
+    Personal Electronics  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/solutions/remote-controls">
+    Remote Controls  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+
+<div  data-class="" data-width="4" data-hidewcol="" id="tb-megamenu-column-7" class="tb-megamenu-column span4  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-1">
+     <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="/functional-safety">
+    Functional Safety  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+<div class="mw8 center bg-white pb5 tc">
+          <img class="h1 close-nav" src="/sites/all/themes/cypress_3/images/main-nav-caret.svg" alt="Close">
+        </div></div></div>
+<li class = "dib dropdown products-menu-btn ">
+  <a class = "c3-tracked link pb2 ttu c3-dark-type dib mr3 b pb2 ba--c3-red border-hover bw2"  href="#">
+    Products  </a>
+</li>
+<div id="products-menu-content" class="top-0 left-0 w-100 c3-bg-navy dropdown-menu dn z-999" style="top: 8rem;">
+    <div class="mw8 center pv1 ph5 bg-white o-100 cf f">    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="4" data-hidewcol="0" id="tb-megamenu-column-10" class="tb-megamenu-column span4  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-2">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/products/wireless-connectivity">
+    Wireless  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-8" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-8">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/wi-fi-bluetooth-combos">
+    Wi-Fi + Bluetooth Combos  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/wi-fi">
+    Wi-Fi  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/wireless-mcus">
+    Wireless MCUs  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/ble-bluetooth">
+    BLE & Bluetooth  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/automotive-wireless">
+    Automotive Wireless  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/modustoolbox-software-environment">
+    ModusToolbox  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/wiced-software">
+    WICED SDK  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/wireless-connectivity">
+    All Wireless Devices  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+
+   <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/products/microcontrollers-mcus">
+    Microcontrollers (MCUs)  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-9" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-4">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/32-bit-arm-cortex-microcontroller-mcu-families">
+    Arm Cortex 32-bit MCUs  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/automotive-mcus">
+    Automotive MCUs  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/8-bit-and-16-bit-proprietary-microcontrollers-mcus">
+    8-bit and 16-bit MCUs  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/psoc-software">
+    PSoC MCU Software  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+
+<div  data-class="" data-width="4" data-hidewcol="" id="tb-megamenu-column-14" class="tb-megamenu-column span4  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-3">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/products/universal-serial-bus-usb">
+    Universal Serial Bus (USB)  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-11" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-5">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/usb-type-c-and-power-delivery">
+    USB Type-C and Power Delivery  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/superspeed-usb-hubs">
+    USB Hub Controllers  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/superspeed-usb-peripherals">
+    Peripheral Controllers  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/other-usb-controllers">
+    Other USB Products  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/universal-serial-bus-usb">
+    All USB Devices  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+
+   <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/products/power-management">
+    Power Management ICs  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-12" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-2">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/energy-harvesting-pmics">
+    Energy Harvesting PMICs  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/automotive-power-management-ics-pmics">
+    Automotive PMICs  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+
+   <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/products/cypress-sensing-technologies">
+    Cypress Sensing Technologies  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-13" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-4">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/capsense-1">
+    CapSense®  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/magsense">
+    MagSense™  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/automotive-truetouch">
+    Automotive TrueTouch  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/truetouch-fingerprint-reader">
+    Fingerprint  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+
+<div  data-class="" data-width="4" data-hidewcol="" id="tb-megamenu-column-16" class="tb-megamenu-column span4  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-3">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/products/high-performance-memories-embedded-systems">
+    Memory  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-15" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-15">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/semper">
+    Semper™ NOR Flash  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/sempersecure">
+    Semper™ Secure NOR Flash  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/serial-nor-flash-memory">
+    Serial (QSPI) NOR Flash  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/parallel-nor-flash-memory">
+    Parallel NOR Flash  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/hyperram-20-memory">
+    HyperRAM 2.0 Memory  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/hyperbus-memory">
+    HyperBus Memory  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/f-ram-nonvolatile-ferroelectric-ram">
+    F-RAM (Ferroelectric RAM)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/excelon-fram">
+    Excelon F-RAM (Ferroelectric RAM)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/nvsram-nonvolatile-sram">
+    nvSRAM (Nonvolatile SRAM)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/asynchronous-sram">
+    Asynchronous SRAM  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/synchronous-sram">
+    Synchronous SRAM  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/aerospace-defense">
+    Aerospace & Defense  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/other-memories">
+    Other Memories  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/known-good-die-known-good-wafer-memory-solutions">
+    Wafer/Die Solutions  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/products/embedded-flash-memory-technology">
+    Embedded Flash IP  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+
+   <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="/products/timing-solutions">
+    Timing Solutions  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="/products/interface">
+    Interface  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+<div class="mw8 center bg-white pb5 tc">
+          <img class="h1 close-nav" src="/sites/all/themes/cypress_3/images/main-nav-caret.svg" alt="Close">
+        </div></div></div>
+<li class = "dib  dropdown design-menu-btn ">
+  <a class = "c3-tracked link pb2 ttu c3-dark-type dib mr3 b ba--c3-red border-hover bw2"  href="/support">
+    Design Support  </a>
+</li>
+<div id="design-menu-content" class="top-0 left-0 w-100 c3-bg-navy dropdown-menu dn z-999" style="top: 8rem;">
+    <div class="mw8 center pv1 ph5 bg-white o-100 cf f">    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="3" data-hidewcol="0" id="tb-megamenu-column-18" class="tb-megamenu-column span3  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-1">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="#">
+    Support  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-17" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-12">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://community.cypress.com/welcome">
+    Community  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/support">
+    Customer Support  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/mycases">
+    Create a Support Case  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://community.cypress.com/community/topics/knowledge-base-articles?search_api_views_fulltext=&field_related_products_parents_all=All&order=changed&sort=desc">
+    Knowledge Base  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/about-us/sales-offices">
+    Sales Offices  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/customer-care">
+    Customer Care  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/search/cross">
+    Competitor Cross Reference  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/design-partner-program">
+    Design Partners  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/node/509496">
+    Chipset Partners  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://community.cypress.com/community/product-forums/wireless/partners">
+    IoT Partner Solutions  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/leadtimeguide">
+    Leadtime Guide  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/webform/website-support">
+    Report a Website Problem  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+
+<div  data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-21" class="tb-megamenu-column span3  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-2">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="#">
+    Training  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-19" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-6">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/workshops">
+    Design Workshops  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/training">
+    Video Tutorials  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/university-alliance">
+    University Alliance  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/video-library">
+    Video Library  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/blog">
+    Blogs  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/webinars">
+    Webinars  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+
+   <li class = "tb-megamenu-item level-2 mega mega-group active">
+  <a class = "mega-group-title link dim c3-dark-type"  href="#">
+    Quality  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-20" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-4">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/support/quality-reliability">
+    Quality and Reliability  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega active">
+  <a class = " link dim c3-dark-type"  href="/packaging">
+    Packaging  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/pcn">
+    Product Change Notices  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/support/rohs">
+    Environmental Compliance  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+
+<div  data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-24" class="tb-megamenu-column span3  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-2">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="#">
+    Software & Tools  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-22" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-10">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/sdc">
+    Software and Drivers  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/psoc-programming-solutions">
+    MCU, Clock, and USB Device Programming  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/device-programmer-system-partners">
+    Device Programmer System Partners  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/search/all?f[0]=meta_type%3Asoftware_tools&f[1]=software_tools_meta_type%3A579">
+    Code Examples  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/node/508016">
+    WICED Software  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/modustoolbox-software-environment">
+    ModusToolbox  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/products/psoc-creator-integrated-design-environment-ide">
+    PSoC Creator  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="/documentation/software-and-drivers/ez-usb-fx3-software-development-kit">
+    EZ-USB FX3 SDK  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/search/all?f[0]=meta_type%3Asoftware_tools&f[1]=software_tools_meta_type%3A577&f%255B1%255D=software_tools_meta_type%3A577">
+    Development Kits  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/search/all?f[0]=meta_type%3Asoftware_tools&f[1]=software_tools_meta_type%3A519?f%5B0%5D=meta_type%3Asoftware_tools&f%5B1%5D=software_tools_meta_type%3A519">
+    Reference designs  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+
+   <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="#">
+    Documentation  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-23" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-4">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/search/all?f[0]=meta_type%3Atechnical_documents">
+    Document Search  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/product-roadmaps">
+    Product Roadmaps  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/search/all?sort_by=changed&f[0]=meta_type%3Atechnical_documents&f[1]=resource_meta_type%3A574">
+    Application Notes  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/search/all?f[0]=meta_type%3Atechnical_documents&f[1]=resource_meta_type%3A575">
+    Datasheets  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+
+<div  data-class="" data-width="3" data-hidewcol="" id="tb-megamenu-column-27" class="tb-megamenu-column span3  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-2">
+     <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="/functional-safety">
+    Functional Safety  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-25" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-4">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/FunctionalSafety_MCU">
+    MCU  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/FunctionalSafety_Software">
+    Software  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/FunctionalSafety_Memory">
+    Memory  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/FunctionalSafety_PMIC">
+    PMIC  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+
+   <li class = "tb-megamenu-item level-2 mega mega-group">
+  <a class = "mega-group-title link dim c3-dark-type"  href="#">
+    Product Selector Guide  </a>
+</li>
+    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-26" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-2 items-7">
+     <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/BT-BLEPSG">
+    BLE & Bluetooth Silicon  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/PSoCPSG">
+    Microcontrollers (MCUs)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/CapSensePSG">
+    Touch Sensing (CapSense)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/USBPSG">
+    Universal Serial Bus (USB)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/MemoryPSG">
+    Memory  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/ClockBufferPSG">
+    Clocks & Buffers  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-3 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.cypress.com/InterfacePSG">
+    Interface  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+</ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+<div class="mw8 center bg-white pb5 tc">
+          <img class="h1 close-nav" src="/sites/all/themes/cypress_3/images/main-nav-caret.svg" alt="Close">
+        </div></div></div>
+<li class = "dib  dropdown buy-menu-btn ">
+  <a class = "c3-tracked link pb2 ttu c3-dark-type dib mr3 b ba--c3-red border-hover bw2"  href="/buy">
+    Buy & Sample  </a>
+</li>
+<div id="buy-menu-content" class="top-0 left-0 w-100 c3-bg-navy dropdown-menu dn z-999" style="top: 8rem;">
+    <div class="mw8 center pv1 ph5 bg-white o-100 cf f">    <div class = "w-100  center pa3">
+    <div class="mega-dropdown-inner">
+      <div  class="tb-megamenu-row row-fluid">
+  <div  data-class="" data-width="12" data-hidewcol="0" id="tb-megamenu-column-28" class="tb-megamenu-column span12  mega-col-nav">
+  <div class="tb-megamenu-column-inner mega-inner clearfix">
+        <ul  class="tb-megamenu-subnav mega-nav level-1 items-4">
+     <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="/cypress-store">
+    Devices (Cypress Store)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="/cypress-franchised-distributors">
+    Devices (Distributors)  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.rocelec.com/">
+    Obsolete Inventory Rochester  </a>
+</li>
+  
+   <li class = "tb-megamenu-item level-2 mega">
+  <a class = " link dim c3-dark-type"  href="https://www.flipelectronics.com/index.html">
+    Obsolete Inventory FLIP  </a>
+</li>
+  </ul>
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+
+<div class="mw8 center bg-white pb5 tc">
+          <img class="h1 close-nav" src="/sites/all/themes/cypress_3/images/main-nav-caret.svg" alt="Close">
+        </div></div></div>
+<li class = "dib  dropdown cypress3-menu-btn ">
+  <a class = "c3-tracked link pb2 ttu c3-dark-type dib b ba--c3-red border-hover bw2 "  href="/about-cypress">
+    About Cypress  </a>
+</li>
+  </ul>
+          </nav>
+  </div>
+</header>
+<section id = "cyp-submenu" class = "submenu w-100 tb-megamenu">
+
+</section>
+
+<main role="main">
+  <div class="panel-panel">
+    <div class="panel-pane pane-page-breadcrumb"  >
+  
+      
+  
+  <div class="pane-content">
+    <h2 class="element-invisible">You are here</h2><div class="breadcrumb"><span class="inline odd first"><a href="/">Home</a></span> <span class="delimiter">&rsaquo;</span> <span class="inline even"><a href="/search/all?f%5B0%5D=meta_type%3Atechnical_documents">Technical Documents</a></span> <span class="delimiter">&rsaquo;</span> <span class="inline odd"><a href="/search/all?f%5B0%5D=meta_type%3Atechnical_documents&amp;f%5B1%5D=resource_meta_type%3A575">Datasheets</a></span> <span class="delimiter">&rsaquo;</span> <span class="inline even last">S27KL0641/S27KS0641/S70KL1281/S70KS1281, 3.0 V/1.8 V, 64 Mb (8 MB)/128 Mb (16 MB), HyperRAM™ Self-Refresh DRAM</span></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-page-content"  id="productstickycontent" >
+  
+        <h2 class="pane-title">
+      S27KL0641/S27KS0641/S70KL1281/S70KS1281, 3.0 V/1.8 V, 64 Mb (8 MB)/128 Mb (16 MB), HyperRAM™ Self-Refresh DRAM | Cypress Semiconductor    </h2>
+    
+  
+  <div class="pane-content">
+    <div id="block-system-main" class="block block-system" data-personalize-entity-id="block/4271">
+
+    
+  <div class="content">
+    <section class="body-page-wrapper">
+  <div class="container">
+      <div class="columns-wrapper">
+                          <div class="left-side panel-panel">
+              <div class="panel-pane pane-node-content datasheets"  >
+  
+        <h1 class="pane-title">
+      S27KL0641/S27KS0641/S70KL1281/S70KS1281, 3.0 V/1.8 V, 64 Mb (8 MB)/128 Mb (16 MB), HyperRAM™ Self-Refresh DRAM    </h1>
+    
+  
+  <div class="pane-content">
+    <div  about="/documentation/datasheets/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb" typeof="sioc:Item foaf:Document" class="ds-1col node node-document node-promoted view-mode-full clearfix">
+
+  
+  <div class="field field-name-changed-date field-type-ds field-label-inline clearfix"><div class="field-label">Last Updated:&nbsp;</div><div class="field-items"><div class="field-item even">May 29, 2020</div></div></div><div class="field field-name-field-version field-type-text field-label-inline clearfix"><div class="field-label">Version:&nbsp;</div><div class="field-items"><div class="field-item even">*M</div></div></div><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>HyperBus™ products use the high performance HyperBus for connection between a host system master and one or more slave interfaces. HyperBus is used to connect microprocessor, microcontroller, or ASIC devices with random access NOR Flash memory, RAM, or peripheral devices. HyperBus is an interface that draws upon the legacy features of both parallel and serial interface memories, while enhancing system performance, ease of design, and system cost reduction. Parallel flash and PSRAM have long been the standard for simple interface, high performance, random access memory, used for embedded system code execution and data storage. However, parallel interface memory requires a high signal count with separate control, address, and data connections that involve 45 or more signals. There have been parallel interface variations that reduce the signal count by multiplexing some address and data signals yet, may still involve 20 or more signals.</p>
+<p>These high signal counts provide high data throughput but, at the cost of many connectors on the host system processor or ASIC and, higher cost multi-layer Printed Circuit Boards (PCB) that suffer from signal routing congestion. Many systems have moved to use of serial interface memories in order to reduce the number of signals needed for the connection to memory and to free up host system connections for use by other features or to reduce package and multi-layer PCB cost. However, serial memories generally have lower data throughput or longer random access time, which may relegate serial memories to the role of mainly transferring code and data to DRAM memory for random access and high throughput. But, such shadowing architectures cause a duplication of memory space that means paying twice for memory, once for non-volatile serial memory and again for additional DRAM to access the code and data during system operation.</p>
+<p>HyperBus has a low signal count, Double Data Rate (DDR) interface, that achieves high read and write throughput while reducing the number of device I/O connections and signal routing congestion in a system. HyperBus memories provide the fast random access of a parallel interface, for code eXecution-in-Place (XiP) directly from flash memory, to reduce or eliminate duplication of memory space between non-volatile and volatile memories in the system.</p>
+</div></div></div></div>
+
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-translate-note"  >
+  
+      
+  
+  <div class="pane-content">
+    Translated documents are for reference only. We recommend that you refer to the English-language version of a document if you are engaged in development of a design.  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-views-panes pane-related-files-panel-pane-1 general-table"  >
+  
+        <h2 class="pane-title">
+      Related Files    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-related-files view-id-related_files view-display-id-panel_pane_1 view-dom-id-3cae37098bc432b740e44e600a875273">
+        
+  
+  
+      <div class="view-content">
+      <table  class="views-table cols-4">
+         <thead>
+      <tr>
+                  <th  class="views-field views-field-rendered" scope="col">
+            File Title          </th>
+                  <th  class="views-field views-field-field-language" scope="col">
+            Language          </th>
+                  <th  class="views-field views-field-filesize" scope="col">
+            Size          </th>
+                  <th  class="views-field views-field-timestamp" scope="col">
+            Last Updated          </th>
+              </tr>
+    </thead>
+    <tbody>
+          <tr  class="odd views-row-first">
+                  <td  class="views-field views-field-rendered">
+            <span class="file"><img class="file-icon" alt="" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="/file/183506/download" type="application/pdf; length=1813875" ga-attr="file-183506" class="pardotTrackClick" target="_blank">S27KL0641/S27KS0641/S70KL1281/S70KS1281, 3.0 V/1.8 V, 64 Mb (8 MB)/128 Mb (16 MB), HyperRAM™ Self-Refresh DRAM.pdf</a></span>          </td>
+                  <td  class="views-field views-field-field-language">
+            English          </td>
+                  <td  class="views-field views-field-filesize">
+            1.73 MB          </td>
+                  <td  class="views-field views-field-timestamp">
+            05/28/2020          </td>
+              </tr>
+          <tr  class="even">
+                  <td  class="views-field views-field-rendered">
+            <span class="file"><img class="file-icon" alt="" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="/file/327356/download" type="application/pdf; length=4811680" ga-attr="file-327356" class="pardotTrackClick" target="_blank">S27KL0641, S27KS0641 HyperRAM™ Self-Refresh DRAM 3.0V/1.8V 64 Mbit (8 Mbyte) Datasheet (Chinese).pdf</a></span>          </td>
+                  <td  class="views-field views-field-field-language">
+            Chinese          </td>
+                  <td  class="views-field views-field-filesize">
+            4.59 MB          </td>
+                  <td  class="views-field views-field-timestamp">
+            11/21/2016          </td>
+              </tr>
+          <tr  class="odd views-row-last">
+                  <td  class="views-field views-field-rendered">
+            <span class="file"><img class="file-icon" alt="" title="application/pdf" src="/modules/file/icons/application-pdf.png" /> <a href="/file/322796/download" type="application/pdf; length=2065894" ga-attr="file-322796" class="pardotTrackClick" target="_blank">S27KL0641/S27KS0641/S70KL1281/S70KS1281, 3.0 V/1.8 V, 64 Mb (8 MB)/128 Mb (16 MB), HyperRAM™ Self-Refresh DRAM (Japanese).pdf</a></span>          </td>
+                  <td  class="views-field views-field-field-language">
+            Japanese          </td>
+                  <td  class="views-field views-field-filesize">
+            1.97 MB          </td>
+                  <td  class="views-field views-field-timestamp">
+            06/22/2020          </td>
+              </tr>
+      </tbody>
+</table>
+    </div>
+  
+  
+  
+  
+      <div class="view-footer">
+      <p>Need help? Ask a question and find answers in the <a href="/forum">Cypress Developer Community Forums</a>. </p>
+<p class="notice">Low/intermittent bandwidth users tip: Firefox and Chrome browsers will allow downloads to be resumed if your connection is lost during download.</p>
+    </div>
+  
+  
+</div>  </div>
+
+  
+  </div>
+            </div>
+                          <div class="right-side  sidebar panel-panel">
+              <div class="panel-pane pane-views-panes pane-related-products-panel-pane-1 sidebar"  >
+  
+        <h2 class="pane-title">
+      Related Pages    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-related-products view-id-related_products view-display-id-panel_pane_1 view-dom-id-1713ef057cc2a97c3d9de19191df8f54">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/products/128mb-512mb-30v-hyperflash-kl-and-64mb-hyperram-mcp-hyperbus-interface">3V HyperFlash and HyperRAM MCP</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/products/64mb-18v-hyperram-ks-memory-hyperbus-interface">64Mb 1.8V HyperRAM (KS) Memory with HyperBus Interface</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd views-row-last">
+      
+  <div class="views-field views-field-name">        <span class="field-content"><a href="/products/64mb-30v-hyperram-kl-memory-hyperbus-interface">64Mb 3.0V HyperRAM (KL) Memory with HyperBus Interface</a></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-views-panes pane-documents-related-parts-sidebar sidebar"  >
+  
+        <h2 class="pane-title">
+      Related Parts    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-Documents view-id-Documents view-display-id-related_parts_sidebar view-dom-id-996f73d7c74b96f563f0381a357c7330">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabha020">S27KL0641DABHA020</a></span>  </div>  </div>
+  <div class="views-row views-row-2 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabha023">S27KL0641DABHA023</a></span>  </div>  </div>
+  <div class="views-row views-row-3 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabha030">S27KL0641DABHA030</a></span>  </div>  </div>
+  <div class="views-row views-row-4 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabha033">S27KL0641DABHA033</a></span>  </div>  </div>
+  <div class="views-row views-row-5 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabhb020">S27KL0641DABHB020</a></span>  </div>  </div>
+  <div class="views-row views-row-6 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabhb023">S27KL0641DABHB023</a></span>  </div>  </div>
+  <div class="views-row views-row-7 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabhb030">S27KL0641DABHB030</a></span>  </div>  </div>
+  <div class="views-row views-row-8 views-row-even">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabhb033">S27KL0641DABHB033</a></span>  </div>  </div>
+  <div class="views-row views-row-9 views-row-odd">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabhi020">S27KL0641DABHI020</a></span>  </div>  </div>
+  <div class="views-row views-row-10 views-row-even views-row-last">
+      
+  <div class="views-field views-field-title">        <span class="field-content"><a href="/part/s27kl0641dabhi023">S27KL0641DABHI023</a></span>  </div>  </div>
+    </div>
+  
+      <div class="item-list"><ul class="pager"><li class="pager-previous first">&nbsp;</li>
+<li class="pager-current">Page 1</li>
+<li class="pager-next last"><a href="/documentation/datasheets/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb?page=1">››</a></li>
+</ul></div>  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+            </div>
+              </div>
+        </div>
+</section>
+  </div>
+</div>
+  </div>
+
+  
+  </div>
+  </div>
+</main>
+
+<section class="c3-bg-lightest-grey mw-100 pa3 pa5-ns">
+  <div class="mw8 mw6-m center cf">
+            <div class="panel-pane pane-block pane-menu-menu-footer-applications fl w-100 w-50-m w-25-l pa3"  >
+  
+        <h2 class="pane-title">
+      <a href="/solution">Solutions</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/solutions/automotive-solutions" class="link dim c3-dark-type lh-list">Automotive</a></li>
+<li class="leaf"><a href="/solutions/industrial-solutions" class="link dim c3-dark-type lh-list">Industrial</a></li>
+<li class="last leaf"><a href="/solutions/consumer-solutions" class="link dim c3-dark-type lh-list">Consumer</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-menu-menu-footer-products fl w-100 w-50-m w-25-l pa3"  >
+  
+        <h2 class="pane-title">
+      <a href="/products">Products</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/products/wireless-connectivity" class="link dim c3-dark-type">Wireless</a></li>
+<li class="leaf"><a href="/products/microcontroller-mcu-and-programmable-system-chip-psoc-families" class="link dim c3-dark-type">Microcontrollers (MCUs)</a></li>
+<li class="leaf"><a href="/products/high-performance-memories-embedded-systems" class="link dim c3-dark-type">Memory</a></li>
+<li class="leaf"><a href="/products/universal-serial-bus-usb" class="link dim c3-dark-type">Universal Serial Bus (USB)</a></li>
+<li class="leaf"><a href="/products/power-management" class="link dim c3-dark-type">Power Management</a></li>
+<li class="leaf"><a href="/products/cypress-sensing-technologies" class="link dim c3-dark-type">Touch Sensing</a></li>
+<li class="last leaf"><a href="/products/timing-solutions" class="link dim c3-dark-type">Clocks &amp; Buffers</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-menu-menu-footer-support fl w-100 w-50-m w-25-l pa3"  >
+  
+        <h2 class="pane-title">
+      <a href="/support">Design Support</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="https://community.cypress.com/welcome" class="link dim c3-dark-type">Community</a></li>
+<li class="leaf active-trail"><a href="/video-library" class="link dim c3-dark-type active-trail active">Videos</a></li>
+<li class="leaf"><a href="/support/quality-reliability" class="link dim c3-dark-type">Quality &amp; Reliability</a></li>
+<li class="last leaf"><a href="https://www.cypress.com/product-roadmaps" class="link dim c3-dark-type">Product Roadmaps</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-panels-mini pane-menus-buy-and-about-us fl w-100 w-50-m w-25-l pa3"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="panel-flexible panels-flexible-76906 clearfix" id="mini-panel-menus_buy_and_about_us">
+<div class="panel-flexible-inside panels-flexible-76906-inside">
+<div class="panels-flexible-region panels-flexible-region-76906-center panels-flexible-region-first panels-flexible-region-last">
+  <div class="inside panels-flexible-region-inside panels-flexible-region-76906-center-inside panels-flexible-region-inside-first panels-flexible-region-inside-last">
+<div class="panel-pane pane-block pane-menu-menu-footer-about-us"  >
+  
+        <h2 class="pane-title">
+      <a href="/about-cypress">About Us</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="http://investors.cypress.com/" class="link dim c3-dark-type lh-list">Investors</a></li>
+<li class="last leaf"><a href="https://jobs.cypress.com/" class="link dim c3-dark-type lh-list">Careers</a></li>
+</ul>  </div>
+
+  
+  </div>
+  </div>
+</div>
+</div>
+</div>
+  </div>
+
+  
+  </div>
+      </div>
+</section>
+
+<footer class="mw-100 c3-bg-navy white pa3 pa5-ns">
+  <div class="mw8 mw6-m center cf">
+            <div class="panel-pane pane-fieldable-panels-pane pane-current-3651 pane-bundle-text"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="fieldable-panels-pane">
+    <div class="field field-name-field-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><style type="text/css">
+<!--/*--><![CDATA[/* ><!--*/
+.more-search-options legend span {
+background-color: none !important;    
+color: #005696;
+    display: inline-block;
+    font-weight: 700;
+    padding: 0.3125rem 0.625rem;
+}
+
+/*--><!]]>*/
+</style><div class="fl w-100 w-50-m w-25-l pa3">
+<h5 class="lh-copy f6 ttu mb1">Corporate Headquarters</h5>
+<p class="lh-copy f6 mv0 ml1 fw1">Cypress Semiconductor Corp.<br />198 Champion Court<br />San Jose, CA 95134 USA<br />Tel: +1-408-943-2600</p>
+</div>
+<div class="fl w-100 w-50-m w-25-l pa3">
+<h5 class="lh-copy f6 ttu mb1">Customer Service Support</h5>
+<p class="lh-copy f6 mv0 ml1 fw1">+1-800-541-4736<br />Hours:<br />8:00AM - 5:00PM (local time)<br /><a class="link white dim normal" href="/mycases">Create a MyCase</a><br /><a class="link white dim normal" href="https://community.cypress.com/">Cypress Developer Community</a></p>
+</div>
+<div class="fl w-100 w-50-m w-25-l pa3">
+<h5 class="lh-copy f6 ttu mb1">International Support</h5>
+<p class="lh-copy f6 mv0 ml1 fw1">+1-408-943-2600<br />United States +1-800-541-4736<br />Hours:<br />4:30AM - 1:30PM (pacific time)<br />7:30PM - 4:30AM (standard time)</p>
+</div>
+<div class="fl w-100 w-50-m w-25-l pa3">
+<h5 class="lh-copy f6 ttu mb1">Other Requests</h5>
+<p class="lh-list f6 mv0 ml1"><a class="link white dim" href="/contact-us">Contact Us</a><br /><a class="link white dim" href="/webform/website-support">Report a Website Problem</a><br /><a class="link white dim" href="/report-security-vulnerabilities">Report a Security Vulnerability</a></p>
+</div>
+</div></div></div></div>
+  </div>
+
+  
+  </div>
+      </div>
+  <div class="center tc">
+            <ul class="menu"><li class="first leaf"><a href="/about-cypress" class="link white dim b">ABOUT US</a></li>
+<li class="leaf"><a href="https://jobs.cypress.com/" class="link white dim b">Careers</a></li>
+<li class="leaf"><a href="http://investors.cypress.com/" class="link white dim b">Investors</a></li>
+<li class="last leaf"><a href="/cypress-legal" class="link white dim b">LEGAL</a></li>
+</ul>
+<div class="panel-separator"></div><div class="panel-pane pane-fieldable-panels-pane pane-current-3656 pane-bundle-text"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="fieldable-panels-pane">
+    <div class="field field-name-field-body field-type-text-long field-label-hidden"><div class="field-items"><div class="field-item even"><div><a href="https://www.facebook.com/CypressSemi"><img class="h2 svg social-icon facebook-icon" id="facebook-icon" src="https://www.cypress.com/sites/all/themes/cypress_3/images/social-icons/facebook.svg" /></a><a href="https://www.linkedin.com/company/cypress-semiconductor"><img class="h2 svg social-icon linkedin-icon" id="linkedin-icon" src="https://www.cypress.com/sites/all/themes/cypress_3/images/social-icons/linkedin.svg" /></a><a href="https://twitter.com/cypresssemi"><img class="h2 svg social-icon twitter-icon" id="twitter-icon" src="https://www.cypress.com/sites/all/themes/cypress_3/images/social-icons/twitter.svg" /></a><a href="https://www.youtube.com/user/cypresssemi"><img class="h2 svg social-icon youtube-icon" id="youtube-icon" src="https://www.cypress.com/sites/all/themes/cypress_3/images/social-icons/youtube.svg" /></a></div>
+<p class="f6 mt4">© Cypress Semiconductor Corporation. All rights reserved.</p>
+</div></div></div></div>
+  </div>
+
+  
+  </div>
+          </div>
+</footer>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:"743199",hjsv:"6"};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r)})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.google_analytics_domain_name=".cypress.com";window.google_analytics_uacct="UA-1700029-20";
+//--><!]]>
+</script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__uOaFunfXR7NTTNOS9uWS1cIhz-GuwC3uO-CiTcgcGOE__rmx-dKLr06LitEs6TNAYQvhrpLcVqpAgvlb65oJcGuM__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.migrateMute=true;jQuery.migrateTrace=false;
+//--><!]]>
+</script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__OnAoEAp0Rsga-BuDShn0CSnwPApni1CPJmiEmVnmhdE__y3tHGM-fgo2Yv-gdD4yRqg9Cm3Dlv9dHw10_rdyX0n8__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+document.createElement("picture");
+//--><!]]>
+</script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__Oa1C9ltqIH_bpgeBBY62kUlxPVGwK0cBt_FW2j4VTf4___E7lGO-A9D3wo_Vwsb5lpBTQuKvYXMeAtAK9Z-MhvdM__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js"></script>
+<script type="text/javascript" async="async" src="//sadmin.brightcove.com/js/BrightcoveExperiences.js"></script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__stDRKDlp-7-yAbP820q4Z69_38tQuVh1yrZgRzIVngo__M7KRnKjXSKWhyVTDaBVqkEI_voT4WfzwdJyNnllxOJE__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i.GoogleAnalyticsObject=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-1700029-20",{cookieDomain:".cypress.com"});ga("require","linkid","linkid.js");ga("require","displayfeatures");ga("set","anonymizeIp",true);ga("set","dimension1","Memories for Embedded Systems");ga("set","dimension2","HyperBus Memory");ga("set","dimension3","3V HyperFlash and HyperRAM MCP, 64Mb 1.8V HyperRAM (KS) Memory with HyperBus Interface, 64Mb 3.0V HyperRAM (KL) Memory with HyperBus Interface");ga("set","dimension4","Document");ga("set","dimension10","Datasheets");ga("set","dimension11","Other");ga("set","page",location.pathname+location.search+location.hash);ga("send","pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__eNWg8okRBtO8MmsbJVitazYnL6LdXEZhlfZF-QhRw_U__iz_rsmAAC8OE-8c2Ii7IaEHb-I_wpNDSzhtkhsecS5E__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings,{basePath:"\/",pathPrefix:"",ajaxPageState:{theme:"cypress_3",theme_token:"OUjyRV_3yg3Or0GTBuwYAMgW_zm2qlaDMisLVnbcLXs",jquery_version:1.8999999999999999,css:{"sites\/all\/themes\/cypress\/css\/styles.css":1,"sites\/all\/themes\/cypress\/css\/styles-ie.css":1,"sites\/all\/themes\/cypress_3\/stylesheets\/styles.css":1,"sites\/all\/themes\/cypress_3\/stylesheets\/styles-ie.css":1,"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/contrib\/tipsy\/stylesheets\/tipsy.css":1,"misc\/ui\/jquery.ui.core.css":1,"misc\/ui\/jquery.ui.button.css":1,"misc\/ui\/jquery.ui.resizable.css":1,"misc\/ui\/jquery.ui.dialog.css":1,"sites\/all\/modules\/contrib\/calendar\/css\/calendar_multiday.css":1,"modules\/comment\/comment.css":1,"sites\/all\/modules\/custom\/cy_dilp\/cy_dilp.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/logintoboggan\/logintoboggan.css":1,"modules\/node\/node.css":1,"sites\/all\/modules\/contrib\/picture\/picture_wysiwyg.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"modules\/forum\/forum.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/back_to_top\/css\/back_to_top.css":1,"sites\/all\/modules\/contrib\/colorbox\/styles\/default\/colorbox_style.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"sites\/all\/modules\/contrib\/simple_dialog\/css\/simple_dialog.css":1,"sites\/all\/modules\/contrib\/tagclouds\/tagclouds.css":1,"sites\/all\/modules\/contrib\/views_tooltip\/views_tooltip.css":1,"sites\/all\/themes\/cypress_3\/plugins\/layouts\/two_columns\/two_columns.css":1,"sites\/all\/modules\/contrib\/eu_cookie_compliance\/css\/eu_cookie_compliance.css":1,"sites\/all\/themes\/cypress_3\/plugins\/layouts\/default_template\/default_template.css":1,"sites\/all\/modules\/contrib\/tb_megamenu\/css\/compatibility.css":1,"sites\/all\/modules\/contrib\/panels\/plugins\/layouts\/flexible\/flexible.css":1,"public:\/\/ctools\/css\/d0d93a79c5c39dd3a6c87e27d537cbcf.css":1,"0":1,"1":1,"sites\/all\/themes\/cypress_3\/material\/material-icons.css":1,"sites\/all\/themes\/cypress_3\/stylesheet\/system.menus.css":1,"sites\/all\/themes\/cypress_3\/stylesheet\/system.theme.css":1,"sites\/all\/themes\/cypress_3\/lity\/lity.min.css":1},js:{"https:\/\/www.cypress.com\/sites\/all\/themes\/cypress_3\/javascripts\/selectivizr-min.js":1,"sites\/all\/libraries\/modernizr\/modernizr-min.js":1,"sites\/all\/libraries\/flexslider\/jquery.flexslider.js":1,"sites\/all\/modules\/contrib\/personalize\/js\/personalize.storage.js":1,"sites\/all\/modules\/contrib\/personalize\/js\/promise-1.0.0.min.js":1,"sites\/all\/modules\/contrib\/personalize\/js\/personalize.js":1,"sites\/all\/modules\/contrib\/personalize\/js\/personalize.debug.js":1,"sites\/all\/modules\/contrib\/visitor_actions\/js\/visitor_actions.js":1,"sites\/all\/modules\/contrib\/picture\/picturefill2\/picturefill.min.js":1,"sites\/all\/modules\/contrib\/picture\/picture.min.js":1,"sites\/all\/modules\/contrib\/eu_cookie_compliance\/js\/eu_cookie_compliance.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery\/1.9\/jquery.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery-migrate\/1.2.1\/jquery-migrate.min.js":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/contrib\/tipsy\/javascripts\/jquery.tipsy.js":1,"sites\/all\/modules\/contrib\/tipsy\/javascripts\/tipsy.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.core.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.widget.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.effect.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.button.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.mouse.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.draggable.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.position.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.resizable.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.dialog.min.js":1,"sites\/all\/modules\/contrib\/eu_cookie_compliance\/js\/jquery.cookie-1.4.1.min.js":1,"sites\/all\/modules\/contrib\/jquery_update\/replace\/jquery.form\/3\/jquery.form.min.js":1,"misc\/jquery.ba-bbq.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/contrib\/jquery_update\/js\/jquery_update.js":1,"sites\/all\/modules\/contrib\/contentanalysis\/contentanalysis.js":1,"sites\/all\/modules\/contrib\/contentoptimizer\/contentoptimizer.js":1,"sites\/all\/modules\/contrib\/tablesorter\/tablesortervar.js":1,"sites\/all\/modules\/contrib\/back_to_top\/js\/back_to_top.js":1,"https:\/\/sadmin.brightcove.com\/js\/BrightcoveExperiences.js":1,"sites\/all\/modules\/contrib\/brightcove\/js\/events.js":1,"sites\/all\/libraries\/colorbox\/jquery.colorbox-min.js":1,"sites\/all\/modules\/contrib\/colorbox\/js\/colorbox.js":1,"sites\/all\/modules\/contrib\/colorbox\/styles\/default\/colorbox_style.js":1,"sites\/all\/modules\/contrib\/colorbox\/js\/colorbox_load.js":1,"sites\/all\/modules\/contrib\/simple_dialog\/js\/simple_dialog.js":1,"sites\/all\/libraries\/tablesorter\/jquery.tablesorter.min.js":1,"sites\/all\/libraries\/tablesorter\/jquery.metadata.js":1,"sites\/all\/libraries\/tablesorter\/addons\/pager\/jquery.tablesorter.pager.js":1,"sites\/all\/modules\/features\/cyp_ga\/js\/ga.js":1,"sites\/all\/modules\/contrib\/views\/js\/base.js":1,"misc\/progress.js":1,"sites\/all\/modules\/contrib\/views\/js\/ajax_view.js":1,"sites\/all\/modules\/contrib\/google_analytics\/googleanalytics.js":1,"sites\/all\/modules\/contrib\/google_analytics_et\/js\/google_analytics_et.js":1,"sites\/all\/modules\/custom\/cy_sfdc\/js\/sfdc.js":1,"sites\/all\/modules\/custom\/cy_dilp\/cy_dilp.js":1,"sites\/all\/modules\/contrib\/personalize\/modules\/personalize_elements\/js\/personalize_elements.js":1,"sites\/all\/modules\/contrib\/personalize\/modules\/personalize_taxonomy_context\/js\/personalize_taxonomy_context.js":1,"sites\/all\/modules\/contrib\/tb_megamenu\/js\/tb-megamenu-frontend.js":1,"sites\/all\/modules\/contrib\/tb_megamenu\/js\/tb-megamenu-touch.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/jquery.nicescroll.min.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/jquery.dataTables.min.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/dataTables.fixedColumns.min.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/jquery.touchSwipe.min.js":1,"sites\/all\/themes\/cypress_3\/lity\/lity.min.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/script.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/all.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/legacy.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/aboutus.js":1,"sites\/all\/themes\/cypress_3\/javascripts\/custom.js":1}},colorbox:{opacity:"0.85",current:"{current} of {total}",previous:"\u00ab Prev",next:"Next \u00bb",close:"Close",maxWidth:"98%",maxHeight:"98%",fixed:true,mobiledetect:true,mobiledevicewidth:"480px"},simpleDialog:{classes:"",defaults:"width:auto;height:auto;resizable:false;max-width:491px;position:[center,260];",selector:"load-dilp-response-data",title:"Sample \u0026 Buy"},tablesorter:{zebra:1,odd:"odd",even:"even"},tipsy:{custom_selectors:[{selector:".tipsy",options:{fade:1,gravity:"w",trigger:"hover",delayIn:"0",delayOut:"0",opacity:"1",offset:"0",html:0,tooltip_content:{source:"attribute",selector:"title"}}},{selector:".views-tooltip",options:{fade:1,gravity:"autoNS",trigger:"hover",delayIn:"400",delayOut:"0",opacity:"1",offset:"0",html:1,tooltip_content:{source:"attribute",selector:"tooltip-content"}}}]},cyp_ga:{"file-183506":{name:"S27KL0641\/S27KS0641\/S70KL1281\/S70KS1281, 3.0 V\/1.8 V, 64 Mb (8 MB)\/128 Mb (16 MB), HyperRAM\u2122 Self-Refresh DRAM.pdf",lang:"English",level:"",spec_num:"001-97964",version:"*M",attr:"file-183506"},ga_tracking_id:"UA-1700029-20",custom_dimensions:"ga(\u0022set\u0022, \u0022dimension1\u0022, \u0022Memories for Embedded Systems\u0022);ga(\u0022set\u0022, \u0022dimension2\u0022, \u0022HyperBus Memory\u0022);ga(\u0022set\u0022, \u0022dimension3\u0022, \u00223V HyperFlash and HyperRAM MCP, 64Mb 1.8V HyperRAM (KS) Memory with HyperBus Interface, 64Mb 3.0V HyperRAM (KL) Memory with HyperBus Interface\u0022);ga(\u0022set\u0022, \u0022dimension4\u0022, \u0022Document\u0022);ga(\u0022set\u0022, \u0022dimension10\u0022, \u0022Datasheets\u0022);ga(\u0022set\u0022, \u0022dimension11\u0022, \u0022Other\u0022);","file-327356":{name:"S27KL0641, S27KS0641 HyperRAM\u2122 Self-Refresh DRAM 3.0V\/1.8V 64 Mbit (8 Mbyte) Datasheet (Chinese).pdf",lang:"Chinese",level:"Beginner",spec_num:"001-99452",version:"*A",attr:"file-327356"},"file-322796":{name:"S27KL0641\/S27KS0641\/S70KL1281\/S70KS1281, 3.0 V\/1.8 V, 64 Mb (8 MB)\/128 Mb (16 MB), HyperRAM\u2122 Self-Refresh DRAM (Japanese).pdf",lang:"Japanese",level:"",spec_num:"001-99462",version:"*C",attr:"file-322796"}},better_exposed_filters:{views:{related_files:{displays:{panel_pane_1:{filters:[]}}},Documents:{displays:{document_related_resources:{filters:[]},document_related_resources_sidebar:{filters:[]},related_parts_sidebar:{filters:[]}}},related_products:{displays:{panel_pane_1:{filters:[]}}}}},views:{ajax_path:"\/views\/ajax",ajaxViews:{"views_dom_id:996f73d7c74b96f563f0381a357c7330":{view_name:"Documents",view_display_id:"related_parts_sidebar",view_args:"315681",view_path:"node\/315681",view_base_path:null,view_dom_id:"996f73d7c74b96f563f0381a357c7330",pager_element:0}}},urlIsAjaxTrusted:{"\/views\/ajax":true},back_to_top:{back_to_top_button_trigger:"100",back_to_top_button_text:"Back to top","#attached":{library:[["system","ui"]]}},eu_cookie_compliance:{popup_enabled:1,popup_agreed_enabled:0,popup_hide_agreed:0,popup_clicking_confirmation:1,popup_scrolling_confirmation:0,popup_html_info:"\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Cp\u003E\u003Cspan\u003ECypress uses cookies to enhance the user experience and collect visitor statistics. When you use this website, you are accepting our use of cookies.\u003C\/span\u003E\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EAccept and Close\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button agree-button eu-cookie-compliance-default-button\u0022\u003ERead Our Cookie Policy\u003C\/button\u003E\n                \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E",use_mobile_message:false,mobile_popup_html_info:"\u003Cdiv\u003E\n  \u003Cdiv class =\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n          \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022agree-button eu-cookie-compliance-default-button\u0022\u003EAccept and Close\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button agree-button eu-cookie-compliance-default-button\u0022\u003ERead Our Cookie Policy\u003C\/button\u003E\n                \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n",mobile_breakpoint:"768",popup_html_agreed:"\u003Cdiv\u003E\n  \u003Cdiv class=\u0022popup-content agreed\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EThank you for accepting cookies\u003C\/h2\u003E\n\u003Cp\u003EYou can now hide this message or find out more about cookies.\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022hide-popup-button eu-cookie-compliance-hide-button\u0022\u003EHide\u003C\/button\u003E\n              \u003Cbutton type=\u0022button\u0022 class=\u0022find-more-button eu-cookie-compliance-more-button-thank-you\u0022 \u003EMore info\u003C\/button\u003E\n          \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E",popup_use_bare_css:false,popup_height:"auto",popup_width:"100%",popup_delay:1e3,popup_link:"https:\/\/www.cypress.com\/cookie-policy",popup_link_new_window:1,popup_position:null,popup_language:"en",store_consent:false,better_support_for_screen_readers:0,reload_page:0,domain:"",popup_eu_only_js:0,cookie_lifetime:"100",cookie_session:false,disagree_do_not_show_popup:0,method:"default",whitelisted_cookies:"",withdraw_markup:"\u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-tab\u0022\u003EPrivacy settings\u003C\/button\u003E\n\u003Cdiv class=\u0022eu-cookie-withdraw-banner\u0022\u003E\n  \u003Cdiv class=\u0022popup-content info\u0022\u003E\n    \u003Cdiv id=\u0022popup-text\u0022\u003E\n      \u003Ch2\u003EWe use cookies on this site to enhance your user experience\u003C\/h2\u003E\n\u003Cp\u003EYou have given your consent for us to set cookies.\u003C\/p\u003E\n    \u003C\/div\u003E\n    \u003Cdiv id=\u0022popup-buttons\u0022\u003E\n      \u003Cbutton type=\u0022button\u0022 class=\u0022eu-cookie-withdraw-button\u0022\u003EWithdraw consent\u003C\/button\u003E\n    \u003C\/div\u003E\n  \u003C\/div\u003E\n\u003C\/div\u003E\n",withdraw_enabled:false},googleanalytics:{trackMailto:1,trackColorbox:1,trackDomainMode:"1",trackUrlFragments:1},googleAnalyticsETSettings:{selectors:[{event:"click",selector:".ui-tabs-anchor",category:"Product Page Tab",action:"Click",label:"!text",value:"0",noninteraction:false},{event:"click",selector:"div.view-slideshow div.read-more\u003Ea",category:"Home Page Banner",action:"Click Through",label:"!href",value:"0",noninteraction:false},{event:"click",selector:"a:contains(\u0027Download All Videos\u0027)",category:"Downloads",action:"Video-Series",label:"!currentPage",value:"0",noninteraction:true},{event:"click",selector:"div.pane-cyp-videos-cyp-videos-download-link",category:"Downloads",action:"Video-Single",label:"!currentPage",value:"0",noninteraction:true},{event:"click",selector:".ui-memoryppt-anchor",category:"Powerpoint",action:"Click",label:"!text",value:"0",noninteraction:false},{event:"click",selector:"div.broadcom-accordion div.broadcom-accordion-heading\u003Ea",category:"IoT Page Accordion",action:"Click",label:"!text",value:"0",noninteraction:false},{event:"click",selector:"div.broadcom-accordion-panel div.links\u003Ea ",category:"Accordion Buttons",action:"Click",label:"!text",value:"0",noninteraction:false},{event:"click",selector:".ui-memoryicons-anchor",category:"Memory-Icon-Clicks",action:"Click",label:"!text",value:"0",noninteraction:false},{event:"click",selector:".ui-memoryproductspsg-anchor",category:"Memory-Products-PSG-Clicks",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".ui-memorypsg-anchor",category:"Memory-PSG-Clicks",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".c3-bg-quicklinks\u003Ea",category:"CY3.0 Quick Links Section ",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".contactbutton\u003Ea ",category:"CY3.0 Solutions Contact",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".product-card\u003Ea",category:"CY3.0 Products Section",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".psoccommunitybutton\u003Ea",category:"CY3.0 PSoC6 Community Button",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".solution-card\u003Ea",category:"CY3.0 Solutions Section",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:"div.aspect-ratio--4x3\u003Ea",category:"CY3.0 Featured Section",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:"div\u003Eh5\u003Ea[data-lity=\u0027\u0027]",category:"CY3.0 Videos Section",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".JoinPSoC6Community\u003Ea",category:"JoinPSoC6Community",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:"div.view-cypresfronttpopup  div.views-field-field-brightcove-video div.field-content \u003E a",category:"Home Page Video",action:"Click Through",label:"!href",value:"0",noninteraction:false},{event:"click",selector:"div.view-cypresfronttpopup div.views-field-field-brightcove-video div.field-content div#brightcove-caption",category:"Home Page Video Title",action:"Click Through",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".IFXCY-D1-Products",category:"IFXCY-D1-Products",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".IFXCY-D1-Solutions",category:"IFXCY-D1-Solutions",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:".nw-infi-banner-cy",category:"IFXCY-Button-Click",action:"Click",label:"!href",value:"0",noninteraction:false},{event:"click",selector:"div.mystuff div.fl-ns\u003Ea",category:"CY Home Page Banner Click",action:"Click Through",label:"!href",value:"0",noninteraction:false}],settings:{debug:false}},cy_sfdc:{url:"mycases",newWindow:false},sajari:"www-cypress-com",personalize:{optionPreselectParam:"personalize-preselection",controlOptionName:"control-variation",controlOptionLabel:"Control variation",cacheExpiration:{decisions:"session"},debugMode:true},personalize_elements:[],personalize_taxonomy_context:{vocabularies:{documentation:"Datasheets",products:"3V HyperFlash and HyperRAM MCP,64Mb 1.8V HyperRAM (KS) Memory with HyperBus Interface,64Mb 3.0V HyperRAM (KL) Memory with HyperBus Interface",spec_numbers:"001-97964"}},visitor_actions:{currentPath:"node\/315681",actions:{scroll_to_bottom:{event:"scrollToBottom",actionable_element:"page"}},actionableElementTypes:[{type:"page",selector:null},{type:"form",selector:"form[action]"},{type:"base_form",selector:"form[action]"},{type:"link",selector:"a[href]"}],pageContext:{InternalPath:"node\/315681",RequestPath:"documentation\/datasheets\/s27kl0641s27ks0641s70kl1281s70ks1281-30-v18-v-64-mb-8-mb128-mb-16-mb",Taxonomy:{Documentation:["Datasheets"],Products:["3V HyperFlash and HyperRAM MCP","64Mb 1.8V HyperRAM (KS) Memory with HyperBus Interface","64Mb 3.0V HyperRAM (KL) Memory with HyperBus Interface"],"Spec Numbers":["001-97964"]},ContentType:"document"}}});
+//--><!]]>
+</script>
+<script type="text/javascript" defer="defer" src="/sites/all/themes/cypress_3/javascripts/selectivizr-min.js?qfcmxd"></script>
+<script type="text/javascript" src="/sites/all/libraries/modernizr/modernizr-min.js?qfcmxd"></script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__lDrU0yOS3n6m-aDgTH5D6f8azu3LECY0P7-xUga40cU__E9EDPiDiw0YycgEasRXzwwmgZc1CviHYGRw9a69YdvU__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js"></script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__am_dh3yBJn35BnBDJUy1Vcga1yWcBu9GUjd1UaG3wOQ__YW1vsCg_k7mpJOfmC5nhiCVOEYsawhVWoMvkgAgwxlg__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js" defer="defer"></script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__MedvnjsdrTk5uwzM5jvV9bA49SExXbxvKf_a7nn7me8__3UlIcZMkkMVUYtW5vK9871V7k5Y_NE-yNME1DbsXcxQ__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js"></script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__GM3GJPR36rRIz0TRkjC5OQwrioSyN9aoYRivDhCO_AM__rsBqCFJwKwRP0WjVkbFtviU0WADPbs_Xpqt6HK1B9ws__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js" async="async"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function euCookieComplianceLoadScripts(){}
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var eu_cookie_compliance_cookie_name="";
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function euCookieComplianceLoadScripts(){}
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var eu_cookie_compliance_cookie_name="";
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+piAId='778183';piCId='2143';piHostname='pi.pardot.com';(function(){function async_load(){var s=document.createElement('script');s.type='text/javascript';s.src=('https:'==document.location.protocol?'https://pi':'http://cdn')+'.pardot.com/pd.js';var c=document.getElementsByTagName('script')[0];c.parentNode.insertBefore(s,c)};if(window.attachEvent){window.attachEvent('onload',async_load)}else window.addEventListener('load',async_load,false)})();
+//--><!]]>
+</script>
+<script type="text/javascript" src="/sites/default/files/advagg_js/js__WcTpt-w0y1FyXrxZNriX8Ts1KjsFTDpdvZaw9yhRn24__aFJpdvsZPb1v9rWrq-WXbz_WQ9IThQN-mFTCdm1cfXc__xTSPJ3sSRrJCTsXcEJKTiiV0b1C91axf7FB3OU-7m8Q.js"></script>
+    <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"241cd578b8","applicationID":"12569590","transactionName":"Ml0DbUtTXkoCUk0PDgsXIkxKRl9UTEFYAQQ6VQBXWFVVSzxfVgIEOk4IXE5tQFgEVBYCDgZNDFxXRg==","queueTime":0,"applicationTime":855,"atts":"HhoAGwNJTUQ=","errorBeacon":"bam.nr-data.net","agent":""}</script><noscript><img src="https://www.cypress.com/akam/11/pixel_36088cec?a=dD03NWYyOGY4YTJiYTE5MjU5NjQ2OTIwNzNjNzkwM2Q4NWE2OGIyYTJhJmpzPW9mZg==" style="visibility: hidden; position: absolute; left: -999px; top: -999px;" /></noscript></body>
+</html>

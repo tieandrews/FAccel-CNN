@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;convolution_bringup/hello_world_small.c&apos; to &apos;convolution_bringup.c&apos;" description="Rename resource &apos;hello_world_small.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="hello_world_small.c" name="convolution_bringup.c" stamp="1598671733989" updateReferences="true"/>
+</session>

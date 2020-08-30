@@ -1,0 +1,4 @@
+DEVICE_FAMILY="Cyclone IV E"
+CBX_AUTO_BLACKBOX=ALL
+oscena
+clkout
