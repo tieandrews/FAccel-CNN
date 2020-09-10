@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Sep 03 14:31:46 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : fp_exp
+Top-level Entity Name : fp_exp
+Family : Cyclone IV E
+Total logic elements : 1,254
+    Total combinational functions : 1,067
+    Dedicated logic registers : 548
+Total registers : 548
+Total pins : 65
+Total virtual pins : 0
+Total memory bits : 260
+Embedded Multiplier 9-bit elements : 31
+Total PLLs : 0

@@ -1,0 +1,18 @@
+module softmax (
+    input   logic                   clock,
+    input   logic                   clock_sreset,
+    input   logic [15:0]            data,
+    output  logic [15:0]            result
+);
+
+            logic [31:0]            fp_exp_result;
+
+    fp_exp                          (
+                                        .clock(clock),
+                                        .data({data, 16'h0}),
+                                        .result(fp_exp_result)
+                                    );
+                                    
+    assign result = fp_exp_result[31:16];
+
+endmodule
