@@ -1,0 +1,16 @@
+Analysis & Synthesis Status : Successful - Wed Apr 29 13:34:23 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : micro_10m50_top
+Top-level Entity Name : micro_10m50_top
+Family : MAX 10
+Total logic elements : 1,103
+    Total combinational functions : 924
+    Dedicated logic registers : 499
+Total registers : 499
+Total pins : 3
+Total virtual pins : 0
+Total memory bits : 40,960
+Embedded Multiplier 9-bit elements : 2
+Total PLLs : 1
+UFM blocks : 0
+ADC blocks : 0

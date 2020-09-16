@@ -1,0 +1,15 @@
+	component jtag_uart is
+		port (
+			clock_clk         : in  std_logic                     := 'X';             -- clk
+			irq_irq           : out std_logic;                                        -- irq
+			reset_reset_n     : in  std_logic                     := 'X';             -- reset_n
+			slave_chipselect  : in  std_logic                     := 'X';             -- chipselect
+			slave_address     : in  std_logic                     := 'X';             -- address
+			slave_read_n      : in  std_logic                     := 'X';             -- read_n
+			slave_readdata    : out std_logic_vector(31 downto 0);                    -- readdata
+			slave_write_n     : in  std_logic                     := 'X';             -- write_n
+			slave_writedata   : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
+			slave_waitrequest : out std_logic                                         -- waitrequest
+		);
+	end component jtag_uart;
+

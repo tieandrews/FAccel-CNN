@@ -1,0 +1,341 @@
+/****************************************************************************/
+Micro 6-bit and 5-bit Instruction Set Architecture for 18 bit and for
+20 bit FPGA memory architectures
+/****************************************************************************/
+
+Registers in the processor
+PC = Program Counter
+SP = Stack Pointer
+SLOT = Instruction Slot pointer - log2(data path), typically 2 bits
+RT = Top of stack and RA register
+RN = Next in stack and RB register
+RK = Prefix register
+cf = carry flag, boolean
+sf = swap flag, 2 bits
+ef = extend flag, boolean, indicated last opcode was EXT otherwise 0
+pf = prefix flag, indicated last opcode was PFX otherwise 0
+irqf = IRQ flag, set when IRQ has been accepted and jumped to. cleared with
+         SWP SWP JNZ opcode sequence
+
+/****************************************************************************/
+$inst is the 5/6-bit opcode in the current word pointed to by SLOT
+$signed() means make a sign extended result
+$integer() means return integer
+$next_address is the next {PC, SLOT} address
+$mask is 0xf for ISA5 and 0x1f for ISA6
+$msb are the most significant bits
+$lsb are the least significant bits
+$carry is the carry out from adder or shift right
+$ones is a word or all ones
+$zeroes is a word of all zeroes
+
+Conditions are ternerary x' = (bool_test) ? result_if_true : result_if_false
+
+Registers with a tick after them e.g. RA' are the value after the opcode is
+executed.
+Registers or flags with a tilde (~) before mean the bitwise inverse.
+>> is shift right
+>>> is signed shift right
+<< is shift left
+
+//////////////////////////////////////////////////////////////////////////////
+/****************************************************************************/
+OPCODE   HEX CODE          DESCRIPTION
+/****************************************************************************/
+PFX      0x0->(0x0f/0x1f)  Prefix RK
+/----------------------------------------------------------------------------/
+RT' = (pf == 1) ? ((RK << ($inst - 1)) | ($inst & $mask)) : $signed($inst & $mask);
+RN' = unchanged
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 1
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+LDW      0x10              Load Stack From Memory
+/----------------------------------------------------------------------------/
+RT' = $mem(RT)
+RN' = unchanged
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+STW      0x11              Store Stack To Memory
+/----------------------------------------------------------------------------/
+$mem(RT)' = RN
+RT' = unchanged
+RN' = unchanged
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+PSH      0x12              Push To Stack
+/----------------------------------------------------------------------------/
+$mem(SP + 1)' = RN
+RT' = unchanged
+RN' = RT
+{PC, SLOT}' = $next_address
+SP' = SP + 1
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+POP      0x13              Pop From Stack
+/----------------------------------------------------------------------------/
+RT' = RN
+RN' = $mem(SP)
+{PC, SLOT}' = $next_address
+SP' = SP - 1
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+SWP      0x14              Swap Stack
+/----------------------------------------------------------------------------/
+RT' = RN
+RN' = RT
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = (sf << 1) | 1
+irqf' = unchanged
+
+/****************************************************************************/
+JNZ      0x15              Jump If RT Not Zero
+/----------------------------------------------------------------------------/
+RT' = RT
+RN' = $mem(SP)
+{PC, SLOT}' = (RT != 0) ? rt : $next_address
+SP' = SP - 1
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = (sf & 0x2) ? 0 : irqf
+
+/****************************************************************************/
+JSR      0x16              Jump To Subroutine
+/----------------------------------------------------------------------------/
+RT' = {PC, SLOT}
+RN' = unchanged
+{PC, SLOT}' = RT
+SP' = unchanged
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+After EXT opcode (only exists in 5 bit opcode set) the following 5 bit opcode
+is the ALU opcode.  In the 6 bit opcode set the ALU are functions 0x20->0x3f
+and do not need an EXT opcode to precede them.
+
+/****************************************************************************/
+EXT      0x17              Extend Opcode (not needed for ISA6)
+/----------------------------------------------------------------------------/
+RT' = unchanged
+RN' = unchanged
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 0
+cf' = unchanged
+ef' = 1 if ISA5 otherwise n/a
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+OVR      0x12              Over
+/----------------------------------------------------------------------------/
+$mem(SP + 1)' = RN
+RT' = RN
+RN' = RT
+{PC, SLOT}' = $next_address
+SP' = SP + 1
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+ASR      0x07              Signed Bitwise Shift Right With Carry Out
+/----------------------------------------------------------------------------/
+RT' = RT >>> 1
+RN' = unchanged)
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 0
+cf' = $carry
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+GEQ      0x02              Greater Than Or Equal To
+/----------------------------------------------------------------------------/
+Calculate RN + ~RT + 1
+RT' = ~$carry ? $ones : $zeroes
+RN' = $mem(SP)
+{PC, SLOT}' = $next_address
+SP' = SP - 1
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+ZEQ      0x08              Test for RA == 0
+/----------------------------------------------------------------------------/
+RT' = (RT == 0) ? $ones : $zeroes
+RN' = unchanged)
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+ADD      0x00              Add RB to RA with carry out
+/----------------------------------------------------------------------------/
+RT' = RN + RT
+RN' = $mem(SP)
+{PC, SLOT}' = $next_address
+SP' = SP - 1
+pf' = 0
+cf' = $carry
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+ADC      0x01              Add RB to RA with carry in and out
+/----------------------------------------------------------------------------/
+RT' = RN + RT + cf
+RN' = $mem(SP)
+{PC, SLOT}' = $next_address
+SP' = SP - 1
+pf' = 0
+cf' = $carry
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+SUB      0x02              Subtract RB from RA with carry out
+/----------------------------------------------------------------------------/
+RT' = RN + ~RT + 1
+RN' = $mem(SP)
+{PC, SLOT}' = $next_address
+SP' = SP - 1
+pf' = 0
+cf' = ~$carry
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+AND      0x03              Logical bitwise AND of RA and RB
+/----------------------------------------------------------------------------/
+RT' = RT & RN
+RN' = $mem(SP)
+{PC, SLOT}' = $next_address
+SP' = SP - 1
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+IOR      0x04              Logical bitwise OR of RA and RB
+/----------------------------------------------------------------------------/
+RT' = RT | RN
+RN' = $mem(SP)
+{PC, SLOT}' = $next_address
+SP' = SP - 1
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+XOR      0x05              Logical bitwise eclusive or of RA and RB
+/----------------------------------------------------------------------------/
+RT' = RT ^ RN
+RN' = $mem(SP)
+{PC, SLOT}' = $next_address
+SP' = SP - 1
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+MLT      0x06              Full signed multply of RB and RA
+/----------------------------------------------------------------------------/
+RT' = $msb($signed(RN) * $signed(RT)) 
+RN' = $lsb($signed(RN) * $signed(RN))
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+/****************************************************************************/
+NOP      0x12              No Operation
+/----------------------------------------------------------------------------/
+RT' = unchanged
+RN' = unchanged
+{PC, SLOT}' = $next_address
+SP' = unchanged
+pf' = 0
+cf' = unchanged
+ef' = 0
+sf' = 00
+irqf' = unchanged
+
+//////////////////////////////////////////////////////////////////////////////
+ISA5     MSBIT 0 PFX 0x0..0xF
+ISA6     MSBIT 0 PFX 0x0..0x1F
+
+         MSBITS ISA5/6
+                     EXT   EXT
+ISA5      10    11    10    11
+ISA6     100   101   110   111
+         ---------------------
+000      LDW   OVR   IOR
+001      STW   ASR   XOR
+010      PSH   GEQ   MLT
+011      POP   ZEQ   NOP
+100      SWP   ADD 
+101      JNZ   ADC
+110      JSR   SUB
+111     (EXT)  AND

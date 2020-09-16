@@ -1,0 +1,12 @@
+module am_receiver # (
+            parameter                   WIDTH = 12
+)
+(
+    input   logic                       clock,
+    input   logic                       clock_sreset,
+    input   logic [31:0]                phase_increment,    // tuning input to NCO
+    input   logic                       lvds_in,
+    output  logic                       lvds_out,
+    output  logic signed [WIDTH-1:0]    demodulated_out
+);
+endmodule

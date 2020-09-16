@@ -1,0 +1,13 @@
+module jtag_uart # (
+)
+(
+   input    logic                clock,
+   input    logic                clock_sreset,
+   input    logic [3:0]          address,
+   output   logic [WIDTHD-1:0]   readdata,
+   input    logic [WIDTHD-1:0]   writedata,
+   input    logic                read,
+   input    logic                write,
+   output   logic                waitrequest
+);
+endmodule

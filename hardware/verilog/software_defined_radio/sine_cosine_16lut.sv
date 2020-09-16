@@ -1,0 +1,63 @@
+module sine_cosine_16lut # (
+            parameter           WIDTH = 16
+)
+(
+    input   logic               clock,
+    input   logic               clock_sreset,
+    input   logic [5:0]         theta,
+    output  logic signed [15:0] sine_out,
+    output  logic signed [15:0] cosine_out
+);
+            localparam          LUT_PORTS = 2;
+            logic signed [31:0] lut[1:0];
+            logic [3:0]         lut_address[1:0];
+            logic [5:0]         theta_reg;
+            logic [1:0]         theta_sign[1:0];
+            logic signed [31:0] lut_shift[LUT_PORTS-1:0];
+           
+    genvar i;
+    generate
+        begin
+            for (i=0; i<LUT_PORTS; i++) begin : l
+                always_comb begin
+                    case (lut_address[i])
+                        4'h0 : lut[i] = 32'sh0647d97c;
+                        4'h1 : lut[i] = 32'sh12c8106e;
+                        4'h2 : lut[i] = 32'sh1f19f97a;
+                        4'h3 : lut[i] = 32'sh2b1f34eb;
+                        4'h4 : lut[i] = 32'sh36ba2013;
+                        4'h5 : lut[i] = 32'sh41ce1e64;
+                        4'h6 : lut[i] = 32'sh4c3fdff2;
+                        4'h7 : lut[i] = 32'sh55f5a4d1;
+                        4'h8 : lut[i] = 32'sh5ed77c88;
+                        4'h9 : lut[i] = 32'sh66cf811f;
+                        4'ha : lut[i] = 32'sh6dca0d13;
+                        4'hb : lut[i] = 32'sh73b5ebd0;
+                        4'hc : lut[i] = 32'sh78848412;
+                        4'hd : lut[i] = 32'sh7c29fbed;
+                        4'he : lut[i] = 32'sh7e9d55fb;
+                        default : lut[i] = 32'sh7fd8878c;
+                    endcase
+                end
+                assign lut_shift[i] = lut[i] >>> (32 - WIDTH);
+            end
+        end
+    endgenerate
+    
+    always_ff @ (posedge clock) begin
+        if (clock_sreset) begin
+        end
+        else begin
+            theta_reg <= theta;
+            
+            theta_sign[0] <= theta_reg[5:4];
+            theta_sign[1] <= theta_sign[0];
+            
+            lut_address[0] <= {4{theta_reg[4]}} ^ theta_reg[3:0];
+            lut_address[1] <= {4{~theta_reg[4]}} ^ theta_reg[3:0];
+            
+            sine_out <= theta_sign[1][1] ? -lut_shift[0][WIDTH-1:0] : lut_shift[0][WIDTH-1:0];
+            cosine_out <= ^theta_sign[1] ? -lut_shift[1][WIDTH-1:0] : lut_shift[1][WIDTH-1:0];
+        end
+    end
+endmodule

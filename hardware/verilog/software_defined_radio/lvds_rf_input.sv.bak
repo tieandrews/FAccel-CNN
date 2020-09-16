@@ -1,0 +1,17 @@
+/*
+    lvds in is and LVDS receiver that has the + input mid-baised to
+    1.25V or 1.65V the mid point fed by antenna.  The - input is
+    driven by an R from integtaor out and a C from - input to GND.
+    R typically can be 3k9 C can be 470pF or some 1/(2.pi.R.C) that
+    suits.
+*/
+module lvds_rf_input # (
+)
+(
+    input   logic               clock,
+    input   logic               clock_sreset,
+    
+    input   logic               lvds_in,
+    output  logic               integrator_out
+);
+endmodule

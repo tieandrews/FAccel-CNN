@@ -1,0 +1,43 @@
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_TOOL_NAME "Qsys"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_TOOL_ENV "Qsys"
+set_global_assignment -library "internal_oscillator" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../internal_oscillator.sopcinfo"]
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name SLD_INFO "QSYS_NAME internal_oscillator HAS_SOPCINFO 1 GENERATION_ID 1552437445"
+set_global_assignment -library "internal_oscillator" -name MISC_FILE [file join $::quartus(qip_path) "../internal_oscillator.cmp"]
+set_global_assignment -library "internal_oscillator" -name SLD_FILE [file join $::quartus(qip_path) "internal_oscillator.debuginfo"]
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_TARGETED_DEVICE_FAMILY "MAX 10"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_GENERATED_DEVICE_FAMILY "{MAX 10}"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "internal_oscillator" -name MISC_FILE [file join $::quartus(qip_path) "../../internal_oscillator.qsys"]
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_NAME "aW50ZXJuYWxfb3NjaWxsYXRvcg=="
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_DISPLAY_NAME "aW50ZXJuYWxfb3NjaWxsYXRvcg=="
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTU1MjQzNzQ0NQ==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
+set_global_assignment -entity "internal_oscillator" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_NAME "YWx0ZXJhX2ludF9vc2M="
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_DISPLAY_NAME "SW50ZXJuYWwgT3NjaWxsYXRvcg=="
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_VERSION "MTguMQ=="
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_DESCRIPTION "SW50ZXJuYWwgT3NjaWxsYXRvciBwcm92aWRlcyBpbnRlcm5hbCBjbG9jayBzb3VyY2UgZm9yIGRlYnVnZ2luZyBwdXJwb3NlLg=="
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "SU5GT1JNQVRJT04=::VGhlIG91dHB1dCBmcmVxdWVuY3kgZm9yIDEwTTAyLCAxME0wNCwgMTBNMDgsIDEwTTE2LCBhbmQgMTBNMjUgZGV2aWNlcyBpcyA1NX4xMTZNSHogPGJyPlRoZSBvdXRwdXQgZnJlcXVlbmN5IGZvciAxME00MCwgYW5kIDEwTTUwIGRldmljZXMgaXMgMzV+NzdNSHogPGJyPg==::SU5GT1JNQVRJT04="
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "REVWSUNFX0ZBTUlMWQ==::TUFYIDEw::RGV2aWNlIGZhbWlseQ=="
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "UEFSVF9OQU1F::MTBNNTBEQUY0ODRDN0c=::RGV2aWNl"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "REVWSUNFX0lE::NTA=::REVWSUNFX0lE"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "Q0xPQ0tfRlJFUVVFTkNZXzI=::Nzc=::Q2xvY2sgRnJlcXVlbmN5"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "Q0xPQ0tfRlJFUVVFTkNZ::Nzc=::Q0xPQ0tfRlJFUVVFTkNZ"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_COMPONENT_PARAMETER "Q0JYX0FVVE9fQkxBQ0tCT1g=::QUxM::Q0JYX0FVVE9fQkxBQ0tCT1g="
+
+set_global_assignment -library "internal_oscillator" -name VERILOG_FILE [file join $::quartus(qip_path) "internal_oscillator.v"]
+set_global_assignment -library "internal_oscillator" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_int_osc.v"]
+set_global_assignment -library "internal_oscillator" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_int_osc.sdc"]
+
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_TOOL_NAME "altera_int_osc"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_TOOL_VERSION "18.1"
+set_global_assignment -entity "altera_int_osc" -library "internal_oscillator" -name IP_TOOL_ENV "Qsys"
