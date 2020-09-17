@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Sep 17, 2020 2:12:01 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1600308721164</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>17/09/2020 4:54:47 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1600318487689</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\GitHub\FAccel-CNN\hardware\intel_fpga\development_kits\terasic_de10_lite\quartus_projects\18.1\convolution_simple\software\convolution_test_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\platform_designer_block.sopcinfo</SopcDesignFile>

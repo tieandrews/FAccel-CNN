@@ -167,7 +167,9 @@ module convolution_burst # (
             if (s_address == 4'h0) begin
                 s_readdata <= {irq_ena_flag, busy_flag, 1'b0};
                 go_flag <= s_write & s_writedata[0];
-                irq_ena_flag <= s_write & s_writedata[2];
+                if (s_write) begin
+                    irq_ena_flag <= s_writedata[2];
+                end
                 s_irq <= s_write & s_writedata[3] ? 1'b0 : (s_irq | go_irq_flag);
             end
             else begin

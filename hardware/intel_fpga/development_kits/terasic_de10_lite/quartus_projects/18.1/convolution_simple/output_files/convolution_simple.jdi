@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="c5a164e68d856647981c"/>
+    <hash md5_digest_80b="f73f2db2da4cf7824672"/>
   </project>
   <file_info>
     <file device="10M50DAF484C7G" path="convolution_simple.sof" usercode="0xFFFFFFFF"/>
@@ -143,8 +143,8 @@
         <parameter name="SLD_IP_VERSION" type="dec" value="6"/>
         <parameter name="SLD_IP_MINOR_VERSION" type="dec" value="0"/>
         <parameter name="SLD_COMMON_IP_VERSION" type="dec" value="0"/>
-        <parameter name="sld_data_bits" type="unknown" value="150"/>
-        <parameter name="sld_trigger_bits" type="unknown" value="150"/>
+        <parameter name="sld_data_bits" type="unknown" value="153"/>
+        <parameter name="sld_trigger_bits" type="unknown" value="153"/>
         <parameter name="SLD_NODE_CRC_BITS" type="dec" value="32"/>
         <parameter name="SLD_NODE_CRC_HIWORD" type="dec" value="41394"/>
         <parameter name="SLD_NODE_CRC_LOWORD" type="dec" value="50132"/>
@@ -178,14 +178,14 @@
         <parameter name="SLD_ADVANCED_TRIGGER_8" type="string" value="NONE"/>
         <parameter name="SLD_ADVANCED_TRIGGER_9" type="string" value="NONE"/>
         <parameter name="SLD_ADVANCED_TRIGGER_10" type="string" value="NONE"/>
-        <parameter name="sld_inversion_mask_length" type="unknown" value="476"/>
-        <parameter name="sld_inversion_mask" type="unknown" value="00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+        <parameter name="sld_inversion_mask_length" type="unknown" value="485"/>
+        <parameter name="sld_inversion_mask" type="unknown" value="00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
         <parameter name="sld_power_up_trigger" type="unknown" value="0"/>
         <parameter name="SLD_STATE_FLOW_MGR_ENTITY" type="string" value="state_flow_mgr_entity.vhd"/>
         <parameter name="sld_state_flow_use_generated" type="unknown" value="0"/>
         <parameter name="sld_current_resource_width" type="unknown" value="1"/>
         <parameter name="sld_attribute_mem_mode" type="unknown" value="OFF"/>
-        <parameter name="sld_storage_qualifier_bits" type="unknown" value="150"/>
+        <parameter name="sld_storage_qualifier_bits" type="unknown" value="153"/>
         <parameter name="SLD_STORAGE_QUALIFIER_GAP_RECORD" type="dec" value="0"/>
         <parameter name="SLD_STORAGE_QUALIFIER_MODE" type="string" value="OFF"/>
         <parameter name="SLD_STORAGE_QUALIFIER_ENABLE_ADVANCED_CONDITION" type="dec" value="0"/>
@@ -202,7 +202,7 @@
   <sld_infos>
     <sld_info hpath="platform_designer_block:u0" name="u0">
       <assignment_values>
-        <assignment_value text="QSYS_NAME platform_designer_block HAS_SOPCINFO 1 GENERATION_ID 1600301444"/>
+        <assignment_value text="QSYS_NAME platform_designer_block HAS_SOPCINFO 1 GENERATION_ID 1600318318"/>
       </assignment_values>
       <parameters/>
     </sld_info>

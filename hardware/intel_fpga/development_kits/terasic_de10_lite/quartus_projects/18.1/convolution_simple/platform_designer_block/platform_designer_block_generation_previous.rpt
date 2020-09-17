@@ -1,5 +1,5 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE10_Lite\convolution_simple\platform_designer_block.qsys --block-symbol-file --output-directory=C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE10_Lite\convolution_simple\platform_designer_block --family="MAX 10" --part=10M50DAF484C7G
+Info: qsys-generate C:\GitHub\FAccel-CNN\hardware\intel_fpga\development_kits\terasic_de10_lite\quartus_projects\18.1\convolution_simple\platform_designer_block.qsys --block-symbol-file --output-directory=C:\GitHub\FAccel-CNN\hardware\intel_fpga\development_kits\terasic_de10_lite\quartus_projects\18.1\convolution_simple\platform_designer_block --family="MAX 10" --part=10M50DAF484C7G
 Progress: Loading convolution_simple/platform_designer_block.qsys
 Progress: Reading input file
 Progress: Adding clock [clock_source 18.1]
@@ -21,7 +21,7 @@ Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: qsys-generate C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE10_Lite\convolution_simple\platform_designer_block.qsys --synthesis=VERILOG --output-directory=C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE10_Lite\convolution_simple\platform_designer_block\synthesis --family="MAX 10" --part=10M50DAF484C7G
+Info: qsys-generate C:\GitHub\FAccel-CNN\hardware\intel_fpga\development_kits\terasic_de10_lite\quartus_projects\18.1\convolution_simple\platform_designer_block.qsys --synthesis=VERILOG --output-directory=C:\GitHub\FAccel-CNN\hardware\intel_fpga\development_kits\terasic_de10_lite\quartus_projects\18.1\convolution_simple\platform_designer_block\synthesis --family="MAX 10" --part=10M50DAF484C7G
 Progress: Loading convolution_simple/platform_designer_block.qsys
 Progress: Reading input file
 Progress: Adding clock [clock_source 18.1]
@@ -42,12 +42,12 @@ Info: platform_designer_block.jtag_uart: JTAG UART IP input clock need to be at 
 Info: platform_designer_block: Generating platform_designer_block "platform_designer_block" for QUARTUS_SYNTH
 Info: convolution: "platform_designer_block" instantiated convolution_burst "convolution"
 Info: jtag_uart: Starting RTL generation for module 'platform_designer_block_jtag_uart'
-Info: jtag_uart:   Generation command is [exec C:/intelfpga/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/18.1/quartus/bin64/perl/lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin -I C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=platform_designer_block_jtag_uart --dir=C:/Users/NUC/AppData/Local/Temp/alt8521_5850976436641140189.dir/0003_jtag_uart_gen/ --quartus_dir=C:/intelfpga/18.1/quartus --verilog --config=C:/Users/NUC/AppData/Local/Temp/alt8521_5850976436641140189.dir/0003_jtag_uart_gen//platform_designer_block_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+Info: jtag_uart:   Generation command is [exec C:/intelfpga/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/18.1/quartus/bin64/perl/lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin -I C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=platform_designer_block_jtag_uart --dir=C:/Users/NUC/AppData/Local/Temp/alt8522_532861923886660250.dir/0003_jtag_uart_gen/ --quartus_dir=C:/intelfpga/18.1/quartus --verilog --config=C:/Users/NUC/AppData/Local/Temp/alt8522_532861923886660250.dir/0003_jtag_uart_gen//platform_designer_block_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
 Info: jtag_uart: Done RTL generation for module 'platform_designer_block_jtag_uart'
 Info: jtag_uart: "platform_designer_block" instantiated altera_avalon_jtag_uart "jtag_uart"
 Info: nios: "platform_designer_block" instantiated altera_nios2_gen2 "nios"
 Info: onchip_ram: Starting RTL generation for module 'platform_designer_block_onchip_ram'
-Info: onchip_ram:   Generation command is [exec C:/intelfpga/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/18.1/quartus/bin64/perl/lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin -I C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=platform_designer_block_onchip_ram --dir=C:/Users/NUC/AppData/Local/Temp/alt8521_5850976436641140189.dir/0004_onchip_ram_gen/ --quartus_dir=C:/intelfpga/18.1/quartus --verilog --config=C:/Users/NUC/AppData/Local/Temp/alt8521_5850976436641140189.dir/0004_onchip_ram_gen//platform_designer_block_onchip_ram_component_configuration.pl  --do_build_sim=0  ]
+Info: onchip_ram:   Generation command is [exec C:/intelfpga/18.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/18.1/quartus/bin64/perl/lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin -I C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga/18.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=platform_designer_block_onchip_ram --dir=C:/Users/NUC/AppData/Local/Temp/alt8522_532861923886660250.dir/0004_onchip_ram_gen/ --quartus_dir=C:/intelfpga/18.1/quartus --verilog --config=C:/Users/NUC/AppData/Local/Temp/alt8522_532861923886660250.dir/0004_onchip_ram_gen//platform_designer_block_onchip_ram_component_configuration.pl  --do_build_sim=0  ]
 Info: onchip_ram: Done RTL generation for module 'platform_designer_block_onchip_ram'
 Info: onchip_ram: "platform_designer_block" instantiated altera_avalon_onchip_memory2 "onchip_ram"
 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
@@ -58,16 +58,16 @@ Info: mm_interconnect_0: "platform_designer_block" instantiated altera_mm_interc
 Info: irq_mapper: "platform_designer_block" instantiated altera_irq_mapper "irq_mapper"
 Info: rst_controller: "platform_designer_block" instantiated altera_reset_controller "rst_controller"
 Info: cpu: Starting RTL generation for module 'platform_designer_block_nios_cpu'
-Info: cpu:   Generation command is [exec C:/intelFPGA/18.1/quartus/bin64//eperlcmd.exe -I C:/intelFPGA/18.1/quartus/bin64//perl/lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin -I C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=platform_designer_block_nios_cpu --dir=C:/Users/NUC/AppData/Local/Temp/alt8521_5850976436641140189.dir/0007_cpu_gen/ --quartus_bindir=C:/intelFPGA/18.1/quartus/bin64/ --verilog --config=C:/Users/NUC/AppData/Local/Temp/alt8521_5850976436641140189.dir/0007_cpu_gen//platform_designer_block_nios_cpu_processor_configuration.pl  --do_build_sim=0  ]
-Info: cpu: # 2020.09.17 09:42:46 (*) Starting Nios II generation
-Info: cpu: # 2020.09.17 09:42:46 (*)   Checking for plaintext license.
-Info: cpu: # 2020.09.17 09:42:47 (*)   Plaintext license not found.
-Info: cpu: # 2020.09.17 09:42:47 (*)   No license required to generate encrypted Nios II/e.
-Info: cpu: # 2020.09.17 09:42:47 (*)   Elaborating CPU configuration settings
-Info: cpu: # 2020.09.17 09:42:47 (*)   Creating all objects for CPU
-Info: cpu: # 2020.09.17 09:42:48 (*)   Generating RTL from CPU objects
-Info: cpu: # 2020.09.17 09:42:48 (*)   Creating plain-text RTL
-Info: cpu: # 2020.09.17 09:42:49 (*) Done Nios II generation
+Info: cpu:   Generation command is [exec C:/intelFPGA/18.1/quartus/bin64//eperlcmd.exe -I C:/intelFPGA/18.1/quartus/bin64//perl/lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin/europa -I C:/intelfpga/18.1/quartus/sopc_builder/bin/perl_lib -I C:/intelfpga/18.1/quartus/sopc_builder/bin -I C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/cpu_lib -I C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/nios_lib -I C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -I C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2 -- C:/intelfpga/18.1/quartus/../ip/altera/nios2_ip/altera_nios2_gen2/generate_rtl.epl --name=platform_designer_block_nios_cpu --dir=C:/Users/NUC/AppData/Local/Temp/alt8522_532861923886660250.dir/0007_cpu_gen/ --quartus_bindir=C:/intelFPGA/18.1/quartus/bin64/ --verilog --config=C:/Users/NUC/AppData/Local/Temp/alt8522_532861923886660250.dir/0007_cpu_gen//platform_designer_block_nios_cpu_processor_configuration.pl  --do_build_sim=0  ]
+Info: cpu: # 2020.09.17 12:11:04 (*) Starting Nios II generation
+Info: cpu: # 2020.09.17 12:11:04 (*)   Checking for plaintext license.
+Info: cpu: # 2020.09.17 12:11:04 (*)   Plaintext license not found.
+Info: cpu: # 2020.09.17 12:11:04 (*)   No license required to generate encrypted Nios II/e.
+Info: cpu: # 2020.09.17 12:11:04 (*)   Elaborating CPU configuration settings
+Info: cpu: # 2020.09.17 12:11:04 (*)   Creating all objects for CPU
+Info: cpu: # 2020.09.17 12:11:05 (*)   Generating RTL from CPU objects
+Info: cpu: # 2020.09.17 12:11:05 (*)   Creating plain-text RTL
+Info: cpu: # 2020.09.17 12:11:06 (*) Done Nios II generation
 Info: cpu: Done RTL generation for module 'platform_designer_block_nios_cpu'
 Info: cpu: "nios" instantiated altera_nios2_gen2_unit "cpu"
 Info: convolution_avalon_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "convolution_avalon_master_translator"
@@ -87,19 +87,19 @@ Info: cmd_demux_001: "mm_interconnect_0" instantiated altera_merlin_demultiplexe
 Info: cmd_demux_002: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux_002"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: cmd_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_001"
-Info: Reusing file C:/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE10_Lite/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: cmd_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux_002"
-Info: Reusing file C:/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE10_Lite/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file C:/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE10_Lite/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_mux_001: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_001"
-Info: Reusing file C:/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE10_Lite/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: rsp_mux_002: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux_002"
-Info: Reusing file C:/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE10_Lite/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: convolution_avalon_master_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "convolution_avalon_master_rsp_width_adapter"
-Info: Reusing file C:/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE10_Lite/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_address_alignment.sv
-Info: Reusing file C:/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE10_Lite/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: Reusing file C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple/platform_designer_block/synthesis/submodules/altera_merlin_burst_uncompressor.sv
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
 Info: platform_designer_block: Done "platform_designer_block" with 34 modules, 56 files

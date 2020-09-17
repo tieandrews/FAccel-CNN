@@ -2,7 +2,7 @@ set_global_assignment -entity "platform_designer_block" -library "platform_desig
 set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_TOOL_VERSION "18.1"
 set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "platform_designer_block" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../platform_designer_block.sopcinfo"]
-set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name SLD_INFO "QSYS_NAME platform_designer_block HAS_SOPCINFO 1 GENERATION_ID 1600301444"
+set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name SLD_INFO "QSYS_NAME platform_designer_block HAS_SOPCINFO 1 GENERATION_ID 1600318318"
 set_global_assignment -library "platform_designer_block" -name MISC_FILE [file join $::quartus(qip_path) "../platform_designer_block.cmp"]
 set_global_assignment -library "platform_designer_block" -name SLD_FILE [file join $::quartus(qip_path) "platform_designer_block.regmap"]
 set_global_assignment -library "platform_designer_block" -name SLD_FILE [file join $::quartus(qip_path) "platform_designer_block.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "platform_designer_block" -library "platform_desig
 set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTYwMDMwMTQ0NA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTYwMDMxODMxOA==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::TUFYIDEw::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MTBNNTBEQUY0ODRDN0c=::QXV0byBERVZJQ0U="
 set_global_assignment -entity "platform_designer_block" -library "platform_designer_block" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Nw==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="

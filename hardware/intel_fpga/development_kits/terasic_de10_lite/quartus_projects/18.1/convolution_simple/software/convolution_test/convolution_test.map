@@ -40,6 +40,16 @@ c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3
                               c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o) (__clz_tab)
 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
                               c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o) (__clzsi2)
+../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+                              obj/default/convolution_test.o (alt_ic_isr_register)
+../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+                              ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o) (alt_iic_isr_register)
+../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+                              ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o) (alt_irq_entry)
+../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                              ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o) (alt_irq_handler)
+../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                              ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o) (alt_irq_active)
 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
                               ../convolution_test_bsp//obj/HAL/src/crt0.o (alt_load)
 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
@@ -56,10 +66,19 @@ c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3
                               ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o) (alt_busy_sleep)
 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
                               ../convolution_test_bsp/\libhal_bsp.a(alt_load.o) (alt_dcache_flush_all)
+../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+                              ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o) (alt_exception)
 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
                               ../convolution_test_bsp/\libhal_bsp.a(alt_load.o) (alt_icache_flush_all)
+../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                              ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o) (alt_instruction_exception_entry)
 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
                               ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o) (altera_nios2_gen2_irq_init)
+
+Allocating common symbols
+Common symbol       size              file
+
+alt_irq             0x100             ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
 
 Memory Configuration
 
@@ -91,35 +110,65 @@ LOAD c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
                 0x0000000000000000                __reset
                 0x000000000000000c                _exit
 
-.exceptions     0x0000000000000020        0x0
+.exceptions     0x0000000000000020      0x160
                 0x0000000000000020                PROVIDE (__ram_exceptions_start, ABSOLUTE (.))
                 0x0000000000000020                . = ALIGN (0x20)
  *(.irq)
  *(.exceptions.entry.label)
+ .exceptions.entry.label
+                0x0000000000000020        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+                0x0000000000000020                alt_irq_entry
+ .exceptions.entry.label
+                0x0000000000000020        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+                0x0000000000000020                alt_exception
  *(.exceptions.entry.user)
  *(.exceptions.entry.ecc_fatal)
  *(.exceptions.entry)
+ .exceptions.entry
+                0x0000000000000020       0x54 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
  *(.exceptions.irqtest.user)
  *(.exceptions.irqtest)
+ .exceptions.irqtest
+                0x0000000000000074       0x10 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
  *(.exceptions.irqhandler.user)
  *(.exceptions.irqhandler)
+ .exceptions.irqhandler
+                0x0000000000000084        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
  *(.exceptions.irqreturn.user)
  *(.exceptions.irqreturn)
+ .exceptions.irqreturn
+                0x0000000000000088        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
  *(.exceptions.notirq.label)
+ .exceptions.notirq.label
+                0x000000000000008c        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
  *(.exceptions.notirq.user)
  *(.exceptions.notirq)
+ .exceptions.notirq
+                0x000000000000008c        0x8 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
  *(.exceptions.soft.user)
  *(.exceptions.soft)
  *(.exceptions.unknown.user)
  *(.exceptions.unknown)
+ .exceptions.unknown
+                0x0000000000000094       0x14 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
  *(.exceptions.exit.label)
+ .exceptions.exit.label
+                0x00000000000000a8        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .exceptions.exit.label
+                0x00000000000000a8        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
  *(.exceptions.exit.user)
  *(.exceptions.exit)
+ .exceptions.exit
+                0x00000000000000a8       0x54 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
  *(.exceptions)
-                0x0000000000000020                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
+ .exceptions    0x00000000000000fc       0x60 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                0x00000000000000fc                alt_irq_handler
+ .exceptions    0x000000000000015c       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x000000000000015c                alt_instruction_exception_entry
+                0x0000000000000180                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
                 0x0000000000000020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
 
-.text           0x0000000000000020     0x61f4
+.text           0x0000000000000180     0x63b8
                 [!provide]                        PROVIDE (stext, ABSOLUTE (.))
  *(.interp)
  *(.hash)
@@ -164,100 +213,113 @@ LOAD c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  *(.init)
  *(.plt)
  *(.text .stub .text.* .gnu.linkonce.t.*)
- .text          0x0000000000000020       0x3c ../convolution_test_bsp//obj/HAL/src/crt0.o
-                0x0000000000000020                _start
- .text          0x000000000000005c      0x1d4 obj/default/convolution_test.o
-                0x000000000000005c                _putchar
-                0x000000000000006c                bf2f
-                0x0000000000000074                f2bf
-                0x000000000000007c                bf_mult
-                0x00000000000000a4                bf_add
-                0x00000000000000cc                put_pixel
-                0x0000000000000114                get_pixel
-                0x0000000000000158                show_featuremap
-                0x00000000000001fc                convolution
- .text.startup  0x0000000000000230      0x164 obj/default/convolution_test.o
-                0x0000000000000230                main
- .text          0x0000000000000394     0x1b9c obj/default/printf.o
-                0x0000000000001ddc                printf_
-                0x0000000000001e1c                sprintf_
-                0x0000000000001e58                snprintf_
-                0x0000000000001e90                vprintf_
-                0x0000000000001ec0                vsnprintf_
-                0x0000000000001ef0                fctprintf
- .text          0x0000000000001f30       0x74 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
-                0x0000000000001f30                __fixunsdfsi
- .text          0x0000000000001fa4      0x5fc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
-                0x0000000000001fa4                __udivdi3
- .text          0x00000000000025a0      0x5c4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
-                0x00000000000025a0                __umoddi3
- .text          0x0000000000002b64      0x1b4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
-                0x0000000000002b64                __divsi3
-                0x0000000000002be8                __modsi3
-                0x0000000000002c5c                __udivsi3
-                0x0000000000002cc0                __umodsi3
- .text          0x0000000000002d18       0x28 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
-                0x0000000000002d18                __mulsi3
- .text          0x0000000000002d40      0x4c8 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
-                0x0000000000002d40                __addsf3
- .text          0x0000000000003208      0x430 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
-                0x0000000000003208                __mulsf3
- .text          0x0000000000003638       0xf0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
-                0x0000000000003638                __floatunsisf
- .text          0x0000000000003728      0x8ac c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
-                0x0000000000003728                __adddf3
- .text          0x0000000000003fd4      0x9d0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
-                0x0000000000003fd4                __divdf3
- .text          0x00000000000049a4       0x88 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
-                0x00000000000049a4                __nedf2
-                0x00000000000049a4                __eqdf2
- .text          0x0000000000004a2c       0xdc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
-                0x0000000000004a2c                __gedf2
-                0x0000000000004a2c                __gtdf2
- .text          0x0000000000004b08       0xf4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
-                0x0000000000004b08                __ledf2
-                0x0000000000004b08                __ltdf2
- .text          0x0000000000004bfc      0x86c c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
-                0x0000000000004bfc                __muldf3
- .text          0x0000000000005468      0x8fc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
-                0x0000000000005468                __subdf3
- .text          0x0000000000005d64       0x80 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
-                0x0000000000005d64                __fixdfsi
- .text          0x0000000000005de4       0xdc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
-                0x0000000000005de4                __floatsidf
- .text          0x0000000000005ec0       0xa8 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
-                0x0000000000005ec0                __floatunsidf
- .text          0x0000000000005f68        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
- .text          0x0000000000005f68       0x64 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
-                0x0000000000005f68                __clzsi2
- .text          0x0000000000005fcc       0xe0 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
-                0x0000000000005fcc                alt_load
- .text          0x00000000000060ac       0x2c ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
-                0x00000000000060ac                alt_main
- .text          0x00000000000060d8       0x48 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
-                0x00000000000060d8                alt_putchar
- .text          0x0000000000006120        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
-                0x0000000000006120                usleep
- .text          0x0000000000006124       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x0000000000006124                alt_irq_init
-                0x0000000000006144                alt_sys_init
- .text          0x0000000000006148       0x34 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
-                0x0000000000006148                altera_avalon_jtag_uart_write
- .text          0x000000000000617c       0x88 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
-                0x000000000000617c                alt_busy_sleep
- .text          0x0000000000006204        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
-                0x0000000000006204                alt_dcache_flush_all
- .text          0x0000000000006208        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
-                0x0000000000006208                alt_icache_flush_all
- .text          0x000000000000620c        0x8 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
-                0x000000000000620c                altera_nios2_gen2_irq_init
+ .text          0x0000000000000180       0x3c ../convolution_test_bsp//obj/HAL/src/crt0.o
+                0x0000000000000180                _start
+ .text          0x00000000000001bc      0x1ec obj/default/convolution_test.o
+                0x00000000000001d4                _putchar
+                0x00000000000001e4                bf2f
+                0x00000000000001ec                f2bf
+                0x00000000000001f4                bf_mult
+                0x000000000000021c                bf_add
+                0x0000000000000244                put_pixel
+                0x000000000000028c                get_pixel
+                0x00000000000002d0                show_featuremap
+                0x0000000000000374                convolution
+ .text.startup  0x00000000000003a8      0x1a8 obj/default/convolution_test.o
+                0x00000000000003a8                main
+ .text          0x0000000000000550     0x1b9c obj/default/printf.o
+                0x0000000000001f98                printf_
+                0x0000000000001fd8                sprintf_
+                0x0000000000002014                snprintf_
+                0x000000000000204c                vprintf_
+                0x000000000000207c                vsnprintf_
+                0x00000000000020ac                fctprintf
+ .text          0x00000000000020ec       0x74 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+                0x00000000000020ec                __fixunsdfsi
+ .text          0x0000000000002160      0x5fc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+                0x0000000000002160                __udivdi3
+ .text          0x000000000000275c      0x5c4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+                0x000000000000275c                __umoddi3
+ .text          0x0000000000002d20      0x1b4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+                0x0000000000002d20                __divsi3
+                0x0000000000002da4                __modsi3
+                0x0000000000002e18                __udivsi3
+                0x0000000000002e7c                __umodsi3
+ .text          0x0000000000002ed4       0x28 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+                0x0000000000002ed4                __mulsi3
+ .text          0x0000000000002efc      0x4c8 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+                0x0000000000002efc                __addsf3
+ .text          0x00000000000033c4      0x430 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+                0x00000000000033c4                __mulsf3
+ .text          0x00000000000037f4       0xf0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+                0x00000000000037f4                __floatunsisf
+ .text          0x00000000000038e4      0x8ac c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+                0x00000000000038e4                __adddf3
+ .text          0x0000000000004190      0x9d0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+                0x0000000000004190                __divdf3
+ .text          0x0000000000004b60       0x88 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+                0x0000000000004b60                __nedf2
+                0x0000000000004b60                __eqdf2
+ .text          0x0000000000004be8       0xdc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+                0x0000000000004be8                __gedf2
+                0x0000000000004be8                __gtdf2
+ .text          0x0000000000004cc4       0xf4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+                0x0000000000004cc4                __ledf2
+                0x0000000000004cc4                __ltdf2
+ .text          0x0000000000004db8      0x86c c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+                0x0000000000004db8                __muldf3
+ .text          0x0000000000005624      0x8fc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+                0x0000000000005624                __subdf3
+ .text          0x0000000000005f20       0x80 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+                0x0000000000005f20                __fixdfsi
+ .text          0x0000000000005fa0       0xdc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+                0x0000000000005fa0                __floatsidf
+ .text          0x000000000000607c       0xa8 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+                0x000000000000607c                __floatunsidf
+ .text          0x0000000000006124        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
+ .text          0x0000000000006124       0x64 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+                0x0000000000006124                __clzsi2
+ .text          0x0000000000006188       0x8c ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+                0x0000000000006188                alt_ic_isr_register
+                0x000000000000618c                alt_ic_irq_enable
+                0x00000000000061c4                alt_ic_irq_disable
+                0x00000000000061fc                alt_ic_irq_enabled
+ .text          0x0000000000006214       0x68 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+                0x0000000000006214                alt_iic_isr_register
+ .text          0x000000000000627c        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .text          0x000000000000627c        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .text          0x000000000000627c        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .text          0x000000000000627c       0xe0 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+                0x000000000000627c                alt_load
+ .text          0x000000000000635c       0x2c ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+                0x000000000000635c                alt_main
+ .text          0x0000000000006388       0x48 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+                0x0000000000006388                alt_putchar
+ .text          0x00000000000063d0        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+                0x00000000000063d0                usleep
+ .text          0x00000000000063d4       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x00000000000063d4                alt_irq_init
+                0x00000000000063f4                alt_sys_init
+ .text          0x00000000000063f8       0x34 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x00000000000063f8                altera_avalon_jtag_uart_write
+ .text          0x000000000000642c       0x88 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+                0x000000000000642c                alt_busy_sleep
+ .text          0x00000000000064b4        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x00000000000064b4                alt_dcache_flush_all
+ .text          0x00000000000064b8        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .text          0x00000000000064b8        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x00000000000064b8                alt_icache_flush_all
+ .text          0x00000000000064bc       0x74 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x00000000000064bc                alt_exception_cause_generated_bad_addr
+ .text          0x0000000000006530        0x8 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x0000000000006530                altera_nios2_gen2_irq_init
  *(.gnu.warning.*)
  *(.fini)
                 [!provide]                        PROVIDE (__etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (_etext, ABSOLUTE (.))
                 [!provide]                        PROVIDE (etext, ABSOLUTE (.))
  *(.eh_frame_hdr)
-                0x0000000000006214                . = ALIGN (0x4)
+                0x0000000000006538                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__preinit_array_start, ABSOLUTE (.))
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end, ABSOLUTE (.))
@@ -279,141 +341,163 @@ LOAD c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  *(SORT(.dtors.*))
                 [!provide]                        PROVIDE (__DTOR_END__, ABSOLUTE (.))
  *(.jcr)
-                0x0000000000006214                . = ALIGN (0x4)
+                0x0000000000006538                . = ALIGN (0x4)
 
-.rodata         0x0000000000006214      0x1bc
-                0x0000000000006214                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
-                0x0000000000006214                . = ALIGN (0x4)
+.rodata         0x0000000000006538      0x1bc
+                0x0000000000006538                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0000000000006538                . = ALIGN (0x4)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.str1.4
-                0x0000000000006214       0x52 obj/default/convolution_test.o
+                0x0000000000006538       0x52 obj/default/convolution_test.o
                                          0x56 (size before relaxing)
- *fill*         0x0000000000006266        0x2 
+ *fill*         0x000000000000658a        0x2 
  .rodata.str1.4
-                0x0000000000006268       0x18 obj/default/printf.o
+                0x000000000000658c       0x18 obj/default/printf.o
                                          0x15 (size before relaxing)
- .rodata        0x0000000000006280       0x50 obj/default/printf.o
- .rodata        0x00000000000062d0      0x100 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
-                0x00000000000062d0                __clz_tab
+ .rodata        0x00000000000065a4       0x50 obj/default/printf.o
+ .rodata        0x00000000000065f4      0x100 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
+                0x00000000000065f4                __clz_tab
  *(.rodata1)
-                0x00000000000063d0                . = ALIGN (0x4)
-                0x00000000000063d0                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
-                0x0000000000006214                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+                0x00000000000066f4                . = ALIGN (0x4)
+                0x00000000000066f4                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0000000000006538                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
 
-.rwdata         0x00000000000063d0        0x4 load address 0x00000000000063d4
-                0x00000000000063d0                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
-                0x00000000000063d0                . = ALIGN (0x4)
+.rwdata         0x00000000000066f4        0x8 load address 0x00000000000066fc
+                0x00000000000066f4                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x00000000000066f4                . = ALIGN (0x4)
  *(.got.plt)
  *(.got)
  *(.data1)
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp//obj/HAL/src/crt0.o
- .data          0x00000000000063d0        0x0 obj/default/convolution_test.o
- .data          0x00000000000063d0        0x0 obj/default/printf.o
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
- .data          0x00000000000063d0        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .data          0x00000000000063d0        0x0 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
-                0x000000000000e3d0                _gp = ABSOLUTE ((. + 0x8000))
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp//obj/HAL/src/crt0.o
+ .data          0x00000000000066f4        0x0 obj/default/convolution_test.o
+ .data          0x00000000000066f4        0x0 obj/default/printf.o
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
+ .data          0x00000000000066f4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .data          0x00000000000066f4        0x0 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x000000000000e6f4                _gp = ABSOLUTE ((. + 0x8000))
                 [!provide]                        PROVIDE (gp, _gp)
  *(.rwdata .rwdata.*)
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0x00000000000063d0        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
-                0x00000000000063d0                jtag_uart
+ .sdata         0x00000000000066f4        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x00000000000066f4                alt_priority_mask
+ .sdata         0x00000000000066f8        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x00000000000066f8                jtag_uart
  *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
-                0x00000000000063d4                . = ALIGN (0x4)
-                0x00000000000063d4                _edata = ABSOLUTE (.)
+                0x00000000000066fc                . = ALIGN (0x4)
+                0x00000000000066fc                _edata = ABSOLUTE (.)
                 [!provide]                        PROVIDE (edata, ABSOLUTE (.))
-                0x00000000000063d4                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
-                0x00000000000063d4                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+                0x00000000000066fc                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x00000000000066fc                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
 
-.bss            0x00000000000063d8        0xc
-                0x00000000000063d8                __bss_start = ABSOLUTE (.)
+.bss            0x0000000000006704      0x114
+                0x0000000000006704                __bss_start = ABSOLUTE (.)
                 [!provide]                        PROVIDE (__sbss_start, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_start, ABSOLUTE (.))
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0x00000000000063d8        0xc ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
-                0x00000000000063d8                alt_envp
-                0x00000000000063dc                alt_argv
-                0x00000000000063e0                alt_argc
+ .sbss          0x0000000000006704        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                0x0000000000006704                alt_irq_active
+ .sbss          0x0000000000006708        0xc ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000006708                alt_envp
+                0x000000000000670c                alt_argv
+                0x0000000000006710                alt_argc
+ .sbss          0x0000000000006714        0x4 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                0x0000000000006714                alt_instruction_exception_handler
  *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
  *(.scommon)
                 [!provide]                        PROVIDE (__sbss_end, ABSOLUTE (.))
                 [!provide]                        PROVIDE (___sbss_end, ABSOLUTE (.))
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp//obj/HAL/src/crt0.o
- .bss           0x00000000000063e4        0x0 obj/default/convolution_test.o
- .bss           0x00000000000063e4        0x0 obj/default/printf.o
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
- .bss           0x00000000000063e4        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .bss           0x00000000000063e4        0x0 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp//obj/HAL/src/crt0.o
+ .bss           0x0000000000006718        0x0 obj/default/convolution_test.o
+ .bss           0x0000000000006718        0x0 obj/default/printf.o
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
+ .bss           0x0000000000006718        0x0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .bss           0x0000000000006718        0x0 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
  *(COMMON)
-                0x00000000000063e4                . = ALIGN (0x4)
-                0x00000000000063e4                __bss_end = ABSOLUTE (.)
+ COMMON         0x0000000000006718      0x100 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                0x0000000000006718                alt_irq
+                0x0000000000006818                . = ALIGN (0x4)
+                0x0000000000006818                __bss_end = ABSOLUTE (.)
 
-.onchip_ram     0x00000000000063e4        0x0
+.onchip_ram     0x0000000000006818        0x0
                 [!provide]                        PROVIDE (_alt_partition_onchip_ram_start, ABSOLUTE (.))
  *(.onchip_ram .onchip_ram. onchip_ram.*)
-                0x00000000000063e4                . = ALIGN (0x4)
+                0x0000000000006818                . = ALIGN (0x4)
                 [!provide]                        PROVIDE (_alt_partition_onchip_ram_end, ABSOLUTE (.))
-                0x00000000000063e4                _end = ABSOLUTE (.)
-                0x00000000000063e4                end = ABSOLUTE (.)
-                0x00000000000063e4                __alt_stack_base = ABSOLUTE (.)
+                0x0000000000006818                _end = ABSOLUTE (.)
+                0x0000000000006818                end = ABSOLUTE (.)
+                0x0000000000006818                __alt_stack_base = ABSOLUTE (.)
                 [!provide]                        PROVIDE (_alt_partition_onchip_ram_load_addr, LOADADDR (.onchip_ram))
 
 .stab
@@ -459,6 +543,10 @@ LOAD c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  .comment       0x0000000000000023       0x24 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
  .comment       0x0000000000000023       0x24 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
  .comment       0x0000000000000023       0x24 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+ .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
  .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
  .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
  .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
@@ -468,6 +556,7 @@ LOAD c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
  .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
  .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
  .comment       0x0000000000000023       0x24 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
 
 .debug
@@ -482,7 +571,7 @@ LOAD c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0x428
+.debug_aranges  0x0000000000000000      0x530
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0x28 ../convolution_test_bsp//obj/HAL/src/crt0.o
@@ -531,265 +620,318 @@ LOAD c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
  .debug_aranges
                 0x00000000000002c8       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
  .debug_aranges
-                0x00000000000002e8       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+                0x00000000000002e8       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
  .debug_aranges
-                0x0000000000000308       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+                0x0000000000000308       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
  .debug_aranges
-                0x0000000000000328       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+                0x0000000000000328       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
  .debug_aranges
-                0x0000000000000348       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+                0x0000000000000358       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
  .debug_aranges
-                0x0000000000000368       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+                0x0000000000000378       0x18 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
  .debug_aranges
-                0x0000000000000388       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x0000000000000390       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
  .debug_aranges
-                0x00000000000003a8       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+                0x00000000000003b0       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
  .debug_aranges
-                0x00000000000003c8       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+                0x00000000000003d0       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
  .debug_aranges
-                0x00000000000003e8       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+                0x00000000000003f0       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
  .debug_aranges
-                0x0000000000000408       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x0000000000000410       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_aranges
+                0x0000000000000430       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_aranges
+                0x0000000000000450       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_aranges
+                0x0000000000000470       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_aranges
+                0x0000000000000490       0x38 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_aranges
+                0x00000000000004c8       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_aranges
+                0x00000000000004e8       0x28 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_aranges
+                0x0000000000000510       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x6422
+.debug_info     0x0000000000000000     0x7037
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000       0xc7 ../convolution_test_bsp//obj/HAL/src/crt0.o
- .debug_info    0x00000000000000c7      0x68d obj/default/convolution_test.o
- .debug_info    0x0000000000000754     0x15e2 obj/default/printf.o
- .debug_info    0x0000000000001d36       0xc7 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
- .debug_info    0x0000000000001dfd      0x712 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
- .debug_info    0x000000000000250f      0x767 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
- .debug_info    0x0000000000002c76      0x2c6 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .debug_info    0x0000000000002f3c       0xb4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
- .debug_info    0x0000000000002ff0      0x2b7 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
- .debug_info    0x00000000000032a7      0x31d c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
- .debug_info    0x00000000000035c4      0x1bb c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
- .debug_info    0x000000000000377f      0x4a2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
- .debug_info    0x0000000000003c21      0x5bf c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
- .debug_info    0x00000000000041e0      0x1e2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
- .debug_info    0x00000000000043c2      0x202 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
- .debug_info    0x00000000000045c4      0x204 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
- .debug_info    0x00000000000047c8      0x5f1 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
- .debug_info    0x0000000000004db9      0x4a2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
- .debug_info    0x000000000000525b      0x1ae c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
- .debug_info    0x0000000000005409      0x1bc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
- .debug_info    0x00000000000055c5      0x1b0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
- .debug_info    0x0000000000005775       0xb2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
- .debug_info    0x0000000000005827      0x124 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
- .debug_info    0x000000000000594b      0x1c9 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
- .debug_info    0x0000000000005b14      0x169 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
- .debug_info    0x0000000000005c7d      0x12a ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_info    0x0000000000005da7       0xd1 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
- .debug_info    0x0000000000005e78      0x185 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_info    0x0000000000005ffd      0x197 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_info    0x0000000000006194       0xd8 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
- .debug_info    0x000000000000626c       0x92 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_info    0x00000000000062fe       0x92 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_info    0x0000000000006390       0x92 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x00000000000000c7      0x737 obj/default/convolution_test.o
+ .debug_info    0x00000000000007fe     0x15e2 obj/default/printf.o
+ .debug_info    0x0000000000001de0       0xc7 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+ .debug_info    0x0000000000001ea7      0x712 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+ .debug_info    0x00000000000025b9      0x767 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+ .debug_info    0x0000000000002d20      0x2c6 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_info    0x0000000000002fe6       0xb4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_info    0x000000000000309a      0x2b7 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+ .debug_info    0x0000000000003351      0x31d c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .debug_info    0x000000000000366e      0x1bb c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .debug_info    0x0000000000003829      0x4a2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .debug_info    0x0000000000003ccb      0x5bf c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .debug_info    0x000000000000428a      0x1e2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .debug_info    0x000000000000446c      0x202 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .debug_info    0x000000000000466e      0x204 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .debug_info    0x0000000000004872      0x5f1 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .debug_info    0x0000000000004e63      0x4a2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .debug_info    0x0000000000005305      0x1ae c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .debug_info    0x00000000000054b3      0x1bc c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .debug_info    0x000000000000566f      0x1b0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .debug_info    0x000000000000581f       0xb2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
+ .debug_info    0x00000000000058d1      0x124 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .debug_info    0x00000000000059f5      0x38a ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_info    0x0000000000005d7f      0x232 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_info    0x0000000000005fb1       0xd0 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_info    0x0000000000006081      0x184 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_info    0x0000000000006205       0x88 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_info    0x000000000000628d      0x1c9 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_info    0x0000000000006456      0x169 ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_info    0x00000000000065bf      0x12a ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_info    0x00000000000066e9       0xd1 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_info    0x00000000000067ba      0x185 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x000000000000693f      0x197 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x0000000000006ad6       0xd8 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_info    0x0000000000006bae       0x92 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x0000000000006c40       0xd6 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_info    0x0000000000006d16       0x92 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x0000000000006da8      0x1fd ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_info    0x0000000000006fa5       0x92 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
 
-.debug_abbrev   0x0000000000000000     0x21cc
+.debug_abbrev   0x0000000000000000     0x27ad
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000       0x12 ../convolution_test_bsp//obj/HAL/src/crt0.o
- .debug_abbrev  0x0000000000000012      0x241 obj/default/convolution_test.o
- .debug_abbrev  0x0000000000000253      0x397 obj/default/printf.o
- .debug_abbrev  0x00000000000005ea       0x60 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
- .debug_abbrev  0x000000000000064a      0x167 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
- .debug_abbrev  0x00000000000007b1      0x193 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
- .debug_abbrev  0x0000000000000944      0x10e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .debug_abbrev  0x0000000000000a52       0x6f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
- .debug_abbrev  0x0000000000000ac1      0x13c c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
- .debug_abbrev  0x0000000000000bfd      0x12d c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
- .debug_abbrev  0x0000000000000d2a      0x147 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
- .debug_abbrev  0x0000000000000e71      0x13a c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
- .debug_abbrev  0x0000000000000fab      0x12d c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
- .debug_abbrev  0x00000000000010d8      0x128 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
- .debug_abbrev  0x0000000000001200      0x137 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
- .debug_abbrev  0x0000000000001337      0x137 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
- .debug_abbrev  0x000000000000146e      0x13f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
- .debug_abbrev  0x00000000000015ad      0x133 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
- .debug_abbrev  0x00000000000016e0      0x135 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
- .debug_abbrev  0x0000000000001815      0x124 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
- .debug_abbrev  0x0000000000001939      0x124 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
- .debug_abbrev  0x0000000000001a5d       0x5d c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
- .debug_abbrev  0x0000000000001aba       0xbe c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
- .debug_abbrev  0x0000000000001b78       0xd8 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
- .debug_abbrev  0x0000000000001c50       0xee ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
- .debug_abbrev  0x0000000000001d3e       0xd2 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_abbrev  0x0000000000001e10       0x8d ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
- .debug_abbrev  0x0000000000001e9d      0x107 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_abbrev  0x0000000000001fa4       0xd5 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_abbrev  0x0000000000002079       0x8d ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
- .debug_abbrev  0x0000000000002106       0x42 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_abbrev  0x0000000000002148       0x42 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_abbrev  0x000000000000218a       0x42 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_abbrev  0x0000000000000012      0x27b obj/default/convolution_test.o
+ .debug_abbrev  0x000000000000028d      0x397 obj/default/printf.o
+ .debug_abbrev  0x0000000000000624       0x60 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+ .debug_abbrev  0x0000000000000684      0x167 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+ .debug_abbrev  0x00000000000007eb      0x193 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+ .debug_abbrev  0x000000000000097e      0x10e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_abbrev  0x0000000000000a8c       0x6f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_abbrev  0x0000000000000afb      0x13c c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+ .debug_abbrev  0x0000000000000c37      0x12d c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .debug_abbrev  0x0000000000000d64      0x147 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .debug_abbrev  0x0000000000000eab      0x13a c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .debug_abbrev  0x0000000000000fe5      0x12d c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .debug_abbrev  0x0000000000001112      0x128 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .debug_abbrev  0x000000000000123a      0x137 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .debug_abbrev  0x0000000000001371      0x137 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .debug_abbrev  0x00000000000014a8      0x13f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .debug_abbrev  0x00000000000015e7      0x133 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .debug_abbrev  0x000000000000171a      0x135 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .debug_abbrev  0x000000000000184f      0x124 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .debug_abbrev  0x0000000000001973      0x124 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .debug_abbrev  0x0000000000001a97       0x5d c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
+ .debug_abbrev  0x0000000000001af4       0xbe c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .debug_abbrev  0x0000000000001bb2      0x1a0 ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_abbrev  0x0000000000001d52      0x19c ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_abbrev  0x0000000000001eee       0x12 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_abbrev  0x0000000000001f00      0x120 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_abbrev  0x0000000000002020       0x40 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_abbrev  0x0000000000002060       0xd8 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x0000000000002138       0xee ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x0000000000002226       0xd2 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_abbrev  0x00000000000022f8       0x8d ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_abbrev  0x0000000000002385      0x107 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x000000000000248c       0xd5 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x0000000000002561       0x8d ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_abbrev  0x00000000000025ee       0x42 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x0000000000002630       0x12 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_abbrev  0x0000000000002642       0x42 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x0000000000002684       0xe7 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_abbrev  0x000000000000276b       0x42 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
 
-.debug_line     0x0000000000000000     0x27d5
+.debug_line     0x0000000000000000     0x2c8d
  *(.debug_line)
  .debug_line    0x0000000000000000       0x66 ../convolution_test_bsp//obj/HAL/src/crt0.o
- .debug_line    0x0000000000000066      0x1ee obj/default/convolution_test.o
- .debug_line    0x0000000000000254      0x573 obj/default/printf.o
- .debug_line    0x00000000000007c7       0x6e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
- .debug_line    0x0000000000000835      0x12f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
- .debug_line    0x0000000000000964      0x142 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
- .debug_line    0x0000000000000aa6      0x105 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .debug_line    0x0000000000000bab       0x80 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
- .debug_line    0x0000000000000c2b      0x28a c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
- .debug_line    0x0000000000000eb5      0x15c c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
- .debug_line    0x0000000000001011       0xa9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
- .debug_line    0x00000000000010ba      0x37e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
- .debug_line    0x0000000000001438      0x2b0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
- .debug_line    0x00000000000016e8       0xad c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
- .debug_line    0x0000000000001795       0xce c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
- .debug_line    0x0000000000001863       0xe6 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
- .debug_line    0x0000000000001949      0x1ea c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
- .debug_line    0x0000000000001b33      0x3ab c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
- .debug_line    0x0000000000001ede       0x9b c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
- .debug_line    0x0000000000001f79       0xa2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
- .debug_line    0x000000000000201b       0x95 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
- .debug_line    0x00000000000020b0       0x56 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
- .debug_line    0x0000000000002106       0xbd c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
- .debug_line    0x00000000000021c3       0xa4 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
- .debug_line    0x0000000000002267       0xbd ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
- .debug_line    0x0000000000002324       0x55 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_line    0x0000000000002379       0xca ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
- .debug_line    0x0000000000002443      0x101 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_line    0x0000000000002544       0xf0 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_line    0x0000000000002634       0xb5 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
- .debug_line    0x00000000000026e9       0x4e ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_line    0x0000000000002737       0x4e ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_line    0x0000000000002785       0x50 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_line    0x0000000000000066      0x20d obj/default/convolution_test.o
+ .debug_line    0x0000000000000273      0x573 obj/default/printf.o
+ .debug_line    0x00000000000007e6       0x6e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+ .debug_line    0x0000000000000854      0x12f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+ .debug_line    0x0000000000000983      0x142 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+ .debug_line    0x0000000000000ac5      0x105 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_line    0x0000000000000bca       0x80 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_line    0x0000000000000c4a      0x28a c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+ .debug_line    0x0000000000000ed4      0x15c c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .debug_line    0x0000000000001030       0xa9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .debug_line    0x00000000000010d9      0x37e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .debug_line    0x0000000000001457      0x2b0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .debug_line    0x0000000000001707       0xad c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .debug_line    0x00000000000017b4       0xce c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .debug_line    0x0000000000001882       0xe6 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .debug_line    0x0000000000001968      0x1ea c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .debug_line    0x0000000000001b52      0x3ab c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .debug_line    0x0000000000001efd       0x9b c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .debug_line    0x0000000000001f98       0xa2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .debug_line    0x000000000000203a       0x95 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .debug_line    0x00000000000020cf       0x56 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
+ .debug_line    0x0000000000002125       0xbd c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .debug_line    0x00000000000021e2       0xf1 ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_line    0x00000000000022d3       0xd6 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_line    0x00000000000023a9       0x6b ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_line    0x0000000000002414       0xa5 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_line    0x00000000000024b9       0x50 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+ .debug_line    0x0000000000002509       0xa4 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_line    0x00000000000025ad       0xbd ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_line    0x000000000000266a       0x55 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_line    0x00000000000026bf       0xca ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_line    0x0000000000002789      0x101 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x000000000000288a       0xf0 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x000000000000297a       0xb5 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_line    0x0000000000002a2f       0x4e ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x0000000000002a7d       0xb3 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_line    0x0000000000002b30       0x4e ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x0000000000002b7e       0xbf ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_line    0x0000000000002c3d       0x50 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
 
-.debug_frame    0x0000000000000000      0x9e8
+.debug_frame    0x0000000000000000      0xadc
  *(.debug_frame)
- .debug_frame   0x0000000000000000      0x12c obj/default/convolution_test.o
- .debug_frame   0x000000000000012c      0x2cc obj/default/printf.o
- .debug_frame   0x00000000000003f8       0x38 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
- .debug_frame   0x0000000000000430       0x54 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
- .debug_frame   0x0000000000000484       0x54 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
- .debug_frame   0x00000000000004d8       0x50 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .debug_frame   0x0000000000000528       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
- .debug_frame   0x0000000000000548       0x3c c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
- .debug_frame   0x0000000000000584       0x58 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
- .debug_frame   0x00000000000005dc       0x34 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
- .debug_frame   0x0000000000000610       0x40 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
- .debug_frame   0x0000000000000650       0x58 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
- .debug_frame   0x00000000000006a8       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
- .debug_frame   0x00000000000006c8       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
- .debug_frame   0x00000000000006e8       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
- .debug_frame   0x0000000000000708       0x58 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
- .debug_frame   0x0000000000000760       0x44 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
- .debug_frame   0x00000000000007a4       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
- .debug_frame   0x00000000000007c4       0x38 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
- .debug_frame   0x00000000000007fc       0x34 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
- .debug_frame   0x0000000000000830       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
- .debug_frame   0x0000000000000850       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
- .debug_frame   0x0000000000000880       0x2c ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
- .debug_frame   0x00000000000008ac       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_frame   0x00000000000008dc       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
- .debug_frame   0x00000000000008fc       0x3c ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_frame   0x0000000000000938       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_frame   0x0000000000000958       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
- .debug_frame   0x0000000000000988       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
- .debug_frame   0x00000000000009a8       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
- .debug_frame   0x00000000000009c8       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_frame   0x0000000000000000      0x13c obj/default/convolution_test.o
+ .debug_frame   0x000000000000013c      0x2cc obj/default/printf.o
+ .debug_frame   0x0000000000000408       0x38 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+ .debug_frame   0x0000000000000440       0x54 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+ .debug_frame   0x0000000000000494       0x54 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+ .debug_frame   0x00000000000004e8       0x50 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_frame   0x0000000000000538       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_frame   0x0000000000000558       0x3c c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+ .debug_frame   0x0000000000000594       0x58 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .debug_frame   0x00000000000005ec       0x34 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .debug_frame   0x0000000000000620       0x40 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .debug_frame   0x0000000000000660       0x58 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .debug_frame   0x00000000000006b8       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .debug_frame   0x00000000000006d8       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .debug_frame   0x00000000000006f8       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .debug_frame   0x0000000000000718       0x58 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .debug_frame   0x0000000000000770       0x44 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .debug_frame   0x00000000000007b4       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .debug_frame   0x00000000000007d4       0x38 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .debug_frame   0x000000000000080c       0x34 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .debug_frame   0x0000000000000840       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .debug_frame   0x0000000000000860       0x50 ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_frame   0x00000000000008b0       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_frame   0x00000000000008e0       0x34 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_frame   0x0000000000000914       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_frame   0x0000000000000944       0x2c ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_frame   0x0000000000000970       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_frame   0x00000000000009a0       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_frame   0x00000000000009c0       0x3c ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_frame   0x00000000000009fc       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_frame   0x0000000000000a1c       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_frame   0x0000000000000a4c       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_frame   0x0000000000000a6c       0x20 ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_frame   0x0000000000000a8c       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+ .debug_frame   0x0000000000000abc       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
 
-.debug_str      0x0000000000000000     0x11d6
+.debug_str      0x0000000000000000     0x1817
  *(.debug_str)
- .debug_str     0x0000000000000000      0x1ff obj/default/convolution_test.o
-                                        0x254 (size before relaxing)
- .debug_str     0x00000000000001ff      0x1a8 obj/default/printf.o
-                                        0x389 (size before relaxing)
- .debug_str     0x00000000000003a7      0x162 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
-                                        0x1eb (size before relaxing)
- .debug_str     0x0000000000000509      0x135 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
-                                        0x29c (size before relaxing)
- .debug_str     0x000000000000063e        0xa c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
-                                        0x29c (size before relaxing)
- .debug_str     0x0000000000000648       0x7f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
-                                        0x1d2 (size before relaxing)
- .debug_str     0x00000000000006c7       0x40 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
-                                        0x193 (size before relaxing)
- .debug_str     0x0000000000000707       0xfe c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
-                                        0x283 (size before relaxing)
- .debug_str     0x0000000000000805       0xa9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .debug_str     0x0000000000000000      0x243 obj/default/convolution_test.o
                                         0x2a0 (size before relaxing)
- .debug_str     0x00000000000008ae       0x70 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .debug_str     0x0000000000000243      0x1a8 obj/default/printf.o
+                                        0x389 (size before relaxing)
+ .debug_str     0x00000000000003eb      0x162 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+                                        0x1eb (size before relaxing)
+ .debug_str     0x000000000000054d      0x135 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+                                        0x29c (size before relaxing)
+ .debug_str     0x0000000000000682        0xa c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+                                        0x29c (size before relaxing)
+ .debug_str     0x000000000000068c       0x7f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+                                        0x1d2 (size before relaxing)
+ .debug_str     0x000000000000070b       0x40 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+                                        0x193 (size before relaxing)
+ .debug_str     0x000000000000074b       0xfe c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+                                        0x283 (size before relaxing)
+ .debug_str     0x0000000000000849       0xa9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+                                        0x2a0 (size before relaxing)
+ .debug_str     0x00000000000008f2       0x70 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
                                         0x24b (size before relaxing)
- .debug_str     0x000000000000091e       0x97 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .debug_str     0x0000000000000962       0x97 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
                                         0x2a9 (size before relaxing)
- .debug_str     0x00000000000009b5       0xe8 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .debug_str     0x00000000000009f9       0xe8 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
                                         0x361 (size before relaxing)
- .debug_str     0x0000000000000a9d       0x37 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .debug_str     0x0000000000000ae1       0x37 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
                                         0x20f (size before relaxing)
- .debug_str     0x0000000000000ad4       0x5b c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .debug_str     0x0000000000000b18       0x5b c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
                                         0x233 (size before relaxing)
- .debug_str     0x0000000000000b2f       0x37 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .debug_str     0x0000000000000b73       0x37 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
                                         0x233 (size before relaxing)
- .debug_str     0x0000000000000b66      0x15e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .debug_str     0x0000000000000baa      0x15e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
                                         0x3c2 (size before relaxing)
- .debug_str     0x0000000000000cc4       0x39 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .debug_str     0x0000000000000d08       0x39 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
                                         0x2a9 (size before relaxing)
- .debug_str     0x0000000000000cfd       0x4e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .debug_str     0x0000000000000d41       0x4e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
                                         0x22b (size before relaxing)
- .debug_str     0x0000000000000d4b       0x3f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .debug_str     0x0000000000000d8f       0x3f c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
                                         0x242 (size before relaxing)
- .debug_str     0x0000000000000d8a       0x43 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .debug_str     0x0000000000000dce       0x43 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
                                         0x23f (size before relaxing)
- .debug_str     0x0000000000000dcd      0x1e3 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
- .debug_str     0x0000000000000dcd        0x9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .debug_str     0x0000000000000e11      0x1e3 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clz.o)
+ .debug_str     0x0000000000000e11        0x9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
                                         0x200 (size before relaxing)
- .debug_str     0x0000000000000dd6      0x1a6 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_str     0x0000000000000e1a      0x17d ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+                                        0x2ac (size before relaxing)
+ .debug_str     0x0000000000000f97       0x37 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+                                        0x266 (size before relaxing)
+ .debug_str     0x0000000000000fce       0x3a ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+                                        0x1f0 (size before relaxing)
+ .debug_str     0x0000000000001008       0x17 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_vars.o)
+                                        0x193 (size before relaxing)
+ .debug_str     0x000000000000101f      0x113 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
                                         0x295 (size before relaxing)
- .debug_str     0x0000000000000f7c       0x8f ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
+ .debug_str     0x0000000000001132       0x8f ../convolution_test_bsp/\libhal_bsp.a(alt_main.o)
                                         0x20e (size before relaxing)
- .debug_str     0x000000000000100b       0x5e ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_str     0x00000000000011c1       0x5e ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
                                         0x1e4 (size before relaxing)
- .debug_str     0x0000000000001069       0x2f ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_str     0x000000000000121f       0x2f ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
                                         0x1b0 (size before relaxing)
- .debug_str     0x0000000000001098       0x81 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_str     0x000000000000124e       0x81 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
                                         0x27d (size before relaxing)
- .debug_str     0x0000000000001119       0x2c ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_str     0x00000000000012cf       0x2c ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
                                         0x26e (size before relaxing)
- .debug_str     0x0000000000001145       0x33 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_str     0x00000000000012fb       0x33 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
                                         0x1c4 (size before relaxing)
- .debug_str     0x0000000000001178       0x1f ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_str     0x000000000000132e       0x1f ../convolution_test_bsp/\libhal_bsp.a(alt_dcache_flush_all.o)
                                         0x1ae (size before relaxing)
- .debug_str     0x0000000000001197       0x1f ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_str     0x000000000000134d       0x1f ../convolution_test_bsp/\libhal_bsp.a(alt_icache_flush_all.o)
                                         0x1ae (size before relaxing)
- .debug_str     0x00000000000011b6       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_str     0x000000000000136c      0x48b ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
+                                        0x5f9 (size before relaxing)
+ .debug_str     0x00000000000017f7       0x20 ../convolution_test_bsp/\libhal_bsp.a(altera_nios2_gen2_irq.o)
                                         0x1b5 (size before relaxing)
 
-.debug_loc      0x0000000000000000     0xc3a9
+.debug_loc      0x0000000000000000     0xc7a4
  *(.debug_loc)
- .debug_loc     0x0000000000000000      0x3c5 obj/default/convolution_test.o
- .debug_loc     0x00000000000003c5     0x222a obj/default/printf.o
- .debug_loc     0x00000000000025ef       0x28 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
- .debug_loc     0x0000000000002617     0x1110 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
- .debug_loc     0x0000000000003727     0x10d4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
- .debug_loc     0x00000000000047fb      0x4ce c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .debug_loc     0x0000000000004cc9       0x93 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
- .debug_loc     0x0000000000004d5c      0xae0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
- .debug_loc     0x000000000000583c      0x733 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
- .debug_loc     0x0000000000005f6f      0x1b2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
- .debug_loc     0x0000000000006121     0x16f9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
- .debug_loc     0x000000000000781a     0x1c20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
- .debug_loc     0x000000000000943a       0x68 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
- .debug_loc     0x00000000000094a2       0xf9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
- .debug_loc     0x000000000000959b      0x163 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
- .debug_loc     0x00000000000096fe     0x1085 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
- .debug_loc     0x000000000000a783     0x1627 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
- .debug_loc     0x000000000000bdaa      0x121 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
- .debug_loc     0x000000000000becb      0x175 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
- .debug_loc     0x000000000000c040      0x19e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
- .debug_loc     0x000000000000c1de       0x6b c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
- .debug_loc     0x000000000000c249       0x2c ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
- .debug_loc     0x000000000000c275       0x21 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
- .debug_loc     0x000000000000c296       0x21 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
- .debug_loc     0x000000000000c2b7       0x8b ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
- .debug_loc     0x000000000000c342       0x67 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_loc     0x0000000000000000      0x3e6 obj/default/convolution_test.o
+ .debug_loc     0x00000000000003e6     0x222a obj/default/printf.o
+ .debug_loc     0x0000000000002610       0x28 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_fixunsdfsi.o)
+ .debug_loc     0x0000000000002638     0x1110 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+ .debug_loc     0x0000000000003748     0x10d4 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+ .debug_loc     0x000000000000481c      0x4ce c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_loc     0x0000000000004cea       0x93 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-mul.o)
+ .debug_loc     0x0000000000004d7d      0xae0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+ .debug_loc     0x000000000000585d      0x733 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .debug_loc     0x0000000000005f90      0x1b2 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .debug_loc     0x0000000000006142     0x16f9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .debug_loc     0x000000000000783b     0x1c20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .debug_loc     0x000000000000945b       0x68 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .debug_loc     0x00000000000094c3       0xf9 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .debug_loc     0x00000000000095bc      0x163 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .debug_loc     0x000000000000971f     0x1085 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .debug_loc     0x000000000000a7a4     0x1627 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .debug_loc     0x000000000000bdcb      0x121 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .debug_loc     0x000000000000beec      0x175 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .debug_loc     0x000000000000c061      0x19e c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .debug_loc     0x000000000000c1ff       0x6b c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .debug_loc     0x000000000000c26a      0x170 ../convolution_test_bsp/\libhal_bsp.a(alt_iic.o)
+ .debug_loc     0x000000000000c3da      0x193 ../convolution_test_bsp/\libhal_bsp.a(alt_iic_isr_register.o)
+ .debug_loc     0x000000000000c56d       0x72 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_loc     0x000000000000c5df       0x2c ../convolution_test_bsp/\libhal_bsp.a(alt_putchar.o)
+ .debug_loc     0x000000000000c60b       0x21 ../convolution_test_bsp/\libhal_bsp.a(alt_usleep.o)
+ .debug_loc     0x000000000000c62c       0x21 ../convolution_test_bsp/\libhal_bsp.a(alt_sys_init.o)
+ .debug_loc     0x000000000000c64d       0x8b ../convolution_test_bsp/\libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_loc     0x000000000000c6d8       0x67 ../convolution_test_bsp/\libhal_bsp.a(alt_busy_sleep.o)
+ .debug_loc     0x000000000000c73f       0x65 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -820,25 +962,29 @@ LOAD c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-el
                 [!provide]                        PROVIDE (__alt_heap_limit, 0x8000)
 OUTPUT(convolution_test.elf elf32-littlenios2)
 
-.debug_ranges   0x0000000000000000     0x1098
+.debug_ranges   0x0000000000000000     0x1130
  .debug_ranges  0x0000000000000000       0x20 ../convolution_test_bsp//obj/HAL/src/crt0.o
- .debug_ranges  0x0000000000000020       0x88 obj/default/convolution_test.o
- .debug_ranges  0x00000000000000a8       0xb0 obj/default/printf.o
- .debug_ranges  0x0000000000000158      0x148 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
- .debug_ranges  0x00000000000002a0      0x160 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
- .debug_ranges  0x0000000000000400       0x60 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
- .debug_ranges  0x0000000000000460      0x188 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
- .debug_ranges  0x00000000000005e8       0x68 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
- .debug_ranges  0x0000000000000650       0x38 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
- .debug_ranges  0x0000000000000688      0x240 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
- .debug_ranges  0x00000000000008c8      0x158 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
- .debug_ranges  0x0000000000000a20       0x48 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
- .debug_ranges  0x0000000000000a68       0x88 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
- .debug_ranges  0x0000000000000af0       0xa8 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
- .debug_ranges  0x0000000000000b98      0x1d0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
- .debug_ranges  0x0000000000000d68      0x268 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
- .debug_ranges  0x0000000000000fd0       0x30 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
- .debug_ranges  0x0000000000001000       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
- .debug_ranges  0x0000000000001020       0x18 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
- .debug_ranges  0x0000000000001038       0x18 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
- .debug_ranges  0x0000000000001050       0x48 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_ranges  0x0000000000000020       0xa0 obj/default/convolution_test.o
+ .debug_ranges  0x00000000000000c0       0xb0 obj/default/printf.o
+ .debug_ranges  0x0000000000000170      0x148 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_udivdi3.o)
+ .debug_ranges  0x00000000000002b8      0x160 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_umoddi3.o)
+ .debug_ranges  0x0000000000000418       0x60 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(lib2-divmod.o)
+ .debug_ranges  0x0000000000000478      0x188 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(addsf3.o)
+ .debug_ranges  0x0000000000000600       0x68 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(mulsf3.o)
+ .debug_ranges  0x0000000000000668       0x38 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsisf.o)
+ .debug_ranges  0x00000000000006a0      0x240 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(adddf3.o)
+ .debug_ranges  0x00000000000008e0      0x158 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(divdf3.o)
+ .debug_ranges  0x0000000000000a38       0x48 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(eqdf2.o)
+ .debug_ranges  0x0000000000000a80       0x88 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(gedf2.o)
+ .debug_ranges  0x0000000000000b08       0xa8 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(ledf2.o)
+ .debug_ranges  0x0000000000000bb0      0x1d0 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(muldf3.o)
+ .debug_ranges  0x0000000000000d80      0x268 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(subdf3.o)
+ .debug_ranges  0x0000000000000fe8       0x30 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(fixdfsi.o)
+ .debug_ranges  0x0000000000001018       0x20 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatsidf.o)
+ .debug_ranges  0x0000000000001038       0x18 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(floatunsidf.o)
+ .debug_ranges  0x0000000000001050       0x18 c:/intelfpga/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/mno-hw-mul\libgcc.a(_clzsi2.o)
+ .debug_ranges  0x0000000000001068       0x28 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_entry.o)
+ .debug_ranges  0x0000000000001090       0x10 ../convolution_test_bsp/\libhal_bsp.a(alt_irq_handler.o)
+ .debug_ranges  0x00000000000010a0       0x48 ../convolution_test_bsp/\libhal_bsp.a(alt_load.o)
+ .debug_ranges  0x00000000000010e8       0x30 ../convolution_test_bsp/\libhal_bsp.a(alt_exception_entry.o)
+ .debug_ranges  0x0000000000001118       0x18 ../convolution_test_bsp/\libhal_bsp.a(alt_instruction_exception_entry.o)

@@ -1,20 +1,9 @@
-14:27:55 **** Build of configuration Nios II for project convolution_test ****
+16:55:10 **** Incremental Build of configuration Nios II for project convolution_test ****
 make all 
 Info: Building ../convolution_test_bsp/
 C:/intelFPGA/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../convolution_test_bsp/
 [BSP build complete]
-Info: Compiling convolution_test.c to obj/default/convolution_test.o
-nios2-elf-gcc -xc -MP -MMD -c -I../convolution_test_bsp//HAL/inc -I../convolution_test_bsp/ -I../convolution_test_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/convolution_test.o convolution_test.c
-Info: Compiling printf.c to obj/default/printf.o
-nios2-elf-gcc -xc -MP -MMD -c -I../convolution_test_bsp//HAL/inc -I../convolution_test_bsp/ -I../convolution_test_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/printf.o printf.c
-Info: Linking convolution_test.elf
-nios2-elf-g++  -T'../convolution_test_bsp//linker.x' -msys-crt0='../convolution_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../convolution_test_bsp/  -msmallc  -Wl,-Map=convolution_test.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o convolution_test.elf obj/default/convolution_test.o obj/default/printf.o -lm -msys-lib=m
-nios2-elf-insert convolution_test.elf --thread_model hal --cpu_name nios --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name platform_designer_block --quartus_project_dir "C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple" --jdi ../..//output_files/convolution_simple.jdi --sopcinfo C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de10_lite/quartus_projects/18.1/convolution_simple/software/convolution_test_bsp/../../platform_designer_block.sopcinfo
-Info: (convolution_test.elf) 24 KBytes program size (code + initialized data).
-Info:                        7196 Bytes free for stack + heap.
-Info: Creating convolution_test.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source convolution_test.elf >convolution_test.objdump
 [convolution_test build complete]
 
-14:27:57 Build Finished (took 2s.19ms)
+16:55:11 Build Finished (took 858ms)
 

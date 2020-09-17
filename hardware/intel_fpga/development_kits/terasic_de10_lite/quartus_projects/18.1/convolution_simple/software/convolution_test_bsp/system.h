@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios' in SOPC Builder design 'platform_designer_block'
  * SOPC Builder design path: ../../platform_designer_block.sopcinfo
  *
- * Generated: Thu Sep 10 14:54:57 NZST 2020
+ * Generated: Thu Sep 17 16:54:48 NZST 2020
  */
 
 /*
@@ -182,8 +182,8 @@
 
 #define ALT_MODULE_CLASS_convolution convolution_burst
 #define CONVOLUTION_BASE 0x9000
-#define CONVOLUTION_IRQ -1
-#define CONVOLUTION_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define CONVOLUTION_IRQ 1
+#define CONVOLUTION_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define CONVOLUTION_NAME "/dev/convolution"
 #define CONVOLUTION_SPAN 64
 #define CONVOLUTION_TYPE "convolution_burst"
