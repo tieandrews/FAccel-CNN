@@ -1,0 +1,27 @@
+
+State Machine - |convolution_simple|platform_designer_block:u0|platform_designer_block_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:onchip_ram_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |convolution_simple|platform_designer_block:u0|platform_designer_block_nios:nios|platform_designer_block_nios_cpu:cpu|platform_designer_block_nios_cpu_nios2_oci:the_platform_designer_block_nios_cpu_nios2_oci|platform_designer_block_nios_cpu_debug_slave_wrapper:the_platform_designer_block_nios_cpu_debug_slave_wrapper|platform_designer_block_nios_cpu_debug_slave_tck:the_platform_designer_block_nios_cpu_debug_slave_tck|DRsize
+Name DRsize.101 DRsize.100 DRsize.011 DRsize.010 DRsize.001 DRsize.000 
+DRsize.000 0 0 0 0 0 0 
+DRsize.001 0 0 0 0 1 1 
+DRsize.010 0 0 0 1 0 1 
+DRsize.011 0 0 1 0 0 1 
+DRsize.100 0 1 0 0 0 1 
+DRsize.101 1 0 0 0 0 1 
+
+State Machine - |convolution_simple|platform_designer_block:u0|convolution_burst:convolution|fsm
+Name fsm.S8 fsm.S7 fsm.S6 fsm.S5 fsm.S4 fsm.S3 fsm.S2 fsm.S1 
+fsm.S1 0 0 0 0 0 0 0 0 
+fsm.S2 0 0 0 0 0 0 1 1 
+fsm.S3 0 0 0 0 0 1 0 1 
+fsm.S4 0 0 0 0 1 0 0 1 
+fsm.S5 0 0 0 1 0 0 0 1 
+fsm.S6 0 0 1 0 0 0 0 1 
+fsm.S7 0 1 0 0 0 0 0 1 
+fsm.S8 1 0 0 0 0 0 0 1 

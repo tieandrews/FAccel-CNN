@@ -79,12 +79,6 @@ module pd_block (
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_read;        // mm_interconnect_0:jtag_uart_avalon_jtag_slave_read -> jtag_uart:av_read_n
 	wire         mm_interconnect_0_jtag_uart_avalon_jtag_slave_write;       // mm_interconnect_0:jtag_uart_avalon_jtag_slave_write -> jtag_uart:av_write_n
 	wire  [31:0] mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata;   // mm_interconnect_0:jtag_uart_avalon_jtag_slave_writedata -> jtag_uart:av_writedata
-	wire  [31:0] mm_interconnect_0_convolution0_avalon_slave_readdata;      // convolution0:s_readdata -> mm_interconnect_0:convolution0_avalon_slave_readdata
-	wire         mm_interconnect_0_convolution0_avalon_slave_waitrequest;   // convolution0:s_waitrequest -> mm_interconnect_0:convolution0_avalon_slave_waitrequest
-	wire   [3:0] mm_interconnect_0_convolution0_avalon_slave_address;       // mm_interconnect_0:convolution0_avalon_slave_address -> convolution0:s_address
-	wire         mm_interconnect_0_convolution0_avalon_slave_read;          // mm_interconnect_0:convolution0_avalon_slave_read -> convolution0:s_read
-	wire         mm_interconnect_0_convolution0_avalon_slave_write;         // mm_interconnect_0:convolution0_avalon_slave_write -> convolution0:s_write
-	wire  [31:0] mm_interconnect_0_convolution0_avalon_slave_writedata;     // mm_interconnect_0:convolution0_avalon_slave_writedata -> convolution0:s_writedata
 	wire         mm_interconnect_0_led_s1_chipselect;                       // mm_interconnect_0:led_s1_chipselect -> led:chipselect
 	wire  [31:0] mm_interconnect_0_led_s1_readdata;                         // led:readdata -> mm_interconnect_0:led_s1_readdata
 	wire   [1:0] mm_interconnect_0_led_s1_address;                          // mm_interconnect_0:led_s1_address -> led:address
@@ -96,53 +90,59 @@ module pd_block (
 	wire         mm_interconnect_0_rgb_to_tensor_slave_read;                // mm_interconnect_0:rgb_to_tensor_slave_read -> rgb_to_tensor:s_read
 	wire         mm_interconnect_0_rgb_to_tensor_slave_write;               // mm_interconnect_0:rgb_to_tensor_slave_write -> rgb_to_tensor:s_write
 	wire  [31:0] mm_interconnect_0_rgb_to_tensor_slave_writedata;           // mm_interconnect_0:rgb_to_tensor_slave_writedata -> rgb_to_tensor:s_writedata
-	wire         irq_mapper_receiver0_irq;                                  // jtag_uart:av_irq -> irq_mapper:receiver0_irq
+	wire  [31:0] mm_interconnect_0_convolution0_slave_readdata;             // convolution0:s_readdata -> mm_interconnect_0:convolution0_slave_readdata
+	wire         mm_interconnect_0_convolution0_slave_waitrequest;          // convolution0:s_waitrequest -> mm_interconnect_0:convolution0_slave_waitrequest
+	wire   [3:0] mm_interconnect_0_convolution0_slave_address;              // mm_interconnect_0:convolution0_slave_address -> convolution0:s_address
+	wire         mm_interconnect_0_convolution0_slave_read;                 // mm_interconnect_0:convolution0_slave_read -> convolution0:s_read
+	wire         mm_interconnect_0_convolution0_slave_write;                // mm_interconnect_0:convolution0_slave_write -> convolution0:s_write
+	wire  [31:0] mm_interconnect_0_convolution0_slave_writedata;            // mm_interconnect_0:convolution0_slave_writedata -> convolution0:s_writedata
+	wire         irq_mapper_receiver0_irq;                                  // convolution0:s_irq -> irq_mapper:receiver0_irq
+	wire         irq_mapper_receiver1_irq;                                  // jtag_uart:av_irq -> irq_mapper:receiver1_irq
 	wire  [31:0] nios2e_irq_irq;                                            // irq_mapper:sender_irq -> nios2e:irq
 	wire         rst_controller_reset_out_reset;                            // rst_controller:reset_out -> [irq_mapper:reset, jtag_uart:rst_n, led:reset_n, mm_interconnect_0:convolution0_clock_sreset_reset_bridge_in_reset_reset, mm_interconnect_0:nios2e_reset_reset_bridge_in_reset_reset, nios2e:reset_n, onchip_ram:reset, rst_translator:in_reset, sdram:reset_n]
 	wire         rst_controller_reset_out_reset_req;                        // rst_controller:reset_req -> [nios2e:reset_req, onchip_ram:reset_req, rst_translator:reset_req_in]
 
 	convolution_burst #(
-		.MAX_RES        (256),
-		.XRES1          (16),
-		.XRES2          (32),
-		.XRES3          (64),
-		.XRES4          (128),
-		.XRES5          (256),
-		.YRES1          (16),
-		.YRES2          (32),
-		.YRES3          (64),
-		.YRES4          (128),
-		.YRES5          (256),
-		.RESOLUTIONS    (5),
-		.PAD            (1),
-		.KX             (3),
-		.KY             (3),
-		.EXP            (8),
-		.MANT           (7),
-		.WIDTHF         (16),
-		.FIFO_DEPTH     (512),
-		.WIDTH          (16),
-		.WIDTHB         (2),
-		.WIDTHD         (9),
-		.ADDER_PIPELINE (1)
+		.MAX_XRES    (256),
+		.XRES1       (16),
+		.XRES2       (32),
+		.XRES3       (64),
+		.XRES4       (128),
+		.XRES5       (256),
+		.YRES1       (16),
+		.YRES2       (32),
+		.YRES3       (64),
+		.YRES4       (128),
+		.YRES5       (256),
+		.RESOLUTIONS (5),
+		.KX          (3),
+		.KY          (3),
+		.EXP         (8),
+		.MANT        (7),
+		.WIDTHF      (16),
+		.FIFO_DEPTH  (512),
+		.WIDTH       (16),
+		.WIDTHBE     (2),
+		.WIDTHBC     (9)
 	) convolution0 (
-		.m_address       (convolution0_avalon_master_address),                      // avalon_master.address
-		.m_readdata      (convolution0_avalon_master_readdata),                     //              .readdata
-		.m_writedata     (convolution0_avalon_master_writedata),                    //              .writedata
-		.m_byteenable    (convolution0_avalon_master_byteenable),                   //              .byteenable
-		.m_burstcount    (convolution0_avalon_master_burstcount),                   //              .burstcount
-		.m_read          (convolution0_avalon_master_read),                         //              .read
-		.m_write         (convolution0_avalon_master_write),                        //              .write
-		.m_readdatavalid (convolution0_avalon_master_readdatavalid),                //              .readdatavalid
-		.m_waitrequest   (convolution0_avalon_master_waitrequest),                  //              .waitrequest
-		.s_address       (mm_interconnect_0_convolution0_avalon_slave_address),     //  avalon_slave.address
-		.s_writedata     (mm_interconnect_0_convolution0_avalon_slave_writedata),   //              .writedata
-		.s_readdata      (mm_interconnect_0_convolution0_avalon_slave_readdata),    //              .readdata
-		.s_read          (mm_interconnect_0_convolution0_avalon_slave_read),        //              .read
-		.s_write         (mm_interconnect_0_convolution0_avalon_slave_write),       //              .write
-		.s_waitrequest   (mm_interconnect_0_convolution0_avalon_slave_waitrequest), //              .waitrequest
-		.clock           (clock_clk),                                               //         clock.clk
-		.clock_sreset    (~clock_sreset_reset_n)                                    //  clock_sreset.reset
+		.clock           (clock_clk),                                        //            clock.clk
+		.clock_sreset    (~clock_sreset_reset_n),                            //     clock_sreset.reset
+		.s_address       (mm_interconnect_0_convolution0_slave_address),     //            slave.address
+		.s_writedata     (mm_interconnect_0_convolution0_slave_writedata),   //                 .writedata
+		.s_readdata      (mm_interconnect_0_convolution0_slave_readdata),    //                 .readdata
+		.s_read          (mm_interconnect_0_convolution0_slave_read),        //                 .read
+		.s_write         (mm_interconnect_0_convolution0_slave_write),       //                 .write
+		.s_waitrequest   (mm_interconnect_0_convolution0_slave_waitrequest), //                 .waitrequest
+		.m_address       (convolution0_avalon_master_address),               //    avalon_master.address
+		.m_readdata      (convolution0_avalon_master_readdata),              //                 .readdata
+		.m_writedata     (convolution0_avalon_master_writedata),             //                 .writedata
+		.m_byteenable    (convolution0_avalon_master_byteenable),            //                 .byteenable
+		.m_burstcount    (convolution0_avalon_master_burstcount),            //                 .burstcount
+		.m_read          (convolution0_avalon_master_read),                  //                 .read
+		.m_write         (convolution0_avalon_master_write),                 //                 .write
+		.m_readdatavalid (convolution0_avalon_master_readdatavalid),         //                 .readdatavalid
+		.m_waitrequest   (convolution0_avalon_master_waitrequest),           //                 .waitrequest
+		.s_irq           (irq_mapper_receiver0_irq)                          // interrupt_sender.irq
 	);
 
 	pd_block_jtag_uart jtag_uart (
@@ -155,7 +155,7 @@ module pd_block (
 		.av_write_n     (~mm_interconnect_0_jtag_uart_avalon_jtag_slave_write),      //                  .write_n
 		.av_writedata   (mm_interconnect_0_jtag_uart_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_jtag_uart_avalon_jtag_slave_waitrequest), //                  .waitrequest
-		.av_irq         (irq_mapper_receiver0_irq)                                   //               irq.irq
+		.av_irq         (irq_mapper_receiver1_irq)                                   //               irq.irq
 	);
 
 	pd_block_led led (
@@ -285,12 +285,12 @@ module pd_block (
 		.rgb_to_tensor_avalon_master_readdata                  (rgb_to_tensor_avalon_master_readdata),                      //                                                .readdata
 		.rgb_to_tensor_avalon_master_write                     (rgb_to_tensor_avalon_master_write),                         //                                                .write
 		.rgb_to_tensor_avalon_master_writedata                 (rgb_to_tensor_avalon_master_writedata),                     //                                                .writedata
-		.convolution0_avalon_slave_address                     (mm_interconnect_0_convolution0_avalon_slave_address),       //                       convolution0_avalon_slave.address
-		.convolution0_avalon_slave_write                       (mm_interconnect_0_convolution0_avalon_slave_write),         //                                                .write
-		.convolution0_avalon_slave_read                        (mm_interconnect_0_convolution0_avalon_slave_read),          //                                                .read
-		.convolution0_avalon_slave_readdata                    (mm_interconnect_0_convolution0_avalon_slave_readdata),      //                                                .readdata
-		.convolution0_avalon_slave_writedata                   (mm_interconnect_0_convolution0_avalon_slave_writedata),     //                                                .writedata
-		.convolution0_avalon_slave_waitrequest                 (mm_interconnect_0_convolution0_avalon_slave_waitrequest),   //                                                .waitrequest
+		.convolution0_slave_address                            (mm_interconnect_0_convolution0_slave_address),              //                              convolution0_slave.address
+		.convolution0_slave_write                              (mm_interconnect_0_convolution0_slave_write),                //                                                .write
+		.convolution0_slave_read                               (mm_interconnect_0_convolution0_slave_read),                 //                                                .read
+		.convolution0_slave_readdata                           (mm_interconnect_0_convolution0_slave_readdata),             //                                                .readdata
+		.convolution0_slave_writedata                          (mm_interconnect_0_convolution0_slave_writedata),            //                                                .writedata
+		.convolution0_slave_waitrequest                        (mm_interconnect_0_convolution0_slave_waitrequest),          //                                                .waitrequest
 		.jtag_uart_avalon_jtag_slave_address                   (mm_interconnect_0_jtag_uart_avalon_jtag_slave_address),     //                     jtag_uart_avalon_jtag_slave.address
 		.jtag_uart_avalon_jtag_slave_write                     (mm_interconnect_0_jtag_uart_avalon_jtag_slave_write),       //                                                .write
 		.jtag_uart_avalon_jtag_slave_read                      (mm_interconnect_0_jtag_uart_avalon_jtag_slave_read),        //                                                .read
@@ -339,6 +339,7 @@ module pd_block (
 		.clk           (clock_clk),                      //       clk.clk
 		.reset         (rst_controller_reset_out_reset), // clk_reset.reset
 		.receiver0_irq (irq_mapper_receiver0_irq),       // receiver0.irq
+		.receiver1_irq (irq_mapper_receiver1_irq),       // receiver1.irq
 		.sender_irq    (nios2e_irq_irq)                  //    sender.irq
 	);
 

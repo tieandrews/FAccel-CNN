@@ -1,0 +1,27 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst pd_block.convolution0 -pg 1 -lvl 2 -y 320
+preplace inst pd_block.rgb_to_tensor -pg 1 -lvl 2 -y 220
+preplace inst pd_block.nios2e.clock_bridge -pg 1
+preplace inst pd_block.vga_clock -pg 1 -lvl 3 -y 520
+preplace inst pd_block.onchip_ram -pg 1 -lvl 3 -y 200
+preplace inst pd_block -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst pd_block.led -pg 1 -lvl 3 -y 280
+preplace inst pd_block.nios2e -pg 1 -lvl 2 -y 70
+preplace inst pd_block.nios2e.cpu -pg 1
+preplace inst pd_block.sdram -pg 1 -lvl 3 -y 380
+preplace inst pd_block.nios2e.reset_bridge -pg 1
+preplace inst pd_block.jtag_uart -pg 1 -lvl 3 -y 100
+preplace inst pd_block.clock -pg 1 -lvl 1 -y 460
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)clock.clk_in,(SLAVE)pd_block.clock) 1 0 1 NJ
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)vga_clock.clk_in_reset,(SLAVE)pd_block.vga_clock_sreset) 1 0 3 NJ 550 NJ 550 NJ
+preplace netloc FAN_OUT<net_container>pd_block</net_container>(SLAVE)jtag_uart.clk,(SLAVE)rgb_to_tensor.clock_sink,(SLAVE)led.clk,(SLAVE)convolution0.clock,(SLAVE)sdram.clk,(MASTER)clock.clk,(SLAVE)nios2e.clk,(SLAVE)onchip_ram.clk1) 1 1 2 320 210 760
+preplace netloc FAN_OUT<net_container>pd_block</net_container>(SLAVE)rgb_to_tensor.reset_sink,(SLAVE)led.reset,(SLAVE)jtag_uart.reset,(SLAVE)onchip_ram.reset1,(SLAVE)sdram.reset,(SLAVE)nios2e.reset,(SLAVE)convolution0.clock_sreset,(MASTER)clock.clk_reset) 1 1 2 340 430 780
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)vga_clock.clk_in,(SLAVE)pd_block.vga_clock) 1 0 3 NJ 530 NJ 530 NJ
+preplace netloc POINT_TO_POINT<net_container>pd_block</net_container>(SLAVE)jtag_uart.irq,(MASTER)nios2e.irq) 1 2 1 740
+preplace netloc INTERCONNECT<net_container>pd_block</net_container>(MASTER)rgb_to_tensor.avalon_master,(SLAVE)sdram.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)led.s1,(SLAVE)rgb_to_tensor.slave,(MASTER)nios2e.data_master,(MASTER)nios2e.instruction_master,(SLAVE)onchip_ram.s1,(MASTER)convolution0.avalon_master,(SLAVE)nios2e.debug_mem_slave) 1 1 2 360 30 720
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)pd_block.sdram,(SLAVE)sdram.wire) 1 0 3 NJ 450 NJ 450 NJ
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)led.external_connection,(SLAVE)pd_block.led) 1 0 3 NJ 310 NJ 310 NJ
+preplace netloc EXPORT<net_container>pd_block</net_container>(SLAVE)clock.clk_in_reset,(SLAVE)pd_block.clock_sreset) 1 0 1 NJ
+levelinfo -pg 1 0 110 990
+levelinfo -hier pd_block 120 150 480 810 980

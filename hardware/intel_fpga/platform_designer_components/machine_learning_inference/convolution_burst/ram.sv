@@ -1,7 +1,7 @@
 module ram # (
             parameter           WIDTHA = 10,
             parameter           WIDTHD = 16,
-            localparam          WIDTHB = 8
+            parameter           WIDTHB = 8
 )
 (
     input   logic               clock,
@@ -39,12 +39,13 @@ module ram # (
             readdata <= ram[address + offset];
             case (fsm)
                 S1 : begin
-                    offset <= 0;
                     count <= burstcount;
                     if (read & ~waitrequest & (|burstcount)) begin
+                        offset <= 0;
                         fsm <= S2;
                     end
-                    if (write) begin
+                    if (write & ~waitrequest) begin
+                        offset <= 1;
                         fsm <= S3;
                     end
                 end
@@ -59,7 +60,7 @@ module ram # (
                     end
                 end
                 S3 : begin
-                    offset <= offset + write;
+                    offset <= offset + (write & ~waitrequest);
                     ram[address + offset] <= writedata;
                     if (offset >= count) begin
                         fsm <= S1;

@@ -21,12 +21,13 @@ module convolution_burst_tb();
     logic [31:0]    m_address;
     logic [15:0]    m_readdata, m_writedata;
     logic [1:0]     m_byteenable;
-    logic [7:0]     m_burstcount;
+    logic [8:0]     m_burstcount;
     logic           m_write, m_read, m_waitrequest, m_readdatavalid;
 	 
     ram             # (
                         .WIDTHA(16),
-                        .WIDTHD(16)
+                        .WIDTHD(16),
+                        .WIDTHB(9)
                     )
                     ram (
                         .clock(clock),
@@ -43,17 +44,19 @@ module convolution_burst_tb();
                         );
     
     convolution_burst # (
-                        .XRES1(9), .XRES2(17), .XRES3(33), .XRES4(65), .XRES5(129),
-                        .YRES1(9), .YRES2(17), .YRES3(33), .YRES4(65), .YRES5(129),
+                        .MAX_XRES(129),
+                        .XRES1(9), .XRES2(17), .XRES3(33), .XRES4(65), .XRES5(74),
+                        .YRES1(9), .YRES2(17), .YRES3(33), .YRES4(65), .YRES5(74),
                         .RESOLUTIONS(5),
                         .KX(3),
                         .KY(3),
                         .EXP(8),
                         .MANT(7),
                         .WIDTHF(16),
+                        .FIFO_DEPTH(512),
                         .WIDTH(16),
-                        .WIDTHB(2),
-                        .ADDER_PIPELINE(1)
+                        .WIDTHBE(2),
+                        .WIDTHBC(9)
                     )
                     dut (
                         .clock(clock),
@@ -93,23 +96,23 @@ module convolution_burst_tb();
 			case (state)
 				8'h0 : begin
 					s_address <= 4'h1;
-					s_writedata <= 32'b001_001;   // [xres, pad]
+					s_writedata <= 32'b0;   // xres select
 					s_write <= ~write_complete;
 					if (write_complete) begin
 						state++;
 					end
 				end
-                8'h1 : begin
+				8'h1 : begin
 					s_address <= 4'h2;
-					s_writedata <= 32'h0;   // source address
+					s_writedata <= 32'b1;   // pad select
 					s_write <= ~write_complete;
 					if (write_complete) begin
 						state++;
 					end
-                end
+				end
                 8'h2 : begin
 					s_address <= 4'h3;
-					s_writedata <= 32'd257;   // number words 64x64
+					s_writedata <= 32'h0;   // kernel address
 					s_write <= ~write_complete;
 					if (write_complete) begin
 						state++;
@@ -117,7 +120,7 @@ module convolution_burst_tb();
                 end
                 8'h3 : begin
 					s_address <= 4'h4;
-					s_writedata <= 32'h1000;   // destination
+					s_writedata <= 32'h1000;   // source
 					s_write <= ~write_complete;
 					if (write_complete) begin
 						state++;
@@ -125,21 +128,13 @@ module convolution_burst_tb();
                 end
                 8'h4 : begin
 					s_address <= 4'h5;
-					s_writedata <= 32'h2000;   // kernel
+					s_writedata <= 32'h2000;   // destination
 					s_write <= ~write_complete;
 					if (write_complete) begin
 						state++;
 					end
                 end
                 8'h5 : begin
-					s_address <= 4'h0;
-					s_writedata <= 32'h2;   // restart
-					s_write <= ~write_complete;
-					if (write_complete) begin
-						state++;
-					end
-                end
-                8'h6 : begin
 					s_address <= 4'h0;
 					s_writedata <= 32'h1;   // go!
 					s_write <= ~write_complete;

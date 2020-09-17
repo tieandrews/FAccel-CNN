@@ -1,66 +1,59 @@
 module convolution_calc # (
-            parameter           MAX_XRES = 256,
-            parameter           XRES1 = 16, XRES2 = 32, XRES3 = 64,
-            parameter           XRES4 = 128, XRES5 = 256,   // x resolution + padding (1?)
-            parameter           RESOLUTIONS = 5,
-            parameter           KX = 3,
-            parameter           KY = 3,
-            parameter           NUM_KERNELS = 24,
-            parameter           EXP = 8,
-            parameter           MANT = 7,
-            parameter           WIDTH = 1 + EXP + MANT,
-            parameter           ADDER_PIPELINE = 1
+            parameter                   MAX_XRES = 128,
+            parameter                   XRES1 = 16, XRES2 = 32, XRES3 = 64,
+            parameter                   XRES4 = 4, XRES5 = 8,   // x resolution
+            parameter                   RESOLUTIONS = 5,
+            parameter                   KX = 3,
+            parameter                   KY = 3,
+            parameter                   CHAN = 2,
+            parameter                   EXP = 8,
+            parameter                   MANT = 7,
+            parameter                   WIDTH = 1 + EXP + MANT,
+            parameter                   ADDER_PIPELINE = 1
 )
 (
-    input   logic               clock,
-    input   logic               clock_sreset,
+    input   logic                       clock,
+    input   logic                       clock_sreset,
     
-    input   logic [2:0]         xres_select,
+    input   logic [2:0]                 xres_select,
     
-    input   logic               kernel_data_shift,
-    input   logic [WIDTH-1:0]   kernel_data,
+    input   logic                       kernel_data_shift,
+    input   logic [WIDTH-1:0]           kernel_data,
     
-    input   logic               enable_calc,
-    input   logic               data_shift,
-    input   logic [WIDTH-1:0]   data,
+    input   logic                       enable_calc,
+    input   logic                       data_shift,
+    input   logic [WIDTH-1:0]           data,
     
-    output  logic               result_valid,
-    output  logic [WIDTH-1:0]   result
+    output  logic [CHAN-1:0]            result_valid,
+    output  logic [CHAN-1:0][WIDTH-1:0] result
 );
-            localparam          DONTCARE = {WIDTH{1'bx}};
-            localparam          ZERO = {WIDTH{1'b0}};
-            localparam          ONE = {ZERO, 1'b1};
-            localparam          WIDTHI = 2**$clog2(KX*KY);  // find closest power of 2 width
+            localparam                  DONTCARE = {WIDTH{1'bx}};
+            localparam                  ZERO = {WIDTH{1'b0}};
+            localparam                  ONE = {ZERO, 1'b1};
+            localparam                  WIDTHI = 2**$clog2(KX*KY);  // find closest power of 2 width
             
-            integer             x, y, t, yy;
+            integer                     x, y, t, tt, xx, yy, ax, ay;
             
-            logic [KX*KY-1:0][WIDTH-1:0]   kernel[NUM_KERNELS-1:0];
-            logic [WIDTH-1:0]             buffer[MAX_XRES-1:0][KY-1:0];
-            logic [RESOLUTIONS-1:0][KY-2:0][WIDTH-1:0]   buffer_taps;
+            logic [KX*KY-1:0][WIDTH-1:0]    kernel[CHAN-1:0];
+            logic [WIDTH-1:0]               buffer[MAX_XRES-1:0][KY-1:0];
+            logic [KY-1:0][WIDTH-1:0]       buffer_taps[RESOLUTIONS-1:0];
             logic [KX*KY-1:0][WIDTH-1:0]    buffer_node;
             
     // handle kernel stream
     always_ff @ (posedge clock) begin
         if (kernel_data_shift) begin
-            for (t=0; t<NUM_KERNELS; t++) begin
-                for (y=0; y<KY; y++) begin
-                    for (x=0; x<KX; x++) begin
-                        if (x == 0) begin
-                            if (y == 0) begin
-                                if (t == 0) begin
-                                    kernel[t][x+(y*KX)] <= kernel_data;
-                                end
-                                else begin
-                                    kernel[t][x+(y*KX)] <= kernel[t-1][KX*KY-1];
-                                end
-                            end
-                            else begin
-                                kernel[t][x+(y*KX)] <= kernel[t][KX*(y-1)];
-                            end
+            for (tt=0; tt<CHAN; tt++) begin
+                for (xx=0; xx<(KX*KY); xx++) begin
+                    if (xx == 0) begin
+                        if (tt == 0) begin
+                            kernel[tt][xx] <= kernel_data;
                         end
                         else begin
-                            kernel[t][x+(y*KX)] <= kernel[t][(x-1)+(y*KX)];
+                            kernel[tt][xx] <= kernel[tt-1][KX*KY-1];
                         end
+                    end
+                    else begin
+                        kernel[tt][xx] <= kernel[tt][xx-1];
                     end
                 end
             end
@@ -68,16 +61,16 @@ module convolution_calc # (
     end
     
     always_comb begin
-        for (y=0; y<KY; y++) begin
-            for (x=0; x<KX; x++) begin
-                buffer_node[x+(y*KX)] = buffer[x][y];
+        for (ay=0; ay<KY; ay++) begin
+            for (ax=0; ax<KX; ax++) begin
+                buffer_node[ax+(ay*KX)] = buffer[ax][ay];
             end
         end
     end
 
     // generate buffer taps for X resolutions
     always_comb begin
-        for (yy=0; yy<(KY-1); yy++) begin
+        for (yy=0; yy<KY; yy++) begin
             for (t=0; t<RESOLUTIONS; t++) begin
                 if (t == 0) buffer_taps[t][yy] = buffer[XRES1-1][yy];
                 if (t == 1) buffer_taps[t][yy] = buffer[XRES2-1][yy];
@@ -111,7 +104,7 @@ module convolution_calc # (
     genvar i,j,k;
     generate
         begin
-            if (NUM_KERNELS == 1) begin
+            if (CHAN == 1) begin
                 sum_of_products # (
                                     .EXP(EXP),
                                     .MANT(MANT),
@@ -130,44 +123,27 @@ module convolution_calc # (
                                 );
             end
             else begin
-                logic [NUM_KERNELS-1:0] sop_result_valid;
-                logic [NUM_KERNELS-1:0][WIDTH-1:0] sop_result;
-                for (i=0; i<NUM_KERNELS; i++) begin : index
-                sum_of_products # (
-                                    .EXP(EXP),
-                                    .MANT(MANT),
-                                    .WIDTH(WIDTH),
-                                    .NUM(KX*KY),
-                                    .ADDER_PIPELINE(ADDER_PIPELINE)
-                                )
-                                sop1 (
-                                    .clock(clock),
-                                    .clock_sreset(clock_sreset),
-                                    .data_valid(enable_calc),
-                                    .dataa(kernel[i]),
-                                    .datab(buffer_node),
-                                    .result_valid(sop_result_valid[i]),
-                                    .result(sop_result[i])
-                                );
+                logic [CHAN-1:0] sop_result_valid;
+                logic [CHAN-1:0][WIDTH-1:0] sop_result;
+                for (i=0; i<CHAN; i++) begin : index
+                    sum_of_products # (
+                                        .EXP(EXP),
+                                        .MANT(MANT),
+                                        .WIDTH(WIDTH),
+                                        .NUM(KX*KY),
+                                        .ADDER_PIPELINE(ADDER_PIPELINE)
+                                    )
+                                    sop1 (
+                                        .clock(clock),
+                                        .clock_sreset(clock_sreset),
+                                        .data_valid(enable_calc),
+                                        .dataa(kernel[i]),
+                                        .datab(buffer_node),
+                                        .result_valid(result_valid[i]),
+                                        .result(result[i])
+                                    );
                 end
-                fp_add_tree     # (
-                                    .EXP(EXP),
-                                    .MANT(MANT),
-                                    .ITEMS(2**$clog2(NUM_KERNELS)),
-                                    .WIDTH(WIDTH),
-                                    .EXTRA_PIPELINE(ADDER_PIPELINE)
-                                )
-                                (
-                                    .clock(clock),
-                                    .clock_sreset(clock_sreset),
-                                    .data_valid(sop_result_valid[0]),
-                                    .data(sop_result),
-                                    .result_valid(result_valid),
-                                    .result(result)
-                                );
             end
         end
     endgenerate
-    
-    
 endmodule

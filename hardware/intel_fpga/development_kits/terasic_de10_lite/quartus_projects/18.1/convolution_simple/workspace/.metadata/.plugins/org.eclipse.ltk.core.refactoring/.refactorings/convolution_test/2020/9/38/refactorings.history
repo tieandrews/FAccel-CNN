@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;convolution_test/simple_printf.c&apos; to &apos;simple_printf.h&apos;" description="Rename resource &apos;simple_printf.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="simple_printf.c" name="simple_printf.h" stamp="1600306179026" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;convolution_test/simple_printf.h&apos; to &apos;mini_printf.c&apos;" description="Rename resource &apos;simple_printf.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="simple_printf.h" name="mini_printf.c" stamp="1600307834592" updateReferences="true"/>
+</session>
