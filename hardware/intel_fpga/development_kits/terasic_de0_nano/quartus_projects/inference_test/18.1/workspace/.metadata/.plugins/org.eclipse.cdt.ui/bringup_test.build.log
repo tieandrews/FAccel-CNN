@@ -1,0 +1,26 @@
+09:24:40 **** Incremental Build of configuration Nios II for project bringup_test ****
+make all 
+Info: Building ../bringup_test_bsp/
+C:/intelFPGA/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../bringup_test_bsp/
+[BSP build complete]
+Info: Compiling bringup_test.c to obj/default/bringup_test.o
+nios2-elf-gcc -xc -MP -MMD -c -I../bringup_test_bsp//HAL/inc -I../bringup_test_bsp/ -I../bringup_test_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_C_PLUS_PLUS -DALT_NO_CLEAN_EXIT -D'exit(a)=_exit(a)' -DALT_NO_EXIT -DALT_USE_DIRECT_DRIVERS -DALT_NO_INSTRUCTION_EMULATION -DALT_USE_SMALL_DRIVERS -DSMALL_C_LIB -DALT_SINGLE_THREADED    -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/bringup_test.o bringup_test.c
+bringup_test.c: In function 'main':
+bringup_test.c:289:4: warning: initializer-string for array of chars is too long
+    "F16C3S1", // 16 output convolution kernel 3 stride 2
+    ^
+bringup_test.c:289:4: note: (near initialization for 'ml_shape[1]')
+bringup_test.c:287:9: warning: unused variable 'ml_shape' [-Wunused-variable]
+  alt_u8 ml_shape[12][4] = {
+         ^
+Info: Linking bringup_test.elf
+nios2-elf-g++  -T'../bringup_test_bsp//linker.x' -msys-crt0='../bringup_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../bringup_test_bsp/  -msmallc  -Wl,-Map=bringup_test.map   -Os -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx -mgpopt=global  -o bringup_test.elf obj/default/bringup_test.o obj/default/printf.o -lm -msys-lib=m
+nios2-elf-insert bringup_test.elf --thread_model hal --cpu_name nios2e --qsys true --simulation_enabled false --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name qsys_block --quartus_project_dir "C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1" --jdi ../..//output_files/de0_nano.jdi --sopcinfo C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/software/bringup_test_bsp/../../qsys_block.sopcinfo
+Info: (bringup_test.elf) 43 KBytes program size (code + initialized data).
+Info:                    32716 KBytes free for stack + heap.
+Info: Creating bringup_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source bringup_test.elf >bringup_test.objdump
+[bringup_test build complete]
+
+09:24:51 Build Finished (took 10s.598ms)
+

@@ -1,0 +1,23 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst qsys_block.onchip_ram -pg 1 -lvl 3 -y 130
+preplace inst qsys_block.led -pg 1 -lvl 3 -y 310
+preplace inst qsys_block -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst qsys_block.convolution -pg 1 -lvl 3 -y 30
+preplace inst qsys_block.nios2e.cpu -pg 1
+preplace inst qsys_block.nios2e -pg 1 -lvl 2 -y 200
+preplace inst qsys_block.clock -pg 1 -lvl 1 -y 270
+preplace inst qsys_block.nios2e.clock_bridge -pg 1
+preplace inst qsys_block.sdram -pg 1 -lvl 3 -y 410
+preplace inst qsys_block.jtag_uart -pg 1 -lvl 3 -y 210
+preplace inst qsys_block.nios2e.reset_bridge -pg 1
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)sdram.wire,(SLAVE)qsys_block.sdram) 1 0 3 NJ 480 NJ 480 NJ
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)clock.clk_in_reset,(SLAVE)qsys_block.clock_sreset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)led.external_connection,(SLAVE)qsys_block.led) 1 0 3 NJ 340 NJ 340 NJ
+preplace netloc INTERCONNECT<net_container>qsys_block</net_container>(MASTER)nios2e.instruction_master,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)convolution.slave,(MASTER)nios2e.data_master,(SLAVE)sdram.s1,(SLAVE)onchip_ram.s1,(SLAVE)led.s1,(SLAVE)nios2e.debug_mem_slave) 1 1 2 320 160 680
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)clock.clk_in,(SLAVE)qsys_block.clock) 1 0 1 NJ
+preplace netloc POINT_TO_POINT<net_container>qsys_block</net_container>(SLAVE)jtag_uart.irq,(MASTER)nios2e.irq) 1 2 1 700
+preplace netloc FAN_OUT<net_container>qsys_block</net_container>(SLAVE)sdram.clk,(SLAVE)onchip_ram.clk1,(SLAVE)led.clk,(SLAVE)jtag_uart.clk,(SLAVE)convolution.clock,(MASTER)clock.clk,(SLAVE)nios2e.clk) 1 1 2 300 360 720
+preplace netloc FAN_OUT<net_container>qsys_block</net_container>(MASTER)clock.clk_reset,(SLAVE)jtag_uart.reset,(SLAVE)onchip_ram.reset1,(SLAVE)sdram.reset,(SLAVE)convolution.clock_sreset,(SLAVE)led.reset,(SLAVE)nios2e.reset) 1 1 2 320 380 740
+levelinfo -pg 1 0 90 980
+levelinfo -hier qsys_block 100 130 440 770 970
