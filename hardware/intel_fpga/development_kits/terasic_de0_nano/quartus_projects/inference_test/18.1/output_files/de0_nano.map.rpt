@@ -1,5 +1,5 @@
 Analysis & Synthesis report for de0_nano
-Mon Nov 02 12:08:39 2020
+Tue Nov 24 09:20:48 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -204,7 +204,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Nov 02 12:08:39 2020           ;
+; Analysis & Synthesis Status        ; Successful - Tue Nov 24 09:20:48 2020           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; de0_nano                                        ;
 ; Top-level Entity Name              ; de0_nano                                        ;
@@ -5197,7 +5197,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:27     ;
+; Top            ; 00:00:25     ;
 +----------------+--------------+
 
 
@@ -5207,7 +5207,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Mon Nov 02 12:06:31 2020
+    Info: Processing started: Tue Nov 24 09:18:39 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off de0_nano -c de0_nano
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -5430,7 +5430,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/pll0
     Info (12023): Found entity 1: PLL0_altpll File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/db/pll0_altpll.v Line: 30
 Info (12128): Elaborating entity "PLL0_altpll" for hierarchy "PLL0:pll0|altpll:altpll_component|PLL0_altpll:auto_generated" File: c:/intelfpga/18.1/quartus/libraries/megafunctions/altpll.tdf Line: 897
 Info (12128): Elaborating entity "system_monitor" for hierarchy "system_monitor:monitor0" File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/de0_nano.sv Line: 43
-Info (12128): Elaborating entity "qsys_block" for hierarchy "qsys_block:qsys" File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/de0_nano.sv Line: 58
+Info (12128): Elaborating entity "qsys_block" for hierarchy "qsys_block:qsys" File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/de0_nano.sv Line: 61
 Info (12128): Elaborating entity "qsys_block_jtag_uart" for hierarchy "qsys_block:qsys|qsys_block_jtag_uart:jtag_uart" File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/qsys_block/synthesis/qsys_block.v Line: 85
 Info (12128): Elaborating entity "qsys_block_jtag_uart_scfifo_w" for hierarchy "qsys_block:qsys|qsys_block_jtag_uart:jtag_uart|qsys_block_jtag_uart_scfifo_w:the_qsys_block_jtag_uart_scfifo_w" File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/qsys_block/synthesis/submodules/qsys_block_jtag_uart.v Line: 420
 Info (12128): Elaborating entity "scfifo" for hierarchy "qsys_block:qsys|qsys_block_jtag_uart:jtag_uart|qsys_block_jtag_uart_scfifo_w:the_qsys_block_jtag_uart_scfifo_w|scfifo:wfifo" File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/qsys_block/synthesis/submodules/qsys_block_jtag_uart.v Line: 139
@@ -5634,7 +5634,7 @@ Info (12128): Elaborating entity "altera_reset_controller" for hierarchy "qsys_b
 Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "qsys_block:qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_sync_uq1" File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/qsys_block/synthesis/submodules/altera_reset_controller.v Line: 208
 Info (12128): Elaborating entity "altera_reset_synchronizer" for hierarchy "qsys_block:qsys|altera_reset_controller:rst_controller|altera_reset_synchronizer:alt_rst_req_sync_uq1" File: C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/qsys_block/synthesis/submodules/altera_reset_controller.v Line: 220
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2020.11.02.12:07:36 Progress: Loading sldbdeafd9f/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2020.11.24.09:19:46 Progress: Loading sldbdeafd9f/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -5677,10 +5677,10 @@ Info (21057): Implemented 2976 device resources after synthesis - the final reso
     Info (21064): Implemented 144 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 12 warnings
-    Info: Peak virtual memory: 4891 megabytes
-    Info: Processing ended: Mon Nov 02 12:08:40 2020
-    Info: Elapsed time: 00:02:09
-    Info: Total CPU time (on all processors): 00:03:12
+    Info: Peak virtual memory: 4889 megabytes
+    Info: Processing ended: Tue Nov 24 09:20:49 2020
+    Info: Elapsed time: 00:02:10
+    Info: Total CPU time (on all processors): 00:03:00
 
 
 +------------------------------------------+

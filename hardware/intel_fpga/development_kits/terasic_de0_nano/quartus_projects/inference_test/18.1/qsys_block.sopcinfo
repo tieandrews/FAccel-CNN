@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="qsys_block" kind="qsys_block" version="1.0" fabric="QSYS">
  <!-- Format version 18.1 625 (Future versions may contain additional information.) -->
- <!-- 2020.11.02.09:54:53 -->
+ <!-- 2020.11.24.09:14:26 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1604264093</value>
+  <value>1606162466</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>

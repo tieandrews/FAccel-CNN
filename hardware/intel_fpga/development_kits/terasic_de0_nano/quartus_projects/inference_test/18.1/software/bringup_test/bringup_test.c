@@ -126,9 +126,10 @@ void padding (alt_u16* src_map, alt_u16* dst_map, alt_u16 res, alt_u16 pad) {
 }
 
 //////////////////////////////////////////////////////////////////////////////
-void convolution(alt_u16* src, alt_u16 clr, alt_u16* dst, alt_u16* knl, alt_u16 k, alt_u16 res, alt_u16 pad, alt_u16 stride) {
+void convolution(alt_u16* src, alt_u16 clr, alt_u16* dst, alt_u16* knl,
+		alt_u16 k, alt_u16 res, alt_u16 pad, alt_u16 stride) {
 	alt_16 x, y, ks;
-	alt_u32 kx, ky, dst_ptr, offset_s, offset_d;
+	alt_32 kx, ky, dst_ptr, offset_s, offset_d;
 	bfloat16 sum, src_pix, k_pix;
 
 	ks = (k >> 1); // k is odd 3,5,7 ... ks generally equal to pad
@@ -244,6 +245,19 @@ void rgb565_to_feature(alt_u16* src, alt_u16* dst_r, alt_u16* dst_g, alt_u16* ds
 }
 
 //////////////////////////////////////////////////////////////////////////////
+void grey_to_feature(alt_u16* src, alt_u16* dst, alt_u16 res) {
+	alt_u16 pixel;
+	alt_u32 i, ptr;
+
+	ptr = 0;
+	for (i=0; i<(res*res); i++) {
+		pixel = IORD_16DIRECT(src, ptr);
+		IOWR_16DIRECT(dst, ptr, f2bf(((float)pixel) / 255.0));
+		ptr += 2;
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////////
 alt_u16 rgb_to_grey(alt_u16 rgb565) {
 	alt_u16 grey;
 
@@ -279,31 +293,67 @@ void rgb565_to_text(alt_u16* src, alt_u16 res, alt_u16 step, alt_u16 negative) {
 		printf("\n");
 	}
 }
+//////////////////////////////////////////////////////////////////////////////
+void grey_to_text(alt_u16* src, alt_u16 res, alt_u16 step, alt_u16 negative) {
+
+	alt_u16 x, y, xx, yy;
+	alt_u32 line, src_ptr, sum;
+	alt_u8 char_grey[92] = {32,96,45,46,39,95,58,44,34,61,94,59,60,43,33,42,63,
+			47,99,76,92,122,114,115,55,84,105,118,74,116,67,123,51,70,41,73,108,
+			40,120,90,102,89,53,83,50,101,97,106,111,49,52,91,110,117,121,69,93,
+			80,54,86,57,107,88,112,75,119,71,104,113,65,85,98,79,100,56,35,72,
+			82,68,66,48,36,109,103,77,87,38,81,37,78,64};
+
+	for (y=0; y<res; y+=step) {
+		line = (y * res);
+		for (x=0; x<res; x+=step) {
+			sum = 0;
+			src_ptr = (x + line) << 1;
+			for (yy=0; yy<step; yy++)
+				for (xx=0; xx<step; xx++)
+					sum += IORD_16DIRECT(src, src_ptr + ((xx + (yy * res)) << 1));
+			sum = (sum / (step * step));
+			sum = (sum * 92) / 255;		// scale grey count
+			printf("%c", char_grey[sum]);
+		}
+		printf("\n");
+	}
+}
 
 //////////////////////////////////////////////////////////////////////////////
 int main()
 {
 	alt_u16 i, j;
-	alt_u8 ml_shape[12][4] = {
-			"I3",		// 3 input feature map (RGB to float scaled 0..1)
-			"F16C3S1",	// 16 output convolution kernel 3 stride 2
-			"R", 		// relu
-			"M3S2", 	// max pool kernel 3 stride 2
-			""
-	};
 
-	rgb565_to_text(image64by64, 64, 2, 0);
+	bfloat16 L1[3][64*64];
+	bfloat16 L2[16][64*64], L2K[16][3][3*3];
+	bfloat16 L3[10][64*64], L3K[10][16][3*3];
+	bfloat16 R[10];
 
-	bfloat16 L1_featuremap[64*64][2], L1_kernel[3*3][2][16];	// 16 is output L2_featuremap count
-	bfloat16 L2_featuremap[64*64][16];	// 5 is output classes
+	printf("Starting Inference\n");
 
-	// create 3 feature map input bfloat16
-	rgb565_to_feature(image64by64, L1_featuremap[0], L1_featuremap[1], L1_featuremap[2], 64);
+	rgb565_to_feature(image64by64, L1[0], L1[1], L1[2], 64);
+
 	for (i=0; i<16; i++) {
 		for (j=0; j<3; j++) {
-			convolution(L1_featuremap[j], (j == 0), L2_featuremap[i], L1_kernel[0][i], 3, 64, 1, 1);
+			convolution(&L1[j][0], (j == 0), &L2[i][0], &L2K[i][j][0], 3, 64, 1, 1);
 		}
-		relu(L2_featuremap[i], 64);
+		relu(L2[i], 64);
+	}
+	for (i=0; i<10; i++) {
+		for (j=0; j<16; j++) {
+			convolution(&L2[j][0], (j == 0), &L3[i][0], &L3K[i][j][0], 3, 64, 1, 1);
+		}
+		relu(L3[i], 64);
+	}
+	for (i=0; i<10; i++) {
+		R[i] = global_average_pooling(L3[i], 64);
+	}
+	softmax(R, 10);
+
+	printf("Results :\n");
+	for (i=0; i<10; i++) {
+		printf("%f ", bf2f(R[i]));
 	}
 	return 0;
 }

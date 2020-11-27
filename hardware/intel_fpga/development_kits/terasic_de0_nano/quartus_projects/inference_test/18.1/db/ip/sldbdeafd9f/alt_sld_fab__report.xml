@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2020.11.02.12:07:56"
+ date="2020.11.24.09:20:07"
  outputDirectory="C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/inference_test/18.1/db/ip/sldbdeafd9f/">
  <perimeter>
   <parameter

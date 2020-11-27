@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>2/11/2020 12:13:28 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1604272408564</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>24/11/2020 9:42:44 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1606164164139</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\GitHub\FAccel-CNN\hardware\intel_fpga\development_kits\terasic_de0_nano\quartus_projects\inference_test\18.1\software\bringup_test_bsp</BspGeneratedLocation>
-        <BspSettingsFile>.\settings.bsp</BspSettingsFile>
+        <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\qsys_block.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>nios2e</Cpu>
