@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP4CE22F17) Path("C:/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE0_Nano/Base_Project/18.1/output_files/") File("de0_nano.sof") MfrSpec(OpMask(1));
+		Device PartName(EP4CE22F17) Path("C:/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/base_project/18.1/output_files/") File("de0_nano.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

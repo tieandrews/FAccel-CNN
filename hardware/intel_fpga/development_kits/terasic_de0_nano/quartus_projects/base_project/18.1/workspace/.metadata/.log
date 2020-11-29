@@ -279,3 +279,274 @@ java.io.IOException
 
 !ENTRY com.altera.sbtgui.launch 1 0 2020-08-30 15:24:27.442
 !MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE0_Nano/Base_Project/18.1/software/memory_test_small/memory_test_small.elf]
+!SESSION 2020-11-29 17:40:15.512 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_NZ
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-11-29 17:40:35.083
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-11-29 17:40:46.875
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\NUC'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2020-11-29 17:40:49.882
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-11-29 17:41:52.621
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception: Connected system ID hash not found on target at expected base address.
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.assertTrue(SystemConsoleConnectionModel.java:645)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateSystemId(SystemConsoleConnectionModel.java:589)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:511)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.altera.sbtgui.launch 4 0 2020-11-29 17:41:52.633
+!MESSAGE Unable to validate connection settings.
+!STACK 0
+java.lang.Exception: Connected system ID hash not found on target at expected base address.
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.assertTrue(SystemConsoleConnectionModel.java:645)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateSystemId(SystemConsoleConnectionModel.java:589)
+	at com.altera.embeddedsw.flash.model.internal.SystemConsoleConnectionModel.validateConnectionSettings(SystemConsoleConnectionModel.java:511)
+	at com.altera.sbtgui.launch.hardware.AbstractNios2CLaunchDelegate.launch(AbstractNios2CLaunchDelegate.java:115)
+	at com.altera.sbtgui.launch.hardware.Nios2HardwareLaunchDelegate.launch(Nios2HardwareLaunchDelegate.java:98)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 17:42:24.210
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 17:42:26.168
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=' --device=1 --instance=0 --go /cygdrive/c/Quartus_Projects/FPGA_Inference/Development_Kits/Terasic_DE0_Nano/Base_Project/18.1/software/hello_world_small/hello_world_small.elf]
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-11-29 17:43:15.791
+!MESSAGE Indexed 'forth_bsp' (79 sources, 135 headers) in 1.16 sec: 4,066 declarations; 6,770 references; 71 unresolved inclusions; 6 syntax errors; 145 unresolved names (1.3%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-11-29 17:43:16.900
+!MESSAGE Indexed 'forth' (1 sources, 0 headers) in 0.004 sec: 1 declarations; 1 references; 1 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.ltk.ui.refactoring 4 10000 2020-11-29 17:45:25.606
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:794)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Could not delete 'C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE0_Nano\Base_Project\18.1\software\forth_bsp\Makefile'.
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:135)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:310)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:390)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:850)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1835)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Could not delete: C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE0_Nano\Base_Project\18.1\software\forth_bsp\Makefile.
+Contains: Could not delete 'C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE0_Nano\Base_Project\18.1\software\forth_bsp'.
+!SUBENTRY 1 org.eclipse.core.resources 4 273 2020-11-29 17:45:25.607
+!MESSAGE Problems encountered while deleting resources.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2020-11-29 17:45:25.607
+!MESSAGE Could not delete 'C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE0_Nano\Base_Project\18.1\software\forth_bsp\Makefile'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
+	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:135)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:310)
+	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteProject(ResourceTree.java:390)
+	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteProject(ResourceTree.java:850)
+	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1835)
+	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:781)
+	at org.eclipse.core.internal.resources.Project.delete(Project.java:323)
+	at org.eclipse.ltk.core.refactoring.resource.DeleteResourceChange.perform(DeleteResourceChange.java:160)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:258)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:306)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:92)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:218)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:87)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Could not delete: C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE0_Nano\Base_Project\18.1\software\forth_bsp\Makefile.
+!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2020-11-29 17:45:25.607
+!MESSAGE Problems encountered while deleting files.
+!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2020-11-29 17:45:25.607
+!MESSAGE Could not delete: C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE0_Nano\Base_Project\18.1\software\forth_bsp\Makefile.
+!SUBENTRY 2 org.eclipse.core.resources 4 273 2020-11-29 17:45:25.607
+!MESSAGE Could not delete 'C:\Quartus_Projects\FPGA_Inference\Development_Kits\Terasic_DE0_Nano\Base_Project\18.1\software\forth_bsp'.
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-11-29 17:47:05.797
+!MESSAGE Indexed 'forth_bsp' (79 sources, 60 headers) in 0.799 sec: 1,189 declarations; 2,478 references; 110 unresolved inclusions; 6 syntax errors; 191 unresolved names (5%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-11-29 17:47:06.903
+!MESSAGE Indexed 'forth' (1 sources, 0 headers) in 0.006 sec: 1 declarations; 1 references; 1 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 17:48:11.469
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 17:48:13.383
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/base_project/18.1/software/forth/forth.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 17:51:41.531
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 17:51:43.441
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/base_project/18.1/software/forth/forth.elf]
+
+!ENTRY org.eclipse.ui 4 0 2020-11-29 17:57:22.936
+!MESSAGE Cannot create or restore 'forth_bsp' because it already exists.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Cannot create or restore 'forth_bsp' because it already exists.
+	at org.eclipse.ltk.internal.core.refactoring.resource.UndoDeleteResourceChange.perform(UndoDeleteResourceChange.java:67)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:278)
+	at org.eclipse.ltk.internal.core.refactoring.UndoableOperation2ChangeAdapter$1.run(UndoableOperation2ChangeAdapter.java:310)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2241)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2225)
+	at org.eclipse.ltk.internal.core.refactoring.UndoableOperation2ChangeAdapter.executeChange(UndoableOperation2ChangeAdapter.java:340)
+	at org.eclipse.ltk.internal.core.refactoring.UndoableOperation2ChangeAdapter.undo(UndoableOperation2ChangeAdapter.java:182)
+	at org.eclipse.core.commands.operations.TriggeredOperations.undo(TriggeredOperations.java:226)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.doUndo(DefaultOperationHistory.java:420)
+	at org.eclipse.core.commands.operations.DefaultOperationHistory.undo(DefaultOperationHistory.java:1255)
+	at org.eclipse.ui.operations.UndoActionHandler.runCommand(UndoActionHandler.java:87)
+	at org.eclipse.ui.operations.OperationHistoryActionHandler$1.run(OperationHistoryActionHandler.java:308)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:463)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:371)
+	at org.eclipse.jface.dialogs.ProgressMonitorDialog.run(ProgressMonitorDialog.java:500)
+	at org.eclipse.ui.internal.operations.TimeTriggeredProgressMonitorDialog.access$6(TimeTriggeredProgressMonitorDialog.java:1)
+	at org.eclipse.ui.internal.operations.TimeTriggeredProgressMonitorDialog$2.run(TimeTriggeredProgressMonitorDialog.java:214)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.operations.TimeTriggeredProgressMonitorDialog.run(TimeTriggeredProgressMonitorDialog.java:227)
+	at org.eclipse.ui.operations.OperationHistoryActionHandler.run(OperationHistoryActionHandler.java:323)
+	at org.eclipse.jface.action.Action.runWithEvent(Action.java:473)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:122)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:90)
+	at sun.reflect.GeneratedMethodAccessor71.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:56)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:252)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:234)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:132)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:152)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:493)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:486)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:210)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:286)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:507)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:558)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.filterKeySequenceBindings(KeyBindingDispatcher.java:378)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.access$0(KeyBindingDispatcher.java:324)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher$KeyDownFilter.handleEvent(KeyBindingDispatcher.java:86)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.filterEvent(Display.java:1266)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1112)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1137)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1122)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1164)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1160)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1581)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4795)
+	at org.eclipse.swt.widgets.Tree.WM_CHAR(Tree.java:6028)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4676)
+	at org.eclipse.swt.widgets.Tree.windowProc(Tree.java:6024)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5050)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3767)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1127)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1018)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:694)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:337)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:606)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:139)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:669)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:608)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1515)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1488)
+!SUBENTRY 1 org.eclipse.ltk.core.refactoring 4 0 2020-11-29 17:57:22.938
+!MESSAGE Cannot create or restore 'forth_bsp' because it already exists.
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 18:02:44.046
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 18:02:44.557
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-29 18:02:46.519
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/base_project/18.1/software/forth/forth.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-30 09:58:57.360
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --stop]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2020-11-30 09:58:59.372
+!MESSAGE Executing: [C:/intelfpga/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go /cygdrive/c/GitHub/FAccel-CNN/hardware/intel_fpga/development_kits/terasic_de0_nano/quartus_projects/base_project/18.1/software/forth/forth.elf]
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-11-30 10:05:20.316
+!MESSAGE Indexed 'forth' (1 sources, 24 headers) in 0.069 sec: 1,461 declarations; 3,281 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
