@@ -37,8 +37,8 @@ macro u+c   ( a b -- b+a+c )     /adc endmacro
 macro u+    ( a b -- a+b,c )     /add endmacro 
 macro u-    ( a b -- a-b,c )     /sub endmacro 
 macro mlt   ( a b -- LO HI )     /mlt endmacro 
-macro 0>= 	( a b -- a>=b )      /tor endmacro ( keywords I have left - hack )
-macro over 	( a b -- a b a )     /rto endmacro ( keywords I have left - hack )
+macro 0>= 	 ( a b -- a>=b )      /tor endmacro ( keywords I have left - hack )
+macro over  ( a b -- a b a )     /rto endmacro ( keywords I have left - hack )
 ( can use LSP RSP )
 ( -------------------------------------------------------------------------- )
 ( useful functions )

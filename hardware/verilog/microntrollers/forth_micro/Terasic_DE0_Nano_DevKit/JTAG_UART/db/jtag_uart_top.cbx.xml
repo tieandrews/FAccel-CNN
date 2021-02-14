@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="jtag_uart_top">
+		<CBX_INST_ENTRY INSTANCE_NAME="|jtag_uart_top|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_r:the_jtag_uart_jtag_uart_scfifo_r|scfifo:rfifo|a_fffifo:subfifo|a_fefifo:fifo_state|lpm_compare:is_almost_empty_compare" CBX_FILE_NAME="cmpr_vdg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|jtag_uart_top|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_r:the_jtag_uart_jtag_uart_scfifo_r|scfifo:rfifo|a_fffifo:subfifo|a_fefifo:fifo_state|lpm_compare:is_almost_full_compare" CBX_FILE_NAME="cmpr_vdg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|jtag_uart_top|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_r:the_jtag_uart_jtag_uart_scfifo_r|scfifo:rfifo|a_fffifo:subfifo|lpm_counter:rd_ptr" CBX_FILE_NAME="cntr_p9f.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|jtag_uart_top|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_w:the_jtag_uart_jtag_uart_scfifo_w|scfifo:wfifo|a_fffifo:subfifo|lpm_mux:last_row_data_out_mux" CBX_FILE_NAME="mux_dqc.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|jtag_uart_top|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_r:the_jtag_uart_jtag_uart_scfifo_r|scfifo:rfifo|a_fffifo:subfifo|lpm_mux:last_row_data_out_mux" CBX_FILE_NAME="mux_dqc.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|jtag_uart_top|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_w:the_jtag_uart_jtag_uart_scfifo_w|scfifo:wfifo|a_fffifo:subfifo|a_fefifo:fifo_state|lpm_compare:is_almost_empty_compare" CBX_FILE_NAME="cmpr_vdg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|jtag_uart_top|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_w:the_jtag_uart_jtag_uart_scfifo_w|scfifo:wfifo|a_fffifo:subfifo|a_fefifo:fifo_state|lpm_compare:is_almost_full_compare" CBX_FILE_NAME="cmpr_vdg.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|jtag_uart_top|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_w:the_jtag_uart_jtag_uart_scfifo_w|scfifo:wfifo|a_fffifo:subfifo|lpm_counter:rd_ptr" CBX_FILE_NAME="cntr_p9f.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

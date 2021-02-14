@@ -1,0 +1,17 @@
+
+State Machine - |micro_4ce22_top|micro_embedded:micro|jtag_uart_top:jtag|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_r:the_jtag_uart_jtag_uart_scfifo_r|scfifo:rfifo|a_fffifo:subfifo|a_fefifo:fifo_state|sm_emptyfull
+Name state_middle state_full state_empty 
+state_empty 0 0 0 
+state_middle 1 0 1 
+state_full 0 1 1 
+
+State Machine - |micro_4ce22_top|micro_embedded:micro|jtag_uart_top:jtag|jtag_uart:jtag_uart|jtag_uart_jtag_uart:jtag_uart|jtag_uart_jtag_uart_scfifo_w:the_jtag_uart_jtag_uart_scfifo_w|scfifo:wfifo|a_fffifo:subfifo|a_fefifo:fifo_state|sm_emptyfull
+Name state_middle state_full state_empty 
+state_empty 0 0 0 
+state_middle 1 0 1 
+state_full 0 1 1 
+
+State Machine - |micro_4ce22_top|micro_embedded:micro|micro:core|state
+Name state.EXECUTE 
+state.FETCH 0 
+state.EXECUTE 1 

@@ -1,0 +1,22 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst qsys_block.onchip_ram -pg 1 -lvl 3 -y 30
+preplace inst qsys_block.led -pg 1 -lvl 3 -y 210
+preplace inst qsys_block -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst qsys_block.nios2e.cpu -pg 1
+preplace inst qsys_block.nios2e -pg 1 -lvl 2 -y 100
+preplace inst qsys_block.clock -pg 1 -lvl 1 -y 170
+preplace inst qsys_block.nios2e.clock_bridge -pg 1
+preplace inst qsys_block.sdram -pg 1 -lvl 3 -y 310
+preplace inst qsys_block.jtag_uart -pg 1 -lvl 3 -y 110
+preplace inst qsys_block.nios2e.reset_bridge -pg 1
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)qsys_block.sdram,(SLAVE)sdram.wire) 1 0 3 NJ 380 NJ 380 NJ
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)qsys_block.clock,(SLAVE)clock.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)clock.clk_in_reset,(SLAVE)qsys_block.clock_sreset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>qsys_block</net_container>(SLAVE)qsys_block.led,(SLAVE)led.external_connection) 1 0 3 NJ 240 NJ 240 NJ
+preplace netloc FAN_OUT<net_container>qsys_block</net_container>(SLAVE)nios2e.reset,(MASTER)clock.clk_reset,(SLAVE)onchip_ram.reset1,(SLAVE)sdram.reset,(SLAVE)led.reset,(SLAVE)jtag_uart.reset) 1 1 2 320 280 760
+preplace netloc FAN_OUT<net_container>qsys_block</net_container>(SLAVE)nios2e.clk,(SLAVE)onchip_ram.clk1,(SLAVE)sdram.clk,(SLAVE)led.clk,(MASTER)clock.clk,(SLAVE)jtag_uart.clk) 1 1 2 300 260 740
+preplace netloc POINT_TO_POINT<net_container>qsys_block</net_container>(MASTER)nios2e.irq,(SLAVE)jtag_uart.irq) 1 2 1 720
+preplace netloc INTERCONNECT<net_container>qsys_block</net_container>(SLAVE)onchip_ram.s1,(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)sdram.s1,(SLAVE)led.s1,(MASTER)nios2e.data_master,(MASTER)nios2e.instruction_master,(SLAVE)nios2e.debug_mem_slave) 1 1 2 340 300 700
+levelinfo -pg 1 0 90 950
+levelinfo -hier qsys_block 100 130 460 790 940

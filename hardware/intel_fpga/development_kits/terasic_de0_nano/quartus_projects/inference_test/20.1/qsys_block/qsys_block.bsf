@@ -1,0 +1,146 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 320 352)
+	(text "qsys_block" (rect 127 -1 173 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 336 20 348)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clock_clk" (rect 0 0 36 12)(font "Arial" (font_size 8)))
+		(text "clock_clk" (rect 4 61 58 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 128 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "clock_sreset_reset_n" (rect 0 0 87 12)(font "Arial" (font_size 8)))
+		(text "clock_sreset_reset_n" (rect 4 101 124 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 128 112)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(output)
+		(text "led_export[7..0]" (rect 0 0 61 12)(font "Arial" (font_size 8)))
+		(text "led_export[7..0]" (rect 4 141 100 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 128 152)(line_width 3))
+	)
+	(port
+		(pt 0 192)
+		(output)
+		(text "sdram_addr[12..0]" (rect 0 0 73 12)(font "Arial" (font_size 8)))
+		(text "sdram_addr[12..0]" (rect 4 181 106 192)(font "Arial" (font_size 8)))
+		(line (pt 0 192)(pt 128 192)(line_width 3))
+	)
+	(port
+		(pt 0 208)
+		(output)
+		(text "sdram_ba[1..0]" (rect 0 0 60 12)(font "Arial" (font_size 8)))
+		(text "sdram_ba[1..0]" (rect 4 197 88 208)(font "Arial" (font_size 8)))
+		(line (pt 0 208)(pt 128 208)(line_width 3))
+	)
+	(port
+		(pt 0 224)
+		(output)
+		(text "sdram_cas_n" (rect 0 0 56 12)(font "Arial" (font_size 8)))
+		(text "sdram_cas_n" (rect 4 213 70 224)(font "Arial" (font_size 8)))
+		(line (pt 0 224)(pt 128 224)(line_width 1))
+	)
+	(port
+		(pt 0 240)
+		(output)
+		(text "sdram_cke" (rect 0 0 46 12)(font "Arial" (font_size 8)))
+		(text "sdram_cke" (rect 4 229 58 240)(font "Arial" (font_size 8)))
+		(line (pt 0 240)(pt 128 240)(line_width 1))
+	)
+	(port
+		(pt 0 256)
+		(output)
+		(text "sdram_cs_n" (rect 0 0 51 12)(font "Arial" (font_size 8)))
+		(text "sdram_cs_n" (rect 4 245 64 256)(font "Arial" (font_size 8)))
+		(line (pt 0 256)(pt 128 256)(line_width 1))
+	)
+	(port
+		(pt 0 288)
+		(output)
+		(text "sdram_dqm[1..0]" (rect 0 0 68 12)(font "Arial" (font_size 8)))
+		(text "sdram_dqm[1..0]" (rect 4 277 94 288)(font "Arial" (font_size 8)))
+		(line (pt 0 288)(pt 128 288)(line_width 3))
+	)
+	(port
+		(pt 0 304)
+		(output)
+		(text "sdram_ras_n" (rect 0 0 55 12)(font "Arial" (font_size 8)))
+		(text "sdram_ras_n" (rect 4 293 70 304)(font "Arial" (font_size 8)))
+		(line (pt 0 304)(pt 128 304)(line_width 1))
+	)
+	(port
+		(pt 0 320)
+		(output)
+		(text "sdram_we_n" (rect 0 0 53 12)(font "Arial" (font_size 8)))
+		(text "sdram_we_n" (rect 4 309 64 320)(font "Arial" (font_size 8)))
+		(line (pt 0 320)(pt 128 320)(line_width 1))
+	)
+	(port
+		(pt 0 272)
+		(bidir)
+		(text "sdram_dq[15..0]" (rect 0 0 64 12)(font "Arial" (font_size 8)))
+		(text "sdram_dq[15..0]" (rect 4 261 94 272)(font "Arial" (font_size 8)))
+		(line (pt 0 272)(pt 128 272)(line_width 3))
+	)
+	(drawing
+		(text "clock" (rect 100 43 230 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 133 67 284 144)(font "Arial" (color 0 0 0)))
+		(text "clock_sreset" (rect 55 83 182 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset_n" (rect 133 107 308 224)(font "Arial" (color 0 0 0)))
+		(text "led" (rect 112 123 242 259)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 133 147 302 304)(font "Arial" (color 0 0 0)))
+		(text "sdram" (rect 92 163 214 339)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "addr" (rect 133 187 290 384)(font "Arial" (color 0 0 0)))
+		(text "ba" (rect 133 203 278 416)(font "Arial" (color 0 0 0)))
+		(text "cas_n" (rect 133 219 296 448)(font "Arial" (color 0 0 0)))
+		(text "cke" (rect 133 235 284 480)(font "Arial" (color 0 0 0)))
+		(text "cs_n" (rect 133 251 290 512)(font "Arial" (color 0 0 0)))
+		(text "dq" (rect 133 267 278 544)(font "Arial" (color 0 0 0)))
+		(text "dqm" (rect 133 283 284 576)(font "Arial" (color 0 0 0)))
+		(text "ras_n" (rect 133 299 296 608)(font "Arial" (color 0 0 0)))
+		(text "we_n" (rect 133 315 290 640)(font "Arial" (color 0 0 0)))
+		(text " qsys_block " (rect 268 336 608 682)(font "Arial" ))
+		(line (pt 128 32)(pt 192 32)(line_width 1))
+		(line (pt 192 32)(pt 192 336)(line_width 1))
+		(line (pt 128 336)(pt 192 336)(line_width 1))
+		(line (pt 128 32)(pt 128 336)(line_width 1))
+		(line (pt 129 52)(pt 129 76)(line_width 1))
+		(line (pt 130 52)(pt 130 76)(line_width 1))
+		(line (pt 129 92)(pt 129 116)(line_width 1))
+		(line (pt 130 92)(pt 130 116)(line_width 1))
+		(line (pt 129 132)(pt 129 156)(line_width 1))
+		(line (pt 130 132)(pt 130 156)(line_width 1))
+		(line (pt 129 172)(pt 129 324)(line_width 1))
+		(line (pt 130 172)(pt 130 324)(line_width 1))
+		(line (pt 0 0)(pt 320 0)(line_width 1))
+		(line (pt 320 0)(pt 320 352)(line_width 1))
+		(line (pt 0 352)(pt 320 352)(line_width 1))
+		(line (pt 0 0)(pt 0 352)(line_width 1))
+	)
+)

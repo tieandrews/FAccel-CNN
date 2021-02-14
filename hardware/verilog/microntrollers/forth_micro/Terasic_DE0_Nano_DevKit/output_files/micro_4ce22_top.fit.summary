@@ -1,0 +1,16 @@
+Fitter Status : Successful - Mon Dec 07 20:17:53 2020
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : micro_4ce22_top
+Top-level Entity Name : micro_4ce22_top
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 1,307 / 22,320 ( 6 % )
+    Total combinational functions : 1,197 / 22,320 ( 5 % )
+    Dedicated logic registers : 573 / 22,320 ( 3 % )
+Total registers : 573
+Total pins : 2 / 154 ( 1 % )
+Total virtual pins : 0
+Total memory bits : 65,536 / 608,256 ( 11 % )
+Embedded Multiplier 9-bit elements : 2 / 132 ( 2 % )
+Total PLLs : 1 / 4 ( 25 % )

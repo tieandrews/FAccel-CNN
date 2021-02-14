@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage.defaultLocation=C\:\\GitHub\\FAccel-CNN\\hardware\\intel_fpga\\development_kits\\terasic_de0_nano\\quartus_projects\\inference_test\\20.1\\software\\bringup_test
+newSoftwareExampleWizardPage.sopcinfoFile=C\:\\GitHub\\FAccel-CNN\\hardware\\intel_fpga\\development_kits\\terasic_de0_nano\\quartus_projects\\inference_test\\20.1\\qsys_block.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=C\:\\GitHub\\FAccel-CNN\\hardware\\intel_fpga\\development_kits\\terasic_de0_nano\\quartus_projects\\inference_test\\20.1\\software\\bringup_test_bsp

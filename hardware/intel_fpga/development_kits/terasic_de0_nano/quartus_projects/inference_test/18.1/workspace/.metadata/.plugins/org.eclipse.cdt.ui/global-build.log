@@ -1,4 +1,4 @@
-13:33:46 **** Incremental Build of configuration Nios II for project bringup_test ****
+09:48:54 **** Incremental Build of configuration Nios II for project bringup_test ****
 make all 
 Info: Building ../bringup_test_bsp/
 C:/intelFPGA/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../bringup_test_bsp/
@@ -12,4 +12,10 @@ Info: (bringup_test.elf) 45 KBytes program size (code + initialized data).
 Info:                    32714 KBytes free for stack + heap.
 Info: Creating bringup_test.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source bringup_test.elf >bringup_test.objdump
+[bringup_test build complete]
+09:49:37 **** Incremental Build of configuration Nios II for project bringup_test ****
+make all 
+Info: Building ../bringup_test_bsp/
+C:/intelFPGA/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../bringup_test_bsp/
+[BSP build complete]
 [bringup_test build complete]

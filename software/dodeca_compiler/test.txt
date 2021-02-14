@@ -1,0 +1,9 @@
+push 10000
+do
+    push 11
+    sub
+    dup
+    zeq
+    zeq
+loop
+

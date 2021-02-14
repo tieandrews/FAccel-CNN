@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Dec 07 20:17:31 2020
+Quartus Prime Version : 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+Revision Name : micro_4ce22_top
+Top-level Entity Name : micro_4ce22_top
+Family : Cyclone IV E
+Total logic elements : 1,372
+    Total combinational functions : 1,194
+    Dedicated logic registers : 573
+Total registers : 573
+Total pins : 2
+Total virtual pins : 0
+Total memory bits : 65,536
+Embedded Multiplier 9-bit elements : 2
+Total PLLs : 1
